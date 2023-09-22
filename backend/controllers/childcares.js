@@ -3,11 +3,9 @@
 ////////////////////////////////
 
 const express = require('express')
-const { sequelize } = require("./models");
-// async function main() {
+const { sequelize, ChildCare } = require("../models");
+
 //     await sequelize.sync({force: true})
-// }
-// main()
 
 ///////////////////////////////
 // CONTROLLERS
@@ -17,7 +15,7 @@ const { sequelize } = require("./models");
 async function index(req,res,next) {
 	try {
     // get all childcares
-    // res.json(await People.find({}));
+    res.json(await ChildCare.findAll());
   } catch (error) {
     //send error
     res.status(400).json(error);
@@ -28,7 +26,7 @@ async function index(req,res,next) {
 async function create(req,res,next) {
   try {
     // create new childcare
-    // res.json(await People.create(req.body));
+    res.json(await ChildCare.create(req.body));
   } catch (error) {
     //send error
     res.status(400).json(error);

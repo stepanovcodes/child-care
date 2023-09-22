@@ -5,19 +5,17 @@
 const express = require('express')
 const router = express.Router()
 
+const childCaresCtrl = require('../controllers/childcares')
+
 ///////////////////////////////
 // ROUTES
 ////////////////////////////////
 
 // CHILDCARES INDEX ROUTE
-router.get("/", async (req, res) => {
-	res.status(200).json({message: "childcares index route"})
-});
+router.get("/", childCaresCtrl.index);
 
 // CHILDCARES CREATE ROUTE
-router.post("/", async (req, res) =>  {
-	res.status(201).json({message: "childcares create route"})
-});
+router.post("/", childCaresCtrl.create);
 
 module.exports = router
 

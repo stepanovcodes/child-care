@@ -36,7 +36,7 @@ app.use('/childcares', childCaresRouter)
 ////////////////////////////////
 // create a test route
 app.get("/", (req, res) => {
-    res.send("hello world");
+    res.send("This is Child Care backend");
 });
 
 ///////////////////////////////

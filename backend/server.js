@@ -14,6 +14,23 @@ const express = require("express");
 // create application object
 const app = express();
 
+const childCaresRouter = require('./routes/childcares')
+
+const cors = require("cors")
+const morgan = require("morgan")
+
+///////////////////////////////
+// MIDDLEWARE
+////////////////////////////////
+app.use(express.urlencoded({extended:true}))
+app.use(express.json());
+
+app.use(cors()); // to minimize cors errors, open access to all origins
+app.use(morgan("dev")); // logging for development
+
+// all requests for endpoints that begin with '/childcares'
+app.use('/childcares', childCaresRouter)
+
 ///////////////////////////////
 // ROUTES
 ////////////////////////////////

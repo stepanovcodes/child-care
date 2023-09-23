@@ -16,6 +16,8 @@ const app = express();
 
 const childCaresRouter = require('./routes/childcares')
 
+const { sequelize} = require("./models");
+
 const cors = require("cors")
 const morgan = require("morgan")
 
@@ -42,5 +44,9 @@ app.get("/", (req, res) => {
 ///////////////////////////////
 // LISTENER
 ////////////////////////////////
-app.listen(PORT, () => console.log(`listening on PORT ${PORT}`));
+app.listen(PORT, async () => {
+    console.log(`listening on PORT ${PORT}`)
+    await sequelize.authenticate()
+    console.log(`Database is connected!`)
+});  
 

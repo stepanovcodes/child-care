@@ -18,13 +18,13 @@ router.get("/", childCaresCtrl.index);
 router.post("/", childCaresCtrl.create);
 
 // CHILDCARES SHOW ROUTE
-router.get("/:id", childCaresCtrl.show);
+router.get("/:uuid", childCaresCtrl.show);
 
 // CHILDCARES DELETE ROUTE
-router.delete("/:id", childCaresCtrl.delete);
+router.delete("/:uuid", childCaresCtrl.delete);
 
 // CHILDCARES UPDATE ROUTE
-router.put("/:id", childCaresCtrl.update);
+router.put("/:uuid", childCaresCtrl.update);
 
 module.exports = router
 

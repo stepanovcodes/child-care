@@ -3,9 +3,7 @@
 ////////////////////////////////
 
 const express = require("express");
-const { sequelize, ChildCare } = require("../models");
-
-//     await sequelize.sync({force: true})
+const { ChildCare } = require("../models");
 
 ///////////////////////////////
 // CONTROLLERS
@@ -37,7 +35,9 @@ async function create(req, res, next) {
 async function show(req, res, next) {
   try {
     // send one childcare
-    res.status(200).json(await ChildCare.findByPk(req.params.id));
+    res.status(200).json(await ChildCare.findOne({
+        where: { uuid: req.params.uuid },
+      }));
   } catch (error) {
     //send error
     res.status(400).json({ error: error.message });
@@ -49,7 +49,7 @@ async function destroy(req, res) {
   try {
     res.status(204).json(
       await ChildCare.destroy({
-        where: { id: req.params.id },
+        where: { uuid: req.params.uuid },
       })
     );
   } catch (error) {
@@ -62,7 +62,7 @@ async function update(req, res) {
   try {
     res.status(204).json(
       await ChildCare.update(req.body, {
-        where: { id: req.params.id },
+        where: { uuid: req.params.uuid },
       })
     );
   } catch (error) {

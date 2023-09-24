@@ -56,17 +56,20 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
+      placeId: {
+        type: DataTypes.STRING,
+      },
       latitude: {
         type: DataTypes.FLOAT,
-        allowNull: false,
       },
       longitude: {
         type: DataTypes.FLOAT,
-        allowNull: false,
       },
-      placeId: {
+      website: {
         type: DataTypes.STRING,
-        allowNull: false,
+      },
+      googleRating: {
+        type: DataTypes.FLOAT,
       },
     },
     {

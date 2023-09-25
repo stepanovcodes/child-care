@@ -45,9 +45,13 @@ const Map = ({ childCares }) => {
     });
 
     // Create default markers
-    childCares.map((childCare) =>
-      new mapboxgl.Marker().setLngLat([childCare.longitude, childCare.latitude]).addTo(map)
-    );
+    childCares.map((childCare) => {
+      if (childCare.longitude && childCare.latitude) {
+        return new mapboxgl.Marker()
+          .setLngLat([childCare.longitude, childCare.latitude])
+          .addTo(map);
+      }
+    });
 
     // Add navigation control (the +/- zoom buttons)
     map.addControl(new mapboxgl.NavigationControl(), "top-right");

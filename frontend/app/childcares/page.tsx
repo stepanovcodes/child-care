@@ -30,7 +30,7 @@ const ChildCaresPage = async () => {
             <div className='w-1/2' style={{ maxHeight: "clac(100vh - 64px)"}}>
                 <Map childCares={childCares}/>
             </div>
-            <div className='w-1/2 pb-4' style={{ maxHeight: "clac(100vh - 64px)" }}>
+            {/* <div className='w-1/2 pb-4' style={{ maxHeight: "clac(100vh - 64px)" }}>
                 <h1 className='text-4xl font-bold text-white bg-amber-500 p-4 rounded-lg shadow-lg'>Child Care Facilities</h1>
                 <p></p>
                 <table className='table table-bordered'>
@@ -69,7 +69,7 @@ const ChildCaresPage = async () => {
                             </tr>)}
                     </tbody>
                 </table>
-            </div>
+            </div> */}
         </div>
     )
 }

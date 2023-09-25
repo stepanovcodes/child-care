@@ -32,7 +32,7 @@ async function index() {
 
 async function getPlaceId(element) {
 
-  const key = 'AIzaSyBr-bdgcDi9Vk6d38XDpVR5h6CwXbGgC5w';
+  const key = "";
   const input = `${element.name.replace(/ /g, "%20")}%20${element.address.replace(/ /g, "%20")}%20${element.city.replace(/ /g, "%20")}%20${element.province.replace(/ /g, "%20")}`
   // console.log(input)
   const url = `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${input}&key=${key}`;

@@ -23,8 +23,16 @@ async function index(req, res, next) {
 // CHILDCARES CREATE ACTION
 async function create(req, res, next) {
   try {
-    // create new childcare
-    res.json(await ChildCare.create(req.body));
+    if (Array.isArray(req.body)) {
+      // If req.body is an array, it contains multiple objects
+      res.json(await ChildCare.bulkCreate(req.body));
+    } else if (typeof req.body === 'object') {
+      // If req.body is an object, it contains a single object
+      res.json(await ChildCare.create(req.body));
+    } else {
+      // Handle invalid input (neither object nor array)
+      res.status(400).json({ error: 'Invalid input' });
+    }
   } catch (error) {
     //send error
     res.status(400).json(error);

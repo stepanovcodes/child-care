@@ -1,180 +1,169 @@
-"use client";
-import React, { useEffect, useRef } from "react";
-import mapboxgl from "mapbox-gl";
-import "./Map.css";
-import "mapbox-gl/dist/mapbox-gl.css";
-import Supercluster from "supercluster";
-// import geoJson from "./chicago-parks.json";
+'use client'
 
-/**
- * Child Care data type.
- * @typedef {Object} ChildCare
- * @property {string} uuid - Unique identifier.
- * @property {string} name - Name of the child care facility.
- * @property {string} type - Type of the child care facility.
- * @property {string} address - Address of the child care facility.
- * @property {string} city - City where the child care facility is located.
- * @property {string} province - Province where the child care facility is located.
- * @property {string} postalCode - Postal code of the child care facility.
- * @property {string} phoneNumber - Phone number of the child care facility.
- * @property {string} googleMapsLink - Google Maps link for the child care facility.
- * @property {number} capacity - Capacity of the child care facility.
- * @property {number} latitude - Latitude coordinate.
- * @property {number} longitude - Longitude coordinate.
- * @property {string} placeId - Place ID.
- * @property {string} createdAt - Creation date and time.
- * @property {string} updatedAt - Last update date and time.
- */
+import React, { useEffect } from 'react';
+import mapboxgl from 'mapbox-gl';
+import 'mapbox-gl/dist/mapbox-gl.css'; // Import Mapbox styles
+import './Map.css'; // Create a CSS file for styling if needed
 
-/**
- * Map component.
- * @param {Object} props - Component props.
- * @param {ChildCare[]} props.childCares - An array of child care data.
- */
+mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN; // Replace with your Mapbox access token
 
-mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_GL_ACCESS_TOKEN;
-
-const Map = ({ childCares }) => {
-  const mapContainerRef = useRef(null);
-
+const Map = ({childCares}) => {
   useEffect(() => {
     const map = new mapboxgl.Map({
-      container: mapContainerRef.current,
-      style: "mapbox://styles/mapbox/streets-v12",
-      center: [-110.67701, 50.041409],
-      zoom: 10,
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v12',
+      center: [-110.703198, 50.029022],
+      zoom: 12,
     });
-    map.on("load", () => {
-      // Create a supercluster instance
-      const supercluster = new Supercluster({
-        radius: 40, // Adjust the cluster radius as needed
-        maxZoom: 16, // Adjust the max zoom level as needed
+
+    // Filter out childCares with non-null latitudes and longitudes
+    const validChildCares = childCares.filter((childCare) => childCare.latitude !== null && childCare.longitude !== null);
+
+    map.on('load', () => {
+      map.addSource('childCares', {
+        type: 'geojson',
+        data: {
+          type: 'FeatureCollection',
+          features: validChildCares.map(validChildCare => ({
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [validChildCare.longitude, validChildCare.latitude],
+            },
+            properties: {
+              uuid: validChildCare.uuid,
+              name: validChildCare.name,
+              type: validChildCare.type,
+              address: validChildCare.address,
+              city: validChildCare.city,
+              province: validChildCare.province,
+              postalCode: validChildCare.postalCode,
+              phoneNumber: validChildCare.phoneNumber,
+              capacity: validChildCare.capacity,
+              website: validChildCare.website,
+              googleRating: validChildCare.googleRating
+            },
+          })),
+        },
+        cluster: true,
+        clusterMaxZoom: 14,
+        clusterRadius: 50,
       });
 
-      // Filter out childCare objects without valid coordinates
-      const validChildCares = childCares.filter(
-        (childCare) =>
-          typeof childCare.longitude === "number" &&
-          typeof childCare.latitude === "number"
-      );
-
-      // Add childCare data to the supercluster
-      supercluster.load(
-        validChildCares.map((childCare) => {
-          return {
-            type: "Feature",
-            geometry: {
-              type: "Point",
-              coordinates: [childCare.longitude, childCare.latitude],
-            },
-            properties: { childCare }, // Store the childCare data
-          };
-        })
-      );
-
-      // Create a layer for the clustered markers
       map.addLayer({
-        id: "clusters",
-        type: "circle",
-        source: {
-          type: "geojson",
-          data: supercluster.getClusters([-180, -85, 180, 85], map.getZoom()), // Adjust the bounding box as needed
-        },
+        id: 'clusters',
+        type: 'circle',
+        source: 'childCares',
+        filter: ['has', 'point_count'],
         paint: {
-          "circle-color": "orange", // Adjust the cluster color
-          "circle-radius": [
-            "step",
-            ["get", "point_count"],
-            20, // Adjust the cluster radius
-            100, // Adjust the cluster threshold
-            30, // Adjust the cluster radius for larger clusters
+          'circle-color': [
+            'step',
+            ['get', 'point_count'],
+            '#51bbd6',
+            100,
+            '#f1f075',
+            750,
+            '#f28cb1',
+          ],
+          'circle-radius': [
+            'step',
+            ['get', 'point_count'],
+            20,
+            100,
+            30,
+            750,
+            40,
           ],
         },
       });
 
-      // Create a layer for the cluster labels
       map.addLayer({
-        id: "cluster-count",
-        type: "symbol",
-        source: "clusters",
-        filter: ["has", "point_count"],
+        id: 'cluster-count',
+        type: 'symbol',
+        source: 'childCares',
+        filter: ['has', 'point_count'],
         layout: {
-          "text-field": "{point_count_abbreviated}",
-          "text-size": 12,
+          'text-field': ['get', 'point_count_abbreviated'],
+          'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
+          'text-size': 12,
         },
       });
 
-      // Add childCare markers to the map
       map.addLayer({
-        id: "childCares",
-        type: "symbol",
-        source: {
-          type: "geojson",
-          data: {
-            type: "FeatureCollection",
-            features: childCares.map((childCare) => {
-              if (childCare.longitude && childCare.latitude) {
-                return {
-                  type: "Feature",
-                  geometry: {
-                    type: "Point",
-                    coordinates: [childCare.longitude, childCare.latitude],
-                  },
-                  properties: { childCare }, // Store the childCare data
-                };
-              }
-            }),
-          },
-        },
-        layout: {
-          "icon-image": "marker-15", // Adjust the marker icon as needed
-          "icon-size": 1.5, // Adjust the marker size as needed
+        id: 'unclustered-point',
+        type: 'circle',
+        source: 'childCares',
+        filter: ['!', ['has', 'point_count']],
+        paint: {
+          'circle-color': '#11b4da',
+          'circle-radius': 4,
+          'circle-stroke-width': 1,
+          'circle-stroke-color': '#fff',
         },
       });
 
-      // // Create default markers
-      // childCares.map((childCare) => {
-      //   if (childCare.longitude && childCare.latitude) {
-      //     return new mapboxgl.Marker()
-      //       .setLngLat([childCare.longitude, childCare.latitude])
-      //       .addTo(map);
-      //   }
-      // });
-
-      // Add navigation control (the +/- zoom buttons)
-      map.addControl(new mapboxgl.NavigationControl(), "top-right");
-
-      //Display cluster data when the map is loaded
-      const clusters = supercluster.getClusters(
-        [-180, -85, 180, 85],
-        map.getZoom()
-      );
-      map.getSource("clusters").setData({
-        type: "FeatureCollection",
-        features: clusters,
-      });
-
-      // When the map zooms, update the cluster data
-      map.on("zoom", () => {
-        const clusters = supercluster.getClusters(
-          [-180, -85, 180, 85],
-          map.getZoom()
-        );
-        map.getSource("clusters").setData({
-          type: "FeatureCollection",
-          features: clusters,
+      map.on('click', 'clusters', (e) => {
+        const features = map.queryRenderedFeatures(e.point, {
+          layers: ['clusters'],
         });
+        const clusterId = features[0].properties.cluster_id;
+        map.getSource('childCares').getClusterExpansionZoom(
+          clusterId,
+          (err, zoom) => {
+            if (err) return;
+
+            map.easeTo({
+              center: features[0].geometry.coordinates,
+              zoom: zoom,
+            });
+          }
+        );
       });
 
-      // Clean up on unmount
-      return () => map.remove();
-    });
-  }, [childCares]);
+      map.on('click', 'unclustered-point', (e) => {
+        const coordinates = e.features[0].geometry.coordinates.slice();
+        const name = capitalizeEachWord(e.features[0].properties.name);
+        const type = 
+          e.features[0].properties.type.toLowerCase();
 
-  return (
-    <>
-      <div className="map-container" ref={mapContainerRef} />
-    </>
-  );
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+          coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
+
+        new mapboxgl.Popup()
+          .setLngLat(coordinates)
+          .setHTML(
+            `Name: ${name}<br>Type: ${type}`
+          )
+          .addTo(map);
+      });
+
+      map.on('mouseenter', 'clusters', () => {
+        map.getCanvas().style.cursor = 'pointer';
+      });
+
+      map.on('mouseleave', 'clusters', () => {
+        map.getCanvas().style.cursor = '';
+      });
+    });
+
+    // Add navigation control (the +/- zoom buttons)
+    map.addControl(new mapboxgl.NavigationControl(), "top-right");
+
+    return () => map.remove(); // Clean up when the component unmounts
+  }, []);
+
+  const capitalizeEachWord = (str) => {
+    return str
+    .split(' ') // Split the string into an array of words
+    .map(word => {
+      // Capitalize the first letter and convert the rest to lowercase for each word
+      return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+    })
+    .join(' '); // Join the words back into a single string with spaces
+  }
+
+  return <div id="map" className="map-container"></div>;
 };
+
 export default Map;

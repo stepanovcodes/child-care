@@ -16,10 +16,35 @@ const Map = ({childCares}) => {
       zoom: 12,
     });
 
+    // Filter out childCares with non-null latitudes and longitudes
+    const validChildCares = childCares.filter((childCare) => childCare.latitude !== null && childCare.longitude !== null);
+
     map.on('load', () => {
-      map.addSource('earthquakes', {
+      map.addSource('childCares', {
         type: 'geojson',
-        data: 'https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson',
+        data: {
+          type: 'FeatureCollection',
+          features: validChildCares.map(validChildCare => ({
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [validChildCare.longitude, validChildCare.latitude],
+            },
+            properties: {
+              uuid: validChildCare.uuid,
+              name: validChildCare.name,
+              type: validChildCare.type,
+              address: validChildCare.address,
+              city: validChildCare.city,
+              province: validChildCare.province,
+              postalCode: validChildCare.postalCode,
+              phoneNumber: validChildCare.phoneNumber,
+              capacity: validChildCare.capacity,
+              website: validChildCare.website,
+              googleRating: validChildCare.googleRating
+            },
+          })),
+        },
         cluster: true,
         clusterMaxZoom: 14,
         clusterRadius: 50,
@@ -28,7 +53,7 @@ const Map = ({childCares}) => {
       map.addLayer({
         id: 'clusters',
         type: 'circle',
-        source: 'earthquakes',
+        source: 'childCares',
         filter: ['has', 'point_count'],
         paint: {
           'circle-color': [
@@ -55,7 +80,7 @@ const Map = ({childCares}) => {
       map.addLayer({
         id: 'cluster-count',
         type: 'symbol',
-        source: 'earthquakes',
+        source: 'childCares',
         filter: ['has', 'point_count'],
         layout: {
           'text-field': ['get', 'point_count_abbreviated'],
@@ -67,7 +92,7 @@ const Map = ({childCares}) => {
       map.addLayer({
         id: 'unclustered-point',
         type: 'circle',
-        source: 'earthquakes',
+        source: 'childCares',
         filter: ['!', ['has', 'point_count']],
         paint: {
           'circle-color': '#11b4da',
@@ -82,7 +107,7 @@ const Map = ({childCares}) => {
           layers: ['clusters'],
         });
         const clusterId = features[0].properties.cluster_id;
-        map.getSource('earthquakes').getClusterExpansionZoom(
+        map.getSource('childCares').getClusterExpansionZoom(
           clusterId,
           (err, zoom) => {
             if (err) return;
@@ -97,9 +122,9 @@ const Map = ({childCares}) => {
 
       map.on('click', 'unclustered-point', (e) => {
         const coordinates = e.features[0].geometry.coordinates.slice();
-        const mag = e.features[0].properties.mag;
-        const tsunami =
-          e.features[0].properties.tsunami === 1 ? 'yes' : 'no';
+        const name = capitalizeEachWord(e.features[0].properties.name);
+        const type = 
+          e.features[0].properties.type.toLowerCase();
 
         while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
           coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
@@ -108,7 +133,7 @@ const Map = ({childCares}) => {
         new mapboxgl.Popup()
           .setLngLat(coordinates)
           .setHTML(
-            `magnitude: ${mag}<br>Was there a tsunami?: ${tsunami}`
+            `Name: ${name}<br>Type: ${type}`
           )
           .addTo(map);
       });
@@ -127,6 +152,16 @@ const Map = ({childCares}) => {
 
     return () => map.remove(); // Clean up when the component unmounts
   }, []);
+
+  const capitalizeEachWord = (str) => {
+    return str
+    .split(' ') // Split the string into an array of words
+    .map(word => {
+      // Capitalize the first letter and convert the rest to lowercase for each word
+      return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+    })
+    .join(' '); // Join the words back into a single string with spaces
+  }
 
   return <div id="map" className="map-container"></div>;
 };

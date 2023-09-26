@@ -12,7 +12,7 @@ const Map = ({childCares}) => {
     const map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v12',
-      center: [-110.703198, 50.029022],
+      center: [-110.67720259780971, 50.020035048603965],
       zoom: 12,
     });
 

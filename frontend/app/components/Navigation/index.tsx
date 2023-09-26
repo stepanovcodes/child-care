@@ -8,7 +8,7 @@ import { usePathname } from 'next/navigation';
 
 
 const navigation = [
-  { name: 'Find Child Care', href: '/childcares', current: true },
+  { name: 'Find Child Hare', href: '/childcares', current: true },
   { name: 'Resources', href: '/resources', current: false },
   { name: 'About', href: '/about', current: false },
 ]

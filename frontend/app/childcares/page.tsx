@@ -28,7 +28,7 @@ const ChildCaresPage = async () => {
     return (
         <div className='flex'>
             <div className='w-1/2' style={{ maxHeight: "clac(100vh - 64px)"}}>
-                <Map childCares={childCares}/>
+                <Map childCares={childCares} />
             </div>
             {/* <div className='w-1/2 pb-4' style={{ maxHeight: "clac(100vh - 64px)" }}>
                 <h1 className='text-4xl font-bold text-white bg-amber-500 p-4 rounded-lg shadow-lg'>Child Care Facilities</h1>

@@ -414,7 +414,7 @@ Trello sprint board [link](https://trello.com/b/qnsoGBgC/child-care)
 | US_ID\_\_# | Short Name | Description | SP  | Priority | Risk | Sprint | Dependant on US ID# |
 | ---------- | ---------- | ----------- | --- | -------- | ---- | ------ | ------------------- |
 | CC-1  | View map with clusters | AAU, I want to view a map with clusters or individual pins that represent child care facilities. |  | 1 | High | 1 |  |
-| CC-2       | Navigation bar | AAU, I want to access links to external resources on choosing child care via a navigation bar at the top of the page |  | 2 | Low | 1 |  |
+| CC-2       | Navigation bar | AAU, I want to access links to "Find Child Care", "Resources" and "About" pages via a navigation bar at the top of the page |  | 2 | Low | 1 |  |
 | CC-3       | View Child Care basic cards | AAU, I want to view cards of child care facilities with their names, types, phone numbers, capacities |  | 1 | Medium | 1 | |
 | CC-4       | View results number found | AAU, I want to view the number of results found above the cards |  | 1 | Low | 1 | CC-3 |
 | CC-5       | View Child Care advanced cards | AAU, I want to view cards of child care facilities with their photos, website link, Google rating |  | 1 | High | 1 | CC-3 |

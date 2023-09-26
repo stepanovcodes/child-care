@@ -1,7 +1,7 @@
 import React from 'react'
 import { getChildCares } from "@/app/utilities/childcares-service";
 import { MapIcon } from '@heroicons/react/24/outline'
-import Map from '@/app/components/Map.jsx'
+import Map from '@/app/components/Map'
 
 interface ChildCare {
     uuid: string,
@@ -27,7 +27,7 @@ const ChildCaresPage = async () => {
 
     return (
         <div className='flex'>
-            <div className='w-1/2' style={{ maxHeight: "clac(100vh - 64px)"}}>
+            <div className='w-1/2' >
                 <Map childCares={childCares} />
             </div>
             {/* <div className='w-1/2 pb-4' style={{ maxHeight: "clac(100vh - 64px)" }}>

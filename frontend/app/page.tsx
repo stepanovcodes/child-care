@@ -1,12 +1,17 @@
-import ProductCard from '@/app/components/ProductCard'
+
 import Link from 'next/link'
 
 export default function Home() {
   return (
-    <main>
-      <h1>Hello World</h1>
-      <Link href="/childcares"> Child Care Facilities</Link>
-      <ProductCard/>
-    </main>
+    <>
+      <div className="container mx-auto px-4">
+        <h1>Hello word</h1>
+        <p>This is a content to make our page longer</p>
+        <div className="w-full h-screen bg-green-300"></div>
+        <p>
+          Lorem Ipsum is simply dummy text ...
+        </p>
+      </div>
+    </>
   )
 }

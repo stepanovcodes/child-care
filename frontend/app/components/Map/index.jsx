@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css"; // Import Mapbox styles
 import "./Map.css"; // Create a CSS file for styling if needed
@@ -7,6 +7,7 @@ import "./Map.css"; // Create a CSS file for styling if needed
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN; // Replace with your Mapbox access token
 
 const Map = ({ childCares, setCardData }) => {
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const map = new mapboxgl.Map({
       container: "map",
@@ -21,6 +22,7 @@ const Map = ({ childCares, setCardData }) => {
     );
 
     map.on("load", () => {
+      setIsLoading(false);
       map.addSource("childCares", {
         type: "geojson",
         data: {
@@ -222,7 +224,26 @@ const Map = ({ childCares, setCardData }) => {
     return R * c; // Distance in kilometers
   }
 
-  return <div id="map" className="map-container"></div>;
+  const loaded = () => {
+    return <div id="map" className="map-container"></div>;
+  };
+
+  const loading = () => (
+    <div
+      id="map" className="map-container"
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "calc(100vh - 64px)",
+      }}
+    >
+      <span className="loading loading-bars loading-lg"></span>
+      Getting map ready...
+    </div>
+  );
+  return isLoading ? loading() : loaded();
 };
 
 export default Map;

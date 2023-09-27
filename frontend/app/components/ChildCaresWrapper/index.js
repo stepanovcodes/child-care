@@ -4,7 +4,7 @@ import Map from "@/app/components/Map";
 import CardList from "@/app/components/CardList";
 
 const ChildCaresWrapper = ({ childCares }) => {
-  const [cardData, setCardData] = useState(childCares);
+  const [cardData, setCardData] = useState([]);
   
   return (
     <div className="flex flex-wrap">

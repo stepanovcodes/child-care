@@ -425,3 +425,4 @@ Trello sprint board [link](https://trello.com/b/qnsoGBgC/child-care)
 | CC-10      | View photos details | AAU, I want to view child care photos on card details|  | 1 | High | 1 | CC-7 |
 | CC-11      | Highlight card(s) when clicking on pin (cluster) | AAU, I want to see what card(s) is/are associated with pin (cluster) when clicking on pin (cluster) |  | 1 | High | 1 | CC-7 |
 | CC-12      | Highlight pin (cluster) when hovering on card | AAU, I want to see what pin (cluster) is associated with a card when hovering on the card |  | 1 | High | 1 | CC-7 |
+| CC-13      | View cards only visible on map | AAU, I want to view only those cards of child care facilities that are currently visible on the map |  | 1 | Medium | 1 | CC-3 |

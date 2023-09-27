@@ -1,7 +1,6 @@
 import React from 'react'
 import { getChildCares } from "@/app/utilities/childcares-service";
-import Map from '@/app/components/Map'
-import CardList from '@/app/components/CardList'
+import ChildCaresWrapper from '@/app/components/ChildCaresWrapper';
 
 interface ChildCare {
     uuid: string,
@@ -21,22 +20,14 @@ interface ChildCare {
     googleRating: number,
     createdAt: string,
     updatedAt: string,
-}
+  }
 
 const ChildCaresPage = async () => {
 
     const childCares: ChildCare[] = await getChildCares()
 
-    return (
-        <div className='flex'>
-            <div className='w-2/3'>
-                <Map childCares={childCares} />
-            </div>
-            <div className='w-1/3'>
-                <CardList childCares={childCares} />
-            </div>
-        </div>
-    )
+    return   <ChildCaresWrapper childCares={childCares}/>
+
 }
 
 export default ChildCaresPage

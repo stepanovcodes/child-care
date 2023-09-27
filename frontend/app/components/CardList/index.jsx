@@ -1,5 +1,5 @@
-import React from "react";
-import Card from "@/app/components/Card";
+import React, { Suspense } from "react";
+const Card = React.lazy(() => import("@/app/components/Card"));
 
 const CardList = ({ childCares }) => {
   return (
@@ -13,9 +13,12 @@ const CardList = ({ childCares }) => {
         </div>
       </div>
       <div style={{maxHeight: "calc(100vh - 104px)", overflowY: "auto"}}>
+      <Suspense fallback={<div style={{display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center", height: "calc(100vh - 104px)"}}><span className="loading loading-bars loading-lg"></span>Getting cards ready...</div>
+}>
       {childCares.map((childCare) => (
         <Card key={childCare.uuid} childCare={childCare} />
       ))}
+      </Suspense>
       </div>
     </>
   );

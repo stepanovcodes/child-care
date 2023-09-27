@@ -28,11 +28,11 @@ const ChildCaresPage = async () => {
     const childCares: ChildCare[] = await getChildCares()
 
     return (
-        <div className='flex'>
-            <div className='w-2/3'>
+        <div className='flex flex-wrap'>
+            <div className='w-full sm:w-2/3'>
                 <Map childCares={childCares} />
             </div>
-            <div className='w-1/3'>
+            <div className='w-full sm:w-1/3'>
                 <CardList childCares={childCares} />
             </div>
         </div>

@@ -2,8 +2,15 @@
     width: 66.666667vw;
     height: calc(100vh - 64px);
   }
+
+  @media (max-width: 640px) {
+  .map-container {
+    width: 100vw;
+    height: calc(100vh - 514px);
+  }
+}
   
-  /* .sidebarStyle {
+ /*  .sidebarStyle {
     display: inline-block;
     position: absolute;
     top: 0;
@@ -15,3 +22,5 @@
     padding: 6px;
     font-weight: bold;
   } */
+
+ 

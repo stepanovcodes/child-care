@@ -6,7 +6,7 @@ import "./Map.css"; // Create a CSS file for styling if needed
 
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN; // Replace with your Mapbox access token
 
-const Map = ({ childCares }) => {
+const Map = ({ childCares, setCardData }) => {
   useEffect(() => {
     const map = new mapboxgl.Map({
       container: "map",
@@ -188,7 +188,7 @@ const Map = ({ childCares }) => {
 
       // console.log(cardData);
       // console.log(currentCenter);
-      // setCardData(cardData);
+      setCardData(cardData);
     };
 
     return () => map.remove(); // Clean up when the component unmounts

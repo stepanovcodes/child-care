@@ -13,6 +13,11 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       this.belongsTo(ChildCare, {foreignKey: 'placeId'})
     }
+
+    // toJSON() {
+    //   return { ...this.get(), id: undefined };
+    // }
+
   }
   Photo.init({
     uuid: {

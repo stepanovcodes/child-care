@@ -19,15 +19,12 @@ module.exports = {
       },
       height: {
         type: DataTypes.INTEGER,
-        allowNull: false,
       },
       width: {
         type: DataTypes.INTEGER,
-        allowNull: false,
       },
       photoReference: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
       createdAt: {
         allowNull: false,

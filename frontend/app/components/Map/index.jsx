@@ -145,6 +145,14 @@ const Map = ({childCares}) => {
       map.on('mouseleave', 'clusters', () => {
         map.getCanvas().style.cursor = '';
       });
+
+      map.on('mouseenter', 'unclustered-point', () => {
+        map.getCanvas().style.cursor = 'pointer';
+      });
+
+      map.on('mouseleave', 'unclustered-point', () => {
+        map.getCanvas().style.cursor = '';
+      });
     });
 
     // Add navigation control (the +/- zoom buttons)

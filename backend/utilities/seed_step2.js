@@ -1,5 +1,3 @@
-const review = require("../models/review");
-
 async function postPlaceIds() {
   const childCares = await getChildCares();
   childCares.forEach(async (element) => {

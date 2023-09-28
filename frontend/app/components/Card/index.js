@@ -2,7 +2,8 @@ import React from "react";
 import { UserIcon } from "@heroicons/react/24/outline";
 // import { getPhoto } from "@/app/utilities/photos-service";
 
-const Card = async ({ childCare }) => {
+const Card = ({ childCare }) => {
+// const Card = async ({ childCare }) => {
 
   // const result = await getPhoto("59071e81-8cfd-4cfa-8eba-69c4e7d16657")
   // const arrayBuffer = result.image;

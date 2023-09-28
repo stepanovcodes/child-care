@@ -70,9 +70,12 @@ module.exports = (sequelize, DataTypes) => {
       website: {
         type: DataTypes.STRING,
       },
-      googleRating: {
+      rating: {
         type: DataTypes.FLOAT,
       },
+      userRatingsTotal: {
+        type: DataTypes.INTEGER,
+      }
     },
     {
       sequelize,

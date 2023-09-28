@@ -61,8 +61,11 @@ module.exports = {
       website: {
         type: DataTypes.STRING,
       },
-      googleRating: {
+      rating: {
         type: DataTypes.FLOAT,
+      },
+      userRatingsTotal: {
+        type: DataTypes.INTEGER,
       },
       createdAt: {
         allowNull: false,

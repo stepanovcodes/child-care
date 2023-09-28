@@ -16,6 +16,7 @@ const app = express();
 
 const childCaresRouter = require('./routes/childcares')
 const photosRouter = require('./routes/photos')
+const reviewsRouter = require('./routes/reviews')
 
 const { sequelize} = require("./models");
 
@@ -34,6 +35,7 @@ app.use(morgan("dev")); // logging for development
 // all requests for endpoints that begin with '/childcares'
 app.use('/childcares', childCaresRouter)
 app.use('/photos', photosRouter)
+app.use('/reviews', reviewsRouter)
 
 ///////////////////////////////
 // ROUTES

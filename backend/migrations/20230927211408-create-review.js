@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, DataTypes) {
-    await queryInterface.createTable('photos', {
+    await queryInterface.createTable('reviews', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -17,17 +17,26 @@ module.exports = {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      height: {
-        type: DataTypes.INTEGER,
-      },
-      width: {
-        type: DataTypes.INTEGER,
-      },
-      photoReference: {
+      authorName: {
         type: DataTypes.STRING,
       },
-      image: {
-        type: DataTypes.BLOB,
+      profilePhotoUrl: {
+        type: DataTypes.STRING,
+      },
+      rating: {
+        type: DataTypes.INTEGER,
+      },
+      relativeTimeDescription: {
+        type: DataTypes.STRING,
+      },
+      text: {
+        type: DataTypes.STRING,
+      },
+      time: {
+        type: DataTypes.INTEGER,
+      },
+      translated: {
+        type: DataTypes.BOOLEAN,
       },
       createdAt: {
         allowNull: false,
@@ -40,6 +49,6 @@ module.exports = {
     });
   },
   async down(queryInterface, DataTypes) {
-    await queryInterface.dropTable('photos');
+    await queryInterface.dropTable('reviews');
   }
 };

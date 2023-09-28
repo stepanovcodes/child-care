@@ -1,10 +1,14 @@
 async function postPlaceIds() {
   const childCares = await getChildCares();
   childCares.forEach(async (element) => {
-    if (element.city === "MEDICINE HAT") {
-      const data = {placeId: element.placeId}
-      console.log(data)
-      await createPhoto(data);
+    if (element.id === 626) {
+      const data = { placeId: element.placeId };
+      const result = await getPlaceIdDetails(data);
+      if (result.status === "OK") {
+        
+        // console.log(data);
+        // await createPhoto(data);
+      }
     }
   });
 }
@@ -42,7 +46,7 @@ async function createPhoto(data) {
 
 async function create(data) {
   try {
-    const res = await fetch('http://localhost:4000/photos', {
+    const res = await fetch("http://localhost:4000/photos", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

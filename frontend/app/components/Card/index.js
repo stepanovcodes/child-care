@@ -1,13 +1,20 @@
 import React from "react";
 import { UserIcon } from "@heroicons/react/24/outline";
+// import { getPhoto } from "@/app/utilities/photos-service";
 
-const Card = ({ childCare }) => {
+const Card = async ({ childCare }) => {
+
+  // const result = await getPhoto("59071e81-8cfd-4cfa-8eba-69c4e7d16657")
+  // const arrayBuffer = result.image;
+  // const base64Data = Buffer.from(arrayBuffer).toString('base64');
+  // console.log(arrayBuffer)
   
   return (
     <div className="px-5 py-2">
       <div className="card lg:card-side bg-base-100 shadow-xl">
         <figure className="lg:w-1/2">
           <img src="https://i.imgur.com/6qF1Hn6.jpg" alt="Album" />
+          {/* <img src={`data:image/jpeg;base64,${base64Data}`} alt="Album" /> */}
         </figure>
         <div className="card-body lg:w-1/2 gap-0 p-1">
           <p className="text-lg font-bold">{childCare.name}</p>

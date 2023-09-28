@@ -4,8 +4,8 @@ async function postImages() {
     if (photo.id === 57) {
       const result = await getImage(photo);
       const buffer = await result.arrayBuffer();
-      console.log(buffer);
-      console.log('Image data retrieved successfully.');
+      console.log(result.headers.get('content-type'));
+      console.log(result);
       await updatePhoto(photo.uuid, {image: buffer});
     }
   });

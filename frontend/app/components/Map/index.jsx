@@ -228,21 +228,7 @@ const Map = ({ childCares, setCardData }) => {
     return <div id="map" className="map-container"></div>;
   };
 
-  const loading = () => (
-    <div
-      id="map" className="map-container"
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "calc(100vh - 64px)",
-      }}
-    >
-      <span className="loading loading-bars loading-lg"></span>
-      Getting map ready...
-    </div>
-  );
+  const loading = () => <div id="map" className="map-container"></div>;
   return isLoading ? loading() : loaded();
 };
 

@@ -1,6 +1,4 @@
 import * as childCaresAPI from "./childcares-api";
-// because the api will export an exports object all modules can be imported with an * (wildcard)
-// the as import keywork will provide a variable reference to the different sub-modules we will export from childcares-api.js
 
 export async function getChildCares() {
   try {

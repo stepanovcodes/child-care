@@ -1,7 +1,7 @@
 const BASE_URL = `${process.env.NEXT_APP_BASE_URL}/photos`;
 
 export async function detail(uuid) {
-  const url = `${"http://localhost:4000/photos"}/${uuid}`;
+  const url = `${BASE_URL}/${uuid}`;
   const config = {
     method: "GET",
     /*cache: 'no-store',*/

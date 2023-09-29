@@ -1,3 +1,6 @@
+require("dotenv").config();
+const PHOTOS_BASE_URL = `${process.env.NODE_BASE_URL}/photos`;
+
 async function postImages() {
   const photos = await getPhotos();
   photos.forEach(async (photo) => {
@@ -21,7 +24,7 @@ async function getPhotos() {
 }
 
 async function index() {
-  const res = await fetch("http://localhost:4000/photos", {
+  const res = await fetch(PHOTOS_BASE_URL, {
     method: "GET",
   });
   if (res.ok) {
@@ -32,7 +35,7 @@ async function index() {
 }
 
 async function getImage(photo) {
-    const key = "";
+    const key = process.env.GOOGLE_API_KEY;
     const photoReference = photo.photoReference;
     const maxWidth = 500;
     // console.log(input)
@@ -70,7 +73,7 @@ async function getImage(photo) {
   }
   
   async function updatePh(uuid, updatedData) {
-    const url = `http://localhost:4000/photos/${uuid}`;
+    const url = `${PHOTOS_BASE_URL}/${uuid}`;
   
     const res = await fetch(url, {
       method: "PUT",

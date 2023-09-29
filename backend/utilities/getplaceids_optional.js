@@ -1,3 +1,6 @@
+require("dotenv").config();
+const BASE_URL = `${process.env.NODE_BASE_URL}/childcares`;
+
 async function getPlaceIds() {
   const childCares = await getChildCares();
   childCares.forEach(async (element) => {
@@ -22,7 +25,7 @@ async function getChildCares() {
 }
 
 async function index() {
-  const res = await fetch('http://localhost:4000/childcares', { method: "GET"});
+  const res = await fetch(BASE_URL, { method: "GET"});
   if (res.ok) {
     return res.json();
   } else {
@@ -69,7 +72,7 @@ async function updateChildCare(uuid,data){
 }
 
 async function update(uuid, updatedData) {
-  const url = `http://localhost:4000/childcares/${uuid}`;
+  const url = `${BASE_URL}/${uuid}`;
 
   const res = await fetch(url, {
     method: "PUT",

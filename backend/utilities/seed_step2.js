@@ -1,3 +1,9 @@
+require("dotenv").config();
+const CHILDCARES_BASE_URL = `${process.env.NODE_BASE_URL}/childcares`;
+const PHOTOS_BASE_URL = `${process.env.NODE_BASE_URL}/photos`;
+const REVIEWS_BASE_URL = `${process.env.NODE_BASE_URL}/reviews`;
+
+
 async function postPlaceIds() {
   const childCares = await getChildCares();
   childCares.forEach(async (element) => {
@@ -55,7 +61,7 @@ async function getChildCares() {
 }
 
 async function index() {
-  const res = await fetch("http://localhost:4000/childcares", {
+  const res = await fetch(CHILDCARES_BASE_URL, {
     method: "GET",
   });
   if (res.ok) {
@@ -66,7 +72,7 @@ async function index() {
 }
 
 async function getPlaceIdDetails(element) {
-  const key = "";
+  const key = process.env.GOOGLE_API_KEY;
   const placeId = element.placeId;
   // console.log(input)
   const url = `https://maps.googleapis.com/maps/api/place/details/json?placeid=${placeId}&key=${key}`;
@@ -103,7 +109,7 @@ async function updateChildCare(uuid, data) {
 }
 
 async function updateCh(uuid, updatedData) {
-  const url = `http://localhost:4000/childcares/${uuid}`;
+  const url = `${CHILDCARES_BASE_URL}/${uuid}`;
 
   const res = await fetch(url, {
     method: "PUT",
@@ -131,7 +137,7 @@ async function createPhoto(data) {
 
 async function createPh(data) {
   try {
-    const res = await fetch("http://localhost:4000/photos", {
+    const res = await fetch(PHOTOS_BASE_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -159,7 +165,7 @@ async function createReview(data) {
 
 async function createRw(data) {
   try {
-    const res = await fetch("http://localhost:4000/reviews", {
+    const res = await fetch(REVIEWS_BASE_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

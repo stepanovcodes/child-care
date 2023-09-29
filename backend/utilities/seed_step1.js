@@ -45244,6 +45244,9 @@ const dataArray = data.map((item) => {
     )
 })
 
+require("dotenv").config();
+const BASE_URL = `${process.env.NODE_BASE_URL}/childcares`;
+
 create(dataArray)
 
 async function create(dataArray) {
@@ -45254,7 +45257,7 @@ async function create(dataArray) {
        for (let i = 0; i < dataArray.length; i += batchSize) {
           const batchData = dataArray.slice(i, i + batchSize);
 
-          const res = await fetch('http://localhost:4000/childcares/', {
+          const res = await fetch(BASE_URL, {
           method: 'POST',
           headers: {
              'Content-Type': 'application/json',

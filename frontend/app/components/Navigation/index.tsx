@@ -45,7 +45,6 @@ export default function Navigation() {
                     src="https://i.imgur.com/y31tNGJ.png"
                     alt="Your Company"
                   />
-                  Company
                   </Link>
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
@@ -82,7 +81,6 @@ export default function Navigation() {
                     <Menu.Button className="relative flex rounded-full bg-sky-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-sky-800">
                       <span className="absolute -inset-1.5" />
                       <span className="sr-only">Open user menu</span>
-
                       <img
                         className="h-8 w-8 rounded-full"
                         src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"

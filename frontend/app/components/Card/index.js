@@ -1,4 +1,5 @@
 import React from "react";
+import Image from 'next/image';
 import {
   UserIcon,
   HomeIcon,
@@ -26,8 +27,8 @@ const Card = ({ childCare }) => {
       </p>
       <div className="card lg:card-side bg-base-100 shadow-xl">
         <figure className="lg:w-1/2">
-          <img src="https://i.imgur.com/6qF1Hn6.jpg" alt="Album" />
-          {/* <img src={`data:image/jpeg;base64,${base64Data}`} alt="Album" /> */}
+          <Image src="/assets/Child_Care_ERD.png" alt="Album" width="200" height="100"/>
+          {/* <Image src={`data:image/jpeg;base64,${base64Data}`} alt="Album" /> */}
         </figure>
         <div className="flex-col lg:w-1/2 p-1">
           {childCare.rating !== null ? (

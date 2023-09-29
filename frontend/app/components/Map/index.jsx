@@ -194,6 +194,7 @@ const Map = ({ childCares, setCardData }) => {
     };
 
     return () => map.remove(); // Clean up when the component unmounts
+  // eslint-disable-next-line  
   }, []);
 
   const capitalizeEachWord = (str) => {

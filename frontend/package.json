@@ -31,7 +31,6 @@
     "typescript": "^5.2.2"
   },
   "devDependencies": {
-    "@craco/craco": "^7.1.0",
     "daisyui": "^3.7.7"
   }
 }

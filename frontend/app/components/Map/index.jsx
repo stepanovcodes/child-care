@@ -193,8 +193,7 @@ const Map = ({ childCares, setCardData }) => {
       setCardData(cardData);
     };
 
-    return () => map.remove(); // Clean up when the component unmounts
-  // eslint-disable-next-line  
+    return () => map.remove(); // Clean up when the component unmounts 
   }, []);
 
   const capitalizeEachWord = (str) => {

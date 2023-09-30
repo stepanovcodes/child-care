@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({ChildCare}) {
       // define association here
-      this.belongsTo(ChildCare, {foreignKey: 'placeId'})
+      this.belongsTo(ChildCare, {foreignKey: 'placeId', targetKey: 'placeId'})
     }
 
     // toJSON() {

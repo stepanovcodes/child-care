@@ -13,9 +13,8 @@ const Card = ({ childCare }) => {
     <div className="px-5 py-2">
       <div className="card bg-base-100 shadow-xl">
         <div className="flex-col p-1">
-          <p className="text-lg font-bold">{childCare.name}</p>
-          <p className="flex text-gray-500 text-sm">
-            <MapPinIcon className="w-4 h-4" />
+          <p className="text-md font-bold">{childCare.name}</p>
+          <p className="flex text-gray-500 text-xs">
             {`${childCare.address}, ${childCare.city}, ${childCare.province} ${childCare.postalCode}`}
           </p>
           {childCare.rating !== null ? (

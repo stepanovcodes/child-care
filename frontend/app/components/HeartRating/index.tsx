@@ -28,7 +28,7 @@ export default function HeartRating({value, userRatingsTotal}: RatingHeartProps)
         alignItems: 'center',
       }}
     >
-      <span>{value !== null ? value.toFixed(1) : ''}</span>
+      <span className='text-xs'>{value !== null ? value.toFixed(1) : ''}</span>
       <StyledRating
         name="customized-color"
         defaultValue={0}
@@ -37,9 +37,10 @@ export default function HeartRating({value, userRatingsTotal}: RatingHeartProps)
         precision={0.5}
         icon={<FavoriteIcon fontSize="inherit" />}
         emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
+        size="small"
         readOnly
       />
-      <span>{userRatingsTotal !== null ? `(${userRatingsTotal})` : ''}</span>
+      <span className='text-xs'>{userRatingsTotal !== null ? `(${userRatingsTotal})` : ''}</span>
     </Box>
   );
 }

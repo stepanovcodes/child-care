@@ -36,16 +36,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     photoReference: {
       type: DataTypes.STRING,
-    },
-    imageType: {
-      type: DataTypes.STRING,
-    },
-    imageName: {
-      type: DataTypes.STRING,
-    },
-    imageData: {
-      type: DataTypes.BLOB('long'),
-    },
+    }
   }, {
     sequelize,
     tableName: "photos",

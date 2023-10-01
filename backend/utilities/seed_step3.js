@@ -4,10 +4,16 @@ const PHOTOS_BASE_URL = `${process.env.NODE_BASE_URL}/photos`;
 async function postImages() {
   const photos = await getPhotos();
   photos.forEach(async (photo) => {
-    if (photo.id === 57) {
+    // if (photo.placeId !== null) {
+     if (photo.id === 2) {
       const result = await getImage(photo);
-      const imageData = result.arrayBuffer();
+      const arrayBuffer = await result.arrayBuffer();
+      const imageData = Buffer.from(
+        arrayBuffer
+      ).toString("base64");
       const imageType = result.headers.get("content-type");
+      console.log(imageData);
+      // console.log(result.arrayBuffer());
       const contentDispositionHeader = result.headers.get(
         "content-disposition"
       );
@@ -15,7 +21,7 @@ async function postImages() {
       if (contentDispositionHeader) {
         // Use a regular expression to extract the filename from the content-disposition header
         const matches = /filename="([^"]+)"/.exec(contentDispositionHeader);
-        
+
         if (matches && matches.length > 1) {
           imageName = matches[1];
         } else {
@@ -106,10 +112,29 @@ async function updatePh(uuid, updatedData) {
     body: JSON.stringify(updatedData),
   });
 
+  console.log(JSON.stringify(updatedData))
+
   if (res.ok) {
   } else {
     throw new Error("Invalid PUT Request");
   }
+
+  // const url = `${PHOTOS_BASE_URL}/${uuid}`;
+
+  // const res = await fetch(url, {
+  //   method: "PUT",
+  //   headers: {
+  //     "Content-Type": updatedData.imageType,
+  //   },
+  //   body: updatedData.imageData,
+  // });
+
+  // console.log(updatedData.imageData)
+
+  // if (res.ok) {
+  // } else {
+  //   throw new Error("Invalid PUT Request");
+  // }
 }
 
 postImages();

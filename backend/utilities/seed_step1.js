@@ -45234,11 +45234,11 @@ const dataArray = data.map((item) => {
             googleMapsLink: item.googleMapsLink,
             capacity: item.capacity,
             placeId: item.placeId,
-            latitude: item.latitude,
-            longitude: item.longitude,
-            website: item.website,
-            rating: item.rating,
-            userRatingsTotal: null
+            // latitude: item.latitude,
+            // longitude: item.longitude,
+            // website: item.website,
+            // rating: item.rating,
+            // userRatingsTotal: null
         }
         
     )
@@ -45248,6 +45248,8 @@ require("dotenv").config();
 const BASE_URL = `${process.env.NODE_BASE_URL}/childcares`;
 
 create(dataArray)
+// console.log(uniqueElements(dataArray));
+
 
 async function create(dataArray) {
     try {
@@ -45279,3 +45281,14 @@ async function create(dataArray) {
        throw new Error('Invalid Request');
     }
  }
+
+ function uniqueElements(arr) {
+    const arr1=arr.map((item) => item.type)
+    // Create a Set from the array to automatically remove duplicates
+    const uniqueSet = new Set(arr1);
+  
+    // Convert the Set back to an array to maintain the order of elements
+    const uniqueArray = [...uniqueSet];
+  
+    return uniqueArray;
+  }

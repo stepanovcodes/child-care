@@ -3,7 +3,8 @@
 ////////////////////////////////
 
 const express = require("express");
-const { ChildCare } = require("../models");
+const { ChildCare, Photo, Review } = require("../models");
+const { Op } = require("sequelize");
 
 ///////////////////////////////
 // CONTROLLERS
@@ -13,7 +14,16 @@ const { ChildCare } = require("../models");
 async function index(req, res, next) {
   try {
     // get all childcares
-    res.json(await ChildCare.findAll());
+    res.json(
+      await ChildCare.findAll({
+        where: {
+          placeId: {
+            [Op.ne]: null,
+          },
+        },
+        order: [["name", "ASC"]],
+      })
+    );
   } catch (error) {
     //send error
     res.status(400).json(error);
@@ -26,12 +36,12 @@ async function create(req, res, next) {
     if (Array.isArray(req.body)) {
       // If req.body is an array, it contains multiple objects
       res.json(await ChildCare.bulkCreate(req.body));
-    } else if (typeof req.body === 'object') {
+    } else if (typeof req.body === "object") {
       // If req.body is an object, it contains a single object
       res.json(await ChildCare.create(req.body));
     } else {
       // Handle invalid input (neither object nor array)
-      res.status(400).json({ error: 'Invalid input' });
+      res.status(400).json({ error: "Invalid input" });
     }
   } catch (error) {
     //send error
@@ -43,9 +53,12 @@ async function create(req, res, next) {
 async function show(req, res, next) {
   try {
     // send one childcare
-    res.status(200).json(await ChildCare.findOne({
+    res.status(200).json(
+      await ChildCare.findOne({
         where: { uuid: req.params.uuid },
-      }));
+        include: [Photo, Review],
+      })
+    );
   } catch (error) {
     //send error
     res.status(400).json({ error: error.message });

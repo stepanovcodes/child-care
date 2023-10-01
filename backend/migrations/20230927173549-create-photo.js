@@ -26,15 +26,6 @@ module.exports = {
       photoReference: {
         type: DataTypes.STRING,
       },
-      imageType: {
-        type: DataTypes.STRING,
-      },
-      imageName: {
-        type: DataTypes.STRING,
-      },
-      imageData: {
-        type: DataTypes.BLOB('long'),
-      },
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE

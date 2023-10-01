@@ -2,7 +2,6 @@ import Navigation from "./components/Navigation";
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import Head from 'next/head'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,9 +17,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" data-theme="cupcake">
-      <Head>
-        <meta name="viewport" content="height=device-height, initial-scale=1"></meta>
-      </Head>
       <body className={inter.className}>
         <Navigation />
         {children}

@@ -8,10 +8,10 @@ const ChildCaresWrapper = ({ childCares }) => {
   
   return (
     <div className="flex flex-wrap">
-      <div className="w-full sm:w-2/3">
+      <div className="w-full sm:w-1/2 md:w-2/3 xl:w-3/4">
         <Map childCares={childCares} setCardData={setCardData} />
       </div>
-      <div className="w-full sm:w-1/3">
+      <div className="w-full sm:w-1/2 md:w-1/3 xl:w-1/4">
         <CardList childCares={cardData} />
       </div>
     </div>

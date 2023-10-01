@@ -8,6 +8,22 @@ export async function index() {
       throw new Error("Invalid Request");
     }
   }
+
+
+export async function detail(uuid) {
+  const url = `${BASE_URL}/${uuid}`;
+  const config = {
+    method: "GET",
+    /*cache: 'no-store',*/
+    next: {revalidate: 600},
+  };
+  const res = await fetch(url, config);
+  if (res.ok) {
+    return res.json();
+  } else {
+    throw new Error("Invalid Request");
+  }
+}
   
   export async function create(data) {
     try {

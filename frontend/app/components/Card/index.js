@@ -1,5 +1,4 @@
 import React from "react";
-import Image from 'next/image';
 import {
   UserIcon,
   HomeIcon,
@@ -7,30 +6,18 @@ import {
   PhoneIcon,
   GlobeAltIcon,
 } from "@heroicons/react/24/outline";
-// import { getPhoto } from "@/app/utilities/photos-service";
 import HeartRating from "@/app/components/HeartRating";
 
 const Card = ({ childCare }) => {
-  // const Card = async ({ childCare }) => {
-
-  // const result = await getPhoto("59071e81-8cfd-4cfa-8eba-69c4e7d16657")
-  // const arrayBuffer = result.image;
-  // const base64Data = Buffer.from(arrayBuffer).toString('base64');
-  // console.log(arrayBuffer)
-
   return (
     <div className="px-5 py-2">
-      <p className="text-lg font-bold">{childCare.name}</p>
-      <p className="flex text-gray-500 text-sm">
-        <MapPinIcon className="w-4 h-4" />
-        {`${childCare.address}, ${childCare.city}, ${childCare.province} ${childCare.postalCode}`}
-      </p>
-      <div className="card lg:card-side bg-base-100 shadow-xl">
-        <figure className="lg:w-1/2">
-          <img src="https://i.imgur.com/6qF1Hn6.jpg" alt="Album"/>
-          {/* <img src={`data:image/jpeg;base64,${base64Data}`} alt="Album" /> */}
-        </figure>
-        <div className="flex-col lg:w-1/2 p-1">
+      <div className="card bg-base-100 shadow-xl">
+        <div className="flex-col p-1">
+          <p className="text-lg font-bold">{childCare.name}</p>
+          <p className="flex text-gray-500 text-sm">
+            <MapPinIcon className="w-4 h-4" />
+            {`${childCare.address}, ${childCare.city}, ${childCare.province} ${childCare.postalCode}`}
+          </p>
           {childCare.rating !== null ? (
             <HeartRating
               value={childCare.rating}

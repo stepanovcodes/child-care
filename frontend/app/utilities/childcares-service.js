@@ -10,6 +10,16 @@ export async function getChildCares() {
   }
 }
 
+export async function getChildCare(uuid) {
+  try {
+    const data = await childCaresAPI.detail(uuid);
+    return data;
+  } catch (err) {
+    console.log(err);
+    throw new Error(err)
+  }
+}
+
 export async function createChildCare(data){
     try {
         const newChildCare = await childCaresAPI.create(data)

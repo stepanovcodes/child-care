@@ -7,7 +7,7 @@ const REVIEWS_BASE_URL = `${process.env.NODE_BASE_URL}/reviews`;
 async function postPlaceIds() {
   const childCares = await getChildCares();
   childCares.forEach(async (element) => {
-    if (element.city === "EDMONTON" && element.latitude === null) {
+    if (element.city === "CALGARY" && element.latitude === null) {
       const result = await getPlaceIdDetails(element);
       // console.log(result);
       if (result.status === "OK") {

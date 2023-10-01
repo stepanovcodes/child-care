@@ -1,9 +1,10 @@
+import axios from 'axios';
 const BASE_URL = `${process.env.NEXT_APP_BASE_URL}/childcares`;
 
 export async function index() {
-    const res = await fetch(BASE_URL, {method: "GET", next: {revalidate: 10}});
-    if (res.ok) {
-      return res.json();
+    const res = await axios.get(BASE_URL);
+    if (res.status === 200) {
+      return res.data;
     } else {
       throw new Error("Invalid Request");
     }

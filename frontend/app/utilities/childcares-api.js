@@ -13,13 +13,9 @@ export async function index() {
 
 export async function detail(uuid) {
   const url = `${BASE_URL}/${uuid}`;
-  const config = {
-    method: "GET",
-    next: {revalidate: 10},
-  };
-  const res = await fetch(url, config);
-  if (res.ok) {
-    return res.json();
+  const res = await axios.get(url);
+  if (res.status === 200) {
+    return res.data;
   } else {
     throw new Error("Invalid Request");
   }

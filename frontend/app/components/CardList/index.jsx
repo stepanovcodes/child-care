@@ -14,7 +14,7 @@ const CardList = ({ childCares }) => {
         </div>
       </div>
       <div className="card-container">
-      <Suspense fallback={<div style={{display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center", height: "calc(100vh - 104px)"}}><span className="loading loading-bars loading-lg"></span>Getting cards ready...</div>
+      <Suspense fallback={<div className="card-loader" ><span className="loading loading-bars loading-lg"></span>Getting cards ready...</div>
 }>
       {childCares.map((childCare) => (
         <Card key={childCare.uuid} childCare={childCare} />

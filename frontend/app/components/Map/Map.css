@@ -1,26 +1,24 @@
 .map-container {
     width: 100vw;
-    height: calc(50vh - 32px);
+    height: calc(50dvh - 32px);
   }
 
   @media (min-width: 640px) {
     .map-container {
     width: 50vw;
-    height: calc(100vh - 64px);
+    height: calc(100dvh - 64px);
   }
 }
 
 @media (min-width: 768px) {
     .map-container {
     width: 66.666667vw;
-    height: calc(100vh - 64px);
   }
 }
 
   @media (min-width: 1280px) {
     .map-container {
     width: 75vw;
-    height: calc(100vh - 64px);
   }
 }
 

@@ -17,8 +17,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" data-theme="cupcake">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+      </head>
       <body className={inter.className}>
-        <Navigation/>
+        <Navigation />
         {children}
       </body>
     </html>

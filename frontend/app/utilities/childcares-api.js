@@ -1,7 +1,7 @@
 const BASE_URL = `${process.env.NEXT_APP_BASE_URL}/childcares`;
 
 export async function index() {
-    const res = await fetch(BASE_URL, { method: "GET", cache: 'no-store'});
+    const res = await fetch(BASE_URL, { method: "GET"}, {next: {revalidate: 600}});
     if (res.ok) {
       return res.json();
     } else {
@@ -14,7 +14,7 @@ export async function detail(uuid) {
   const url = `${BASE_URL}/${uuid}`;
   const config = {
     method: "GET",
-    /*cache: 'no-store',*/
+    // cache: 'no-store',
     next: {revalidate: 600},
   };
   const res = await fetch(url, config);

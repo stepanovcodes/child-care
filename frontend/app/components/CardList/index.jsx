@@ -1,11 +1,13 @@
-import React, { Suspense } from "react";
-const Card = React.lazy(() => import("@/app/components/Card"));
+import React from "react";
+import Card from "@/app/components/Card";
 import "./CardList.css";
+import { FixedSizeList as List } from "react-window";
+import AutoSizer from "react-virtualized-auto-sizer";
 
 const CardList = ({ childCares }) => {
   return (
     <>
-      <div className="px-5 py-2 flex justify-between">
+      <div className="px-5 py-1 flex justify-between">
         <div>Results ({childCares.length})</div>
         <div className="flex">
           {/* <div className="px-1">111</div>
@@ -14,12 +16,27 @@ const CardList = ({ childCares }) => {
         </div>
       </div>
       <div className="card-container">
-      <Suspense fallback={<div className="card-loader" ><span className="loading loading-bars loading-lg"></span>Getting cards ready...</div>
-}>
-      {childCares.map((childCare) => (
-        <Card key={childCare.uuid} childCare={childCare} />
-      ))}
-      </Suspense>
+        {childCares ? (
+          <AutoSizer>
+            {({ height, width }) => (
+              <List
+                height={height}
+                itemCount={childCares.length}
+                itemSize={208} 
+                width={width}
+                itemData={childCares}
+              >
+                {({ index, style }) => (
+                  <div style={style}>
+                    <Card key={index} childCare={childCares[index]} />
+                  </div>
+                )}
+              </List>
+            )}
+          </AutoSizer>
+        ) : (
+          ""
+        )}
       </div>
     </>
   );

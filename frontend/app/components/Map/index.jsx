@@ -12,8 +12,8 @@ const Map = ({ childCares, setCardData }) => {
     const map = new mapboxgl.Map({
       container: "map",
       style: "mapbox://styles/mapbox/streets-v12",
-      center: [-110.67720259780971, 50.020035048603965],
-      zoom: 12,
+      center: [ -114.06481456601747, 51.030150021237255],
+      zoom: 10,
     });
 
     // Filter out childCares with non-null latitudes and longitudes

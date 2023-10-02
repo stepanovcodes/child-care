@@ -2,19 +2,20 @@ import React from "react";
 import {
   UserIcon,
   HomeIcon,
-  MapPinIcon,
   PhoneIcon,
   GlobeAltIcon,
 } from "@heroicons/react/24/outline";
 import HeartRating from "@/app/components/HeartRating";
+import Paper from "@mui/material/Paper";
 
 const Card = ({ childCare }) => {
   return (
-    <div className="px-5 py-2">
-      <div className="card bg-base-100 shadow-xl">
-        <div className="flex-col p-1">
+   
+      <div className="flex-col px-5">
+        <Paper  className="h-48" variant="elevation">
+          <div className="p-2">
           <p className="text-md font-bold">{childCare.name}</p>
-          <p className="flex text-gray-500 text-xs">
+          <p className="text-gray-500 text-xs">
             {`${childCare.address}, ${childCare.city}, ${childCare.province} ${childCare.postalCode}`}
           </p>
           {childCare.rating !== null ? (
@@ -52,9 +53,10 @@ const Card = ({ childCare }) => {
           ) : (
             ""
           )}
-        </div>
+          </div>
+        </Paper>
       </div>
-    </div>
+    
   );
 };
 

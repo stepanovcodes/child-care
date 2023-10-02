@@ -417,7 +417,7 @@ Trello sprint board [link](https://trello.com/b/qnsoGBgC/child-care)
 | CC-2       | Navigation bar | AAU, I want to access links to "Find Child Care", "Resources" and "About" pages via a navigation bar at the top of the page |  | 2 | Low | 1 |  |
 | CC-3       | View Child Care basic cards | AAU, I want to view cards of child care facilities with their names, types, phone numbers, capacities |  | 1 | Medium | 1 | |
 | CC-4       | View results number found | AAU, I want to view the number of results found above the cards |  | 1 | Low | 1 | CC-3 |
-| CC-5       | View Child Care advanced cards | AAU, I want to view cards of child care facilities with their photos, website link, Google rating |  | 1 | High | 1 | CC-3 |
+| CC-5       | View Child Care advanced cards | AAU, I want to view cards of child care facilities with their website link, Google rating |  | 1 | High | 1 | CC-3 |
 | CC-6       | Filter Child Care facilities | AAU, I want to filter cards and pins of child care facilities displayed by type, city, capacity and Google rating |  | 1 | High | 1 | CC-5 |
 | CC-7       | View card basic details | AAU, I want to view card details (name, type, address, city, province, postal code, phone number, capacity) when clicking on individual card |  | 1 | Medium | 1 | CC-3 |
 | CC-8       | View card advanced details | AAU, I want to view website and Google rating on card details |  | 1 | Medium | 1 | CC-7 |

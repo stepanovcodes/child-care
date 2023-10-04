@@ -48,7 +48,7 @@ const Map = ({ childCares, setCardData, setClickedUuid }) => {
           })),
         },
         cluster: true,
-        clusterMaxZoom: 14,
+        clusterMaxZoom: 12,
         clusterRadius: 30,
       });
 

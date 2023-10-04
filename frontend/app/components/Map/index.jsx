@@ -130,7 +130,7 @@ const Map = ({ childCares, setCardData, setClickedUuid }) => {
         filter: ["!", ["has", "point_count"]],
         paint: {
           "circle-color": "#FF0000",
-          "circle-radius": 6,
+          "circle-radius": 8,
           // "circle-stroke-width": 2,
           // "circle-stroke-color": "#FF0000",
         },
@@ -173,7 +173,7 @@ const Map = ({ childCares, setCardData, setClickedUuid }) => {
             filter: ["==", "uuid", uuid],
             paint: {
               "circle-color": "#FFFF00",
-              "circle-radius": 7,
+              "circle-radius": 9,
               "circle-stroke-width": 2,
               "circle-stroke-color": "#009CE1",
             },

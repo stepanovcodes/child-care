@@ -1,4 +1,3 @@
-"use client";
 import React, { useEffect, useState } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css"; // Import Mapbox styles
@@ -50,7 +49,7 @@ const Map = ({ childCares, setCardData }) => {
         },
         cluster: true,
         clusterMaxZoom: 14,
-        clusterRadius: 50,
+        clusterRadius: 30,
       });
 
       map.addLayer({
@@ -62,13 +61,31 @@ const Map = ({ childCares, setCardData }) => {
           "circle-color": [
             "step",
             ["get", "point_count"],
-            "#51bbd6",
+            "#b0ddf3",
+            4,
+            "#a4d4f4",
+            10,
+            "#98cbf5",
+            20,
+            "#8bc1f6",
+            30,
+            "#7fb8f7",
+            40,
+            "#73aff8",
             50,
-            "#f1f075",
+            "#67a6f8",
+            60,
+            "#5b9df9",
+            70,
+            "#4f94fa",
+            80,
+            "#3681fc",
+            90,
+            "#428afb",
             100,
-            "#f28cb1",
+            "#2a78fd"
           ],
-          "circle-radius": ["step", ["get", "point_count"], 20, 30, 30, 50, 40],
+          "circle-radius": ["step", ["get", "point_count"], 9, 10, 10, 20, 12, 30, 14, 40, 17, 50, 19, 60, 21, 70, 23, 80, 26, 90, 28],
         },
       });
 
@@ -90,10 +107,10 @@ const Map = ({ childCares, setCardData }) => {
         source: "childCares",
         filter: ["!", ["has", "point_count"]],
         paint: {
-          "circle-color": "#11b4da",
-          "circle-radius": 6,
-          "circle-stroke-width": 1,
-          "circle-stroke-color": "#000",
+          "circle-color": "#b0ddf3",
+          "circle-radius": 5,
+          "circle-stroke-width": 2,
+          "circle-stroke-color": "#FF0000",
         },
       });
 

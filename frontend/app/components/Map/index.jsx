@@ -5,13 +5,13 @@ import "./Map.css"; // Create a CSS file for styling if needed
 
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN; // Replace with your Mapbox access token
 
-const Map = ({ childCares, setCardData }) => {
+const Map = ({ childCares, setCardData, setClickedUuid }) => {
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const map = new mapboxgl.Map({
       container: "map",
       style: "mapbox://styles/mapbox/streets-v12",
-      center: [ -114.06481456601747, 51.030150021237255],
+      center: [-114.06481456601747, 51.030150021237255],
       zoom: 10,
     });
 
@@ -83,9 +83,31 @@ const Map = ({ childCares, setCardData }) => {
             90,
             "#428afb",
             100,
-            "#2a78fd"
+            "#2a78fd",
           ],
-          "circle-radius": ["step", ["get", "point_count"], 9, 10, 10, 20, 12, 30, 14, 40, 17, 50, 19, 60, 21, 70, 23, 80, 26, 90, 28],
+          "circle-radius": [
+            "step",
+            ["get", "point_count"],
+            9,
+            10,
+            10,
+            20,
+            12,
+            30,
+            14,
+            40,
+            17,
+            50,
+            19,
+            60,
+            21,
+            70,
+            23,
+            80,
+            26,
+            90,
+            28,
+          ],
         },
       });
 
@@ -107,10 +129,10 @@ const Map = ({ childCares, setCardData }) => {
         source: "childCares",
         filter: ["!", ["has", "point_count"]],
         paint: {
-          "circle-color": "#b0ddf3",
-          "circle-radius": 5,
-          "circle-stroke-width": 2,
-          "circle-stroke-color": "#FF0000",
+          "circle-color": "#FF0000",
+          "circle-radius": 6,
+          // "circle-stroke-width": 2,
+          // "circle-stroke-color": "#FF0000",
         },
       });
 
@@ -135,15 +157,52 @@ const Map = ({ childCares, setCardData }) => {
         const coordinates = e.features[0].geometry.coordinates.slice();
         const name = capitalizeEachWord(e.features[0].properties.name);
         const type = e.features[0].properties.type.toLowerCase();
+        const uuid = e.features[0].properties.uuid;
 
-        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-          coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        const clickedChildCareUuid = childCares.find((childCare) => {
+          return uuid === childCare.uuid;
+        }).uuid;
+        getCardData();
+        setClickedUuid(clickedChildCareUuid);
+
+        if (!map.getLayer(`unclustered-point-${uuid}`)) {
+          map.addLayer({
+            id: `unclustered-point-${uuid}`,
+            type: "circle",
+            source: "childCares",
+            filter: ["==", "uuid", uuid],
+            paint: {
+              "circle-color": "#FFFF00",
+              "circle-radius": 7,
+              "circle-stroke-width": 2,
+              "circle-stroke-color": "#009CE1",
+            },
+          });
+
+          // Get the current map style
+          const style = map.getStyle();
+          // Retrieve the layers from the style
+          const layers = style.layers;
+          // Now you have an array of layers
+          console.log(layers);
+          layers.forEach((layer) => {
+            if (
+              layer.id.startsWith("unclustered-point-") &&
+              layer.id !== `unclustered-point-${uuid}`
+            ) {
+              map.removeLayer(layer.id);
+            }
+          });
         }
 
-        new mapboxgl.Popup()
-          .setLngLat(coordinates)
-          .setHTML(`Name: ${name}<br>Type: ${type}`)
-          .addTo(map);
+        // while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+        //   coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        // }
+
+        // new mapboxgl.Popup()
+        //   .setLngLat(coordinates)
+        //   .setHTML(`Name: ${name}<br>Type: ${type}`)
+        //   .addTo(map);
       });
 
       map.on("mouseenter", "clusters", () => {
@@ -205,12 +264,23 @@ const Map = ({ childCares, setCardData }) => {
         return distanceA - distanceB;
       });
 
-      // console.log(cardData);
-      // console.log(currentCenter);
+      setClickedUuid(null);
+      // Get the current map style
+      const style = map.getStyle();
+      // Retrieve the layers from the style
+      const layers = style.layers;
+      // Now you have an array of layers
+      console.log(layers);
+      layers.forEach((layer) => {
+        if (layer.id.startsWith("unclustered-point-")) {
+          map.removeLayer(layer.id);
+        }
+      });
       setCardData(cardData);
+      return cardData;
     };
 
-    return () => map.remove(); // Clean up when the component unmounts 
+    return () => map.remove(); // Clean up when the component unmounts
   }, []);
 
   const capitalizeEachWord = (str) => {

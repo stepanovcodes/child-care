@@ -4,7 +4,7 @@ import "./CardList.css";
 import { FixedSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
 
-const CardList = ({ childCares, clickedUuid }) => {
+const CardList = ({ childCares, clickedUuid, cardIndexHovered, handleCardMouseEnter, handleCardMouseLeave }) => {
   const clickedChildCareIndex = childCares.findIndex((childCare) => {
     return clickedUuid === childCare.uuid;
   });
@@ -53,14 +53,22 @@ const CardList = ({ childCares, clickedUuid }) => {
                     {index < allClickedChildCareIndexes.length ? (
                       <Card
                         key={index}
+                        index={index}
                         childCare={childCares[index]}
                         highlight={true}
+                        cardIndexHovered={cardIndexHovered}
+                        handleCardMouseEnter={handleCardMouseEnter}
+                        handleCardMouseLeave={handleCardMouseLeave}
                       />
                     ) : (
                       <Card
                         key={index}
+                        index={index}
                         childCare={childCares[index]}
                         highlight={false}
+                        cardIndexHovered={cardIndexHovered}
+                        handleCardMouseEnter={handleCardMouseEnter}
+                        handleCardMouseLeave={handleCardMouseLeave}
                       />
                     )}
                   </div>

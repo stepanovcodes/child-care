@@ -129,10 +129,10 @@ const Map = ({ childCares, setCardData, setClickedUuid }) => {
         source: "childCares",
         filter: ["!", ["has", "point_count"]],
         paint: {
-          "circle-color": "#FF0000",
-          "circle-radius": 8,
-          // "circle-stroke-width": 2,
-          // "circle-stroke-color": "#FF0000",
+          "circle-color": "#b0ddf3",
+          "circle-radius": 7,
+          "circle-stroke-width": 2,
+          "circle-stroke-color": "#FF0000",
         },
       });
 
@@ -154,9 +154,9 @@ const Map = ({ childCares, setCardData, setClickedUuid }) => {
       });
 
       map.on("click", "unclustered-point", (e) => {
-        const coordinates = e.features[0].geometry.coordinates.slice();
-        const name = capitalizeEachWord(e.features[0].properties.name);
-        const type = e.features[0].properties.type.toLowerCase();
+        // const coordinates = e.features[0].geometry.coordinates.slice();
+        // const name = capitalizeEachWord(e.features[0].properties.name);
+        // const type = e.features[0].properties.type.toLowerCase();
         const uuid = e.features[0].properties.uuid;
 
         const clickedChildCareUuid = childCares.find((childCare) => {
@@ -184,7 +184,7 @@ const Map = ({ childCares, setCardData, setClickedUuid }) => {
           // Retrieve the layers from the style
           const layers = style.layers;
           // Now you have an array of layers
-          console.log(layers);
+          // console.log(layers);
           layers.forEach((layer) => {
             if (
               layer.id.startsWith("unclustered-point-") &&
@@ -270,7 +270,7 @@ const Map = ({ childCares, setCardData, setClickedUuid }) => {
       // Retrieve the layers from the style
       const layers = style.layers;
       // Now you have an array of layers
-      console.log(layers);
+      // console.log(layers);
       layers.forEach((layer) => {
         if (layer.id.startsWith("unclustered-point-")) {
           map.removeLayer(layer.id);

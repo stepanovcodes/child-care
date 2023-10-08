@@ -162,7 +162,7 @@ const Map = ({ childCares, setCardData, clickedUuid, setClickedUuid, uuidHovered
         filter: ["!", ["has", "point_count"]],
         paint: {
           "circle-color": "#004161",
-          "circle-radius": 7,
+          "circle-radius": 8,
           // "circle-stroke-width": 2,
           // "circle-stroke-color": "#FF0000",
         },

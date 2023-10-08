@@ -32,7 +32,7 @@ const Card = ({
         style={{
           border: highlight || uuidHovered === childCare.uuid ? "2px solid #009CE1" : "none",
           cursor: uuidHovered === childCare.uuid ? "pointer" : "",
-          backgroundColor: highlight ? "#FFFF00" : "white"
+          backgroundColor: highlight ? "#F8DB6F" : "white"
         }}
       >
         <div className="p-2">

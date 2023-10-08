@@ -204,7 +204,7 @@ const Map = ({ childCares, setCardData, clickedUuid, setClickedUuid, uuidHovered
             source: "childCares",
             filter: ["==", "uuid", uuid],
             paint: {
-              "circle-color": "#FFFF00",
+              "circle-color": "#F8DB6F",
               "circle-radius": 9,
               "circle-stroke-width": 2,
               "circle-stroke-color": "#009CE1",
@@ -329,8 +329,8 @@ const Map = ({ childCares, setCardData, clickedUuid, setClickedUuid, uuidHovered
           source: "childCaresHover",
           filter: ["==", "uuid", uuidHovered],
           paint: {
-            "circle-color": "#FFFFFF",
-            "circle-radius": 6,
+            "circle-color": "#004161",
+            "circle-radius": 9,
             "circle-stroke-width": 2,
             "circle-stroke-color": "#009CE1",
           },

@@ -162,7 +162,7 @@ const Map = ({ childCares, setCardData, clickedUuid, setClickedUuid, uuidHovered
         filter: ["!", ["has", "point_count"]],
         paint: {
           "circle-color": "#004161",
-          "circle-radius": 8,
+          "circle-radius": 9,
           // "circle-stroke-width": 2,
           // "circle-stroke-color": "#FF0000",
         },
@@ -205,7 +205,7 @@ const Map = ({ childCares, setCardData, clickedUuid, setClickedUuid, uuidHovered
             filter: ["==", "uuid", uuid],
             paint: {
               "circle-color": "#F8DB6F",
-              "circle-radius": 10,
+              "circle-radius": 11,
               "circle-stroke-width": 2,
               "circle-stroke-color": "#009CE1",
             },
@@ -330,7 +330,7 @@ const Map = ({ childCares, setCardData, clickedUuid, setClickedUuid, uuidHovered
           filter: ["==", "uuid", uuidHovered],
           paint: {
             "circle-color": "#004161",
-            "circle-radius": 10,
+            "circle-radius": 11,
             "circle-stroke-width": 2,
             "circle-stroke-color": "#009CE1",
           },

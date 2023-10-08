@@ -1,19 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css"; // Import Mapbox styles
 import "./Map.css"; // Create a CSS file for styling if needed
 
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN; // Replace with your Mapbox access token
 
-const Map = ({ childCares, setCardData, setClickedUuid }) => {
+const Map = ({ childCares, setCardData, clickedUuid, setClickedUuid, uuidHovered }) => {
   const [isLoading, setIsLoading] = useState(true);
+  const mapRef = useRef(null);
   useEffect(() => {
-    const map = new mapboxgl.Map({
+    mapRef.current = new mapboxgl.Map({
       container: "map",
       style: "mapbox://styles/mapbox/streets-v12",
       center: [-114.06481456601747, 51.030150021237255],
       zoom: 10,
     });
+
+    const map = mapRef.current;
 
     // Filter out childCares with non-null latitudes and longitudes
     const validChildCares = childCares.filter(
@@ -51,6 +54,35 @@ const Map = ({ childCares, setCardData, setClickedUuid }) => {
         clusterMaxZoom: 12,
         clusterRadius: 30,
       });
+
+      map.addSource("childCaresHover", {
+        type: "geojson",
+        data: {
+          type: "FeatureCollection",
+          features: validChildCares.map((validChildCare) => ({
+            type: "Feature",
+            geometry: {
+              type: "Point",
+              coordinates: [validChildCare.longitude, validChildCare.latitude],
+            },
+            properties: {
+              uuid: validChildCare.uuid,
+              name: validChildCare.name,
+              type: validChildCare.type,
+              address: validChildCare.address,
+              city: validChildCare.city,
+              province: validChildCare.province,
+              postalCode: validChildCare.postalCode,
+              phoneNumber: validChildCare.phoneNumber,
+              capacity: validChildCare.capacity,
+              website: validChildCare.website,
+              googleRating: validChildCare.googleRating,
+            },
+          })),
+        },
+        cluster: false,
+      });
+
 
       map.addLayer({
         id: "clusters",
@@ -283,15 +315,54 @@ const Map = ({ childCares, setCardData, setClickedUuid }) => {
     return () => map.remove(); // Clean up when the component unmounts
   }, []);
 
-  const capitalizeEachWord = (str) => {
-    return str
-      .split(" ") // Split the string into an array of words
-      .map((word) => {
-        // Capitalize the first letter and convert the rest to lowercase for each word
-        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-      })
-      .join(" "); // Join the words back into a single string with spaces
-  };
+  useEffect(() => {
+    if (!isLoading) {
+      const map = mapRef.current;
+      if (
+        !map.getLayer(`unclustered-point-${uuidHovered}`) &&
+        uuidHovered !== null
+      ) {
+        // console.log(uuidHovered);
+        map.addLayer({
+          id: `unclustered-point-${uuidHovered}`,
+          type: "circle",
+          source: "childCaresHover",
+          filter: ["==", "uuid", uuidHovered],
+          paint: {
+            "circle-color": "#FFFF00",
+            "circle-radius": 9,
+            "circle-stroke-width": 2,
+            "circle-stroke-color": "#009CE1",
+          },
+        });
+      }
+      // Get the current map style
+      const style = map.getStyle();
+      // Retrieve the layers from the style
+      const layers = style.layers;
+      // Now you have an array of layers
+      // console.log(layers);
+      layers.forEach((layer) => {
+        if (
+          layer.id.startsWith("unclustered-point-") &&
+          layer.id !== `unclustered-point-${uuidHovered}` &&
+          layer.id !== `unclustered-point-${clickedUuid}`
+        ) {
+          map.removeLayer(layer.id);
+        }
+      });
+    }
+  }, [isLoading, uuidHovered]);
+
+  // const capitalizeEachWord = (str) => {
+  //   return str
+  //     .split(" ") // Split the string into an array of words
+  //     .map((word) => {
+  //       // Capitalize the first letter and convert the rest to lowercase for each word
+  //       return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+  //     })
+  //     .join(" "); // Join the words back into a single string with spaces
+  // };
 
   // Function to calculate the Haversine distance between two points
   function calculateDistance(lat1, lon1, lat2, lon2) {

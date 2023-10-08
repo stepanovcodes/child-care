@@ -9,16 +9,15 @@ import HeartRating from "@/app/components/HeartRating";
 import Paper from "@mui/material/Paper";
 
 const Card = ({
-  index,
   childCare,
   highlight,
-  cardIndexHovered,
+  uuidHovered,
   handleCardMouseEnter,
   handleCardMouseLeave
 }) => {
 
   const handleMouseEnter = () => {
-    handleCardMouseEnter(index);
+    handleCardMouseEnter(childCare.uuid);
   };
 
   const handleMouseLeave = () => {
@@ -31,8 +30,8 @@ const Card = ({
         className="h-48 mx-5"
         variant="elevation"
         style={{
-          border: highlight || cardIndexHovered === index ? "2px solid #009CE1" : "none",
-          cursor: cardIndexHovered === index ? "pointer" : "",
+          border: highlight || uuidHovered === childCare.uuid ? "2px solid #009CE1" : "none",
+          cursor: uuidHovered === childCare.uuid ? "pointer" : "",
         }}
       >
         <div className="p-2">

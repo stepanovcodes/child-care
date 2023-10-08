@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import Card from "@/app/components/Card";
 import "./CardList.css";
 import { FixedSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
 
-const CardList = ({ childCares, clickedUuid, uuidHovered, handleCardMouseEnter, handleCardMouseLeave }) => {
+const CardList = ({
+  childCares,
+  clickedUuid,
+  uuidHovered,
+  handleCardMouseEnter,
+  handleCardMouseLeave,
+}) => {
   const clickedChildCareIndex = childCares.findIndex((childCare) => {
     return clickedUuid === childCare.uuid;
   });
+
+  // Create a ref for the FixedSizeList component
+  const listRef = useRef(null);
 
   let allClickedChildCareIndexes = [];
   if (clickedChildCareIndex !== -1) {
@@ -27,6 +36,17 @@ const CardList = ({ childCares, clickedUuid, uuidHovered, handleCardMouseEnter, 
     });
   }
 
+  useEffect(() => {
+    scrollToTop();
+  }, [clickedUuid]);
+
+  // Function to scroll to the top of the list
+  const scrollToTop = () => {
+    if (listRef.current) {
+      listRef.current.scrollTo(0);
+    }
+  };
+
   return (
     <>
       <div className="px-5 py-1 flex justify-between">
@@ -42,6 +62,7 @@ const CardList = ({ childCares, clickedUuid, uuidHovered, handleCardMouseEnter, 
           <AutoSizer>
             {({ height, width }) => (
               <List
+                ref={listRef}
                 height={height}
                 itemCount={childCares.length}
                 itemSize={208}

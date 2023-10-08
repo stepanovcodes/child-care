@@ -11,12 +11,12 @@ const ChildCaresWrapper = ({ childCares }) => {
   const handleCardMouseEnter = (uuid) => {
     setUuidHovered(uuid);
     // console.log(`Pin ${uuid} Highlighted`);
-  }
+  };
 
   const handleCardMouseLeave = () => {
     setUuidHovered(null);
     // console.log(`Pin ${index} NOT Highlighted`);
-  }
+  };
 
   return (
     <div className="flex flex-wrap">
@@ -30,7 +30,13 @@ const ChildCaresWrapper = ({ childCares }) => {
         />
       </div>
       <div className="w-full sm:w-1/2 md:w-1/3 xl:w-1/4">
-        <CardList childCares={cardData} clickedUuid={clickedUuid} uuidHovered={uuidHovered} handleCardMouseEnter={handleCardMouseEnter} handleCardMouseLeave={handleCardMouseLeave} />
+        <CardList
+          childCares={cardData}
+          clickedUuid={clickedUuid}
+          uuidHovered={uuidHovered}
+          handleCardMouseEnter={handleCardMouseEnter}
+          handleCardMouseLeave={handleCardMouseLeave}
+        />
       </div>
     </div>
   );

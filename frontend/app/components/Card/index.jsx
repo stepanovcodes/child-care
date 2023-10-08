@@ -13,9 +13,8 @@ const Card = ({
   highlight,
   uuidHovered,
   handleCardMouseEnter,
-  handleCardMouseLeave
+  handleCardMouseLeave,
 }) => {
-
   const handleMouseEnter = () => {
     handleCardMouseEnter(childCare.uuid);
   };
@@ -25,14 +24,20 @@ const Card = ({
   };
 
   return (
-    <div onMouseOver={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <div
+      onMouseOver={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <Paper
         className="h-48 mx-5"
         variant="elevation"
         style={{
-          border: highlight || uuidHovered === childCare.uuid ? "2px solid #009CE1" : "none",
+          border:
+            highlight || uuidHovered === childCare.uuid
+              ? "2px solid #009CE1"
+              : "none",
           cursor: uuidHovered === childCare.uuid ? "pointer" : "",
-          backgroundColor: highlight ? "#F8DB6F" : "white"
+          backgroundColor: highlight ? "#F8DB6F" : "white",
         }}
       >
         <div className="p-2">

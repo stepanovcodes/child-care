@@ -5,7 +5,13 @@ import "./Map.css"; // Create a CSS file for styling if needed
 
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN; // Replace with your Mapbox access token
 
-const Map = ({ childCares, setCardData, clickedUuid, setClickedUuid, uuidHovered }) => {
+const Map = ({
+  childCares,
+  setCardData,
+  clickedUuid,
+  setClickedUuid,
+  uuidHovered,
+}) => {
   const [isLoading, setIsLoading] = useState(true);
   const mapRef = useRef(null);
   useEffect(() => {
@@ -82,7 +88,6 @@ const Map = ({ childCares, setCardData, clickedUuid, setClickedUuid, uuidHovered
         },
         cluster: false,
       });
-
 
       map.addLayer({
         id: "clusters",
@@ -165,6 +170,31 @@ const Map = ({ childCares, setCardData, clickedUuid, setClickedUuid, uuidHovered
           "circle-radius": 5,
           "circle-stroke-width": 5,
           "circle-stroke-color": "#b0ddf3",
+        },
+      });
+
+      map.addLayer({
+        id: "unclustered-label",
+        type: "symbol",
+        source: "childCares",
+        filter: ["!", ["has", "point_count"]],
+        layout: {
+          "text-field": [
+            "case",
+            ["has", "name"],
+            ["concat", ["get", "name"]],
+            "",
+          ],
+          "text-variable-anchor": ["top", "bottom", "left", "right"],
+          "text-radial-offset": 1.5,
+          "text-justify": "auto",
+          "text-size": 8,
+          "text-allow-overlap": false,
+        },
+        paint: {
+          "text-color": "#000", // Label text color
+          "text-halo-color": "rgba(255, 255, 255, 0.7)", // Transparent background color
+          "text-halo-width": 2, // Halo width for better visibility
         },
       });
 

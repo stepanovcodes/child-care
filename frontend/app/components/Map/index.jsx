@@ -162,9 +162,9 @@ const Map = ({ childCares, setCardData, clickedUuid, setClickedUuid, uuidHovered
         filter: ["!", ["has", "point_count"]],
         paint: {
           "circle-color": "#004161",
-          "circle-radius": 10,
-          // "circle-stroke-width": 2,
-          // "circle-stroke-color": "#FF0000",
+          "circle-radius": 5,
+          "circle-stroke-width": 5,
+          "circle-stroke-color": "#b0ddf3",
         },
       });
 
@@ -204,9 +204,13 @@ const Map = ({ childCares, setCardData, clickedUuid, setClickedUuid, uuidHovered
             source: "childCares",
             filter: ["==", "uuid", uuid],
             paint: {
+              // "circle-color": "#F8DB6F",
+              // "circle-radius": 12,
+              // "circle-stroke-width": 2,
+              // "circle-stroke-color": "#009CE1",
               "circle-color": "#F8DB6F",
-              "circle-radius": 12,
-              "circle-stroke-width": 2,
+              "circle-radius": 7,
+              "circle-stroke-width": 7,
               "circle-stroke-color": "#009CE1",
             },
           });
@@ -330,8 +334,8 @@ const Map = ({ childCares, setCardData, clickedUuid, setClickedUuid, uuidHovered
           filter: ["==", "uuid", uuidHovered],
           paint: {
             "circle-color": "#004161",
-            "circle-radius": 12,
-            "circle-stroke-width": 2,
+            "circle-radius": 7,
+            "circle-stroke-width": 7,
             "circle-stroke-color": "#009CE1",
           },
         });

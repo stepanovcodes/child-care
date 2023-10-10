@@ -25,7 +25,8 @@ const Map = ({
     const map = mapRef.current;
 
     // Filter out childCares with non-null latitudes and longitudes
-    const validChildCares = childCares.filter(
+    let validChildCares = childCares
+    .filter(
       (childCare) => childCare.latitude !== null && childCare.longitude !== null
     );
 
@@ -52,7 +53,8 @@ const Map = ({
               phoneNumber: validChildCare.phoneNumber,
               capacity: validChildCare.capacity,
               website: validChildCare.website,
-              googleRating: validChildCare.googleRating,
+              rating: validChildCare.rating !== null ? validChildCare.rating.toFixed(1) : null,
+              userRatingsTotal: validChildCare.userRatingsTotal,
             },
           })),
         },
@@ -82,7 +84,8 @@ const Map = ({
               phoneNumber: validChildCare.phoneNumber,
               capacity: validChildCare.capacity,
               website: validChildCare.website,
-              googleRating: validChildCare.googleRating,
+              rating: validChildCare.rating,
+              userRatingsTotal: validChildCare.userRatingsTotal,
             },
           })),
         },
@@ -182,17 +185,26 @@ const Map = ({
           "text-field": [
             "case",
             ["has", "name"],
-            ["concat", ["get", "name"]],
-            "",
+            [
+              "concat",
+              [
+                "case",
+                ["all", ["has", "rating"], ["!=", ["get", "rating"], null]],
+                ["concat", "❤️", ["get", "rating"], " • "],
+                ""
+              ],
+              ["get", "name"],
+            ],
+            ""
           ],
           "text-variable-anchor": ["top", "bottom", "left", "right"],
           "text-radial-offset": 1.5,
           "text-justify": "auto",
-          "text-size": 8,
+          "text-size": 9,
           "text-allow-overlap": false,
         },
         paint: {
-          "text-color": "#000", // Label text color
+          "text-color": "#004161", // Label text color
           "text-halo-color": "rgba(255, 255, 255, 0.7)", // Transparent background color
           "text-halo-width": 2, // Halo width for better visibility
         },

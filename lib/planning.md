@@ -428,7 +428,7 @@ Trello sprint board [link](https://trello.com/b/qnsoGBgC/child-care)
 | ✅CC-13 | View cards only visible on map | AAU, I want to view only those cards of child care facilities that are currently visible on the map | 2 | 1 | Medium | 1 | CC-3 |
 | CC-14   | Search child care | AAU, I want to search child care facilities' names and display only those cards and pins that correspond to this search | 3 | 2 | Medium |  | CC-3 |
 | ✅CC-15 | Sort cards by distance | AAU, I want to sort child care facilities by distance from the map centre | 3 | 2 | Medium | 1 | CC-3 |
-| CC-16   | View name and rating at unclustered pin | AAU, I want to view a name and a rating score for each unclustered pin on the map | 3 | 1 | Medium | 3 | CC-1 |
+| ✅CC-16   | View name and rating at unclustered pin | AAU, I want to view a name and a rating score for each unclustered pin on the map | 3 | 1 | Medium | 3 | CC-1 |
 | CC-17   | Sort cards by name | AAU, I want to sort child care facilities by their names | 2 | 2 | Medium |  | CC-3 |
 | CC-18   | Sign up using Google account or email | AAU, I want to be able to sign up using Google account or email | 5 | 2 | Medium |  |  |
 | CC-19   | Log in using Google account or email | AAAH, I want to be able to log in using Google account or email | 1 | 2 | Medium |  | CC-18 |

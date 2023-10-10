@@ -197,7 +197,7 @@ const Map = ({
             ],
             ""
           ],
-          "text-variable-anchor": ["top", "bottom", "left", "right"],
+          "text-variable-anchor": ["left"],
           "text-radial-offset": 1.5,
           "text-justify": "auto",
           "text-size": 9,

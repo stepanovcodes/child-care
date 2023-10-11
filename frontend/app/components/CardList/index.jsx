@@ -10,6 +10,7 @@ const CardList = ({
   uuidHovered,
   handleCardMouseEnter,
   handleCardMouseLeave,
+  handleShowModel,
 }) => {
   const clickedChildCareIndex = childCares.findIndex((childCare) => {
     return clickedUuid === childCare.uuid;
@@ -79,6 +80,7 @@ const CardList = ({
                         uuidHovered={uuidHovered}
                         handleCardMouseEnter={handleCardMouseEnter}
                         handleCardMouseLeave={handleCardMouseLeave}
+                        handleShowModel={handleShowModel}
                       />
                     ) : (
                       <Card
@@ -88,6 +90,7 @@ const CardList = ({
                         uuidHovered={uuidHovered}
                         handleCardMouseEnter={handleCardMouseEnter}
                         handleCardMouseLeave={handleCardMouseLeave}
+                        handleShowModel={handleShowModel}
                       />
                     )}
                   </div>

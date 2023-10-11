@@ -197,10 +197,10 @@ const Map = ({
             ],
             ""
           ],
-          "text-variable-anchor": ["top"],
+          "text-variable-anchor": ["left"],
           "text-radial-offset": 1.5,
           "text-justify": "auto",
-          "text-size": 10,
+          "text-size": 9,
           "text-allow-overlap": false,
         },
         paint: {

@@ -197,16 +197,16 @@ const Map = ({
             ],
             ""
           ],
-          "text-variable-anchor": ["left"],
+          "text-variable-anchor": ["top"],
           "text-radial-offset": 1.5,
           "text-justify": "auto",
-          "text-size": 9,
+          "text-size": 10,
           "text-allow-overlap": false,
         },
         paint: {
           "text-color": "#004161", // Label text color
-          "text-halo-color": "rgba(255, 255, 255, 0.7)", // Transparent background color
-          "text-halo-width": 2, // Halo width for better visibility
+          "text-halo-color": "#FFF", // Transparent background color
+          "text-halo-width": 1, // Halo width for better visibility
         },
       });
 

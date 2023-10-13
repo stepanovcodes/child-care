@@ -25,7 +25,7 @@ const Card = ({
   };
 
   const handleModel = () => {
-    handleShowModel();
+    handleShowModel(childCare.uuid);
   };
 
   return (

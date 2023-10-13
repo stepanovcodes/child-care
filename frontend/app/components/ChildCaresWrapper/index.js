@@ -2,11 +2,16 @@
 import React, { useState } from "react";
 import Map from "@/app/components/Map";
 import CardList from "@/app/components/CardList";
+import { getChildCare } from "@/app/utilities/childcares-service";
+import Modal from "@/app/components/Modal";
 
-const ChildCaresWrapper = ({ childCares }) => {
+
+const ChildCaresWrapper = ({ childCares}) => {
   const [cardData, setCardData] = useState([]);
   const [clickedUuid, setClickedUuid] = useState(null);
   const [uuidHovered, setUuidHovered] = useState(null);
+  const [childCareDetails, setChildCareDetails] = useState(null);
+ 
 
   const handleCardMouseEnter = (uuid) => {
     setUuidHovered(uuid);
@@ -18,8 +23,16 @@ const ChildCaresWrapper = ({ childCares }) => {
     // console.log(`Pin ${index} NOT Highlighted`);
   };
 
-  const handleShowModel = () => {
-    document.getElementById("my_modal_2").showModal();
+  const handleShowModel = async (uuid) => {
+    const details = await getChildCare(uuid);
+    setChildCareDetails(details);
+    setTimeout(() => {
+      document.getElementById("my_modal_2").showModal();
+    }, 1); // Delay for 1 second (1000 milliseconds)
+  };
+
+  const handleCloseModel = () => {
+    setChildCareDetails(null);
   };
 
   return (
@@ -43,17 +56,12 @@ const ChildCaresWrapper = ({ childCares }) => {
           handleShowModel={handleShowModel}
         />
       </div>
-      <dialog id="my_modal_2" className="modal">
-        <div className="modal-box w-11/12 max-w-5xl">
-          <h3 className="font-bold text-lg">Hello!</h3>
-          <p className="py-4">Press ESC key or click outside to close</p>
-        </div>
-        <form method="dialog" className="modal-backdrop">
-          <button>close</button>
-        </form>
-      </dialog>
+      <Modal childCareDetails={childCareDetails} handleCloseModel={handleCloseModel} />
     </div>
   );
 };
 
 export default ChildCaresWrapper;
+
+
+

@@ -1,7 +1,6 @@
 import React from 'react'
 import { getChildCares } from "@/app/utilities/childcares-service";
 import ChildCaresWrapper from '@/app/components/ChildCaresWrapper';
-import { getPlaceId } from "@/app/utilities/placeIds-service";
 
 interface ChildCare {
     uuid: string,

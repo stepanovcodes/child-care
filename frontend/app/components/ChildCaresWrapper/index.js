@@ -26,6 +26,7 @@ const ChildCaresWrapper = ({ childCares}) => {
   const handleShowModel = async (uuid) => {
     const details = await getChildCare(uuid);
     setChildCareDetails(details);
+    console.log(details)
     setTimeout(() => {
       document.getElementById("my_modal_2").showModal();
     }, 1); // Delay for 1 second (1000 milliseconds)

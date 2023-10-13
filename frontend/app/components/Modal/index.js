@@ -7,8 +7,7 @@ import {
 } from "@heroicons/react/24/outline";
 import HeartRating from "@/app/components/HeartRating";
 
-const Modal = ({childCareDetails, handleCloseModel}) => {
-
+const Modal = ({ childCareDetails, handleCloseModel }) => {
   return (
     <dialog id="my_modal_2" className="modal">
       <div className="modal-box w-11/12 max-w-5xl">
@@ -51,8 +50,28 @@ const Modal = ({childCareDetails, handleCloseModel}) => {
         ) : (
           ""
         )}
-        {childCareDetails?.Reviews.map((review) => (
-          <p key={review.uuid}>{review.text}</p>
+        {childCareDetails?.Reviews.length > 0 ? <h4 className="font-bold text-m pt-8">Google reviews:</h4> : ""}
+        {childCareDetails?.Reviews
+        .slice() 
+        .sort((a, b) => b.time - a.time) 
+        .map((review) => (
+          <div key={review.uuid} className="pt-4">
+            <div className="flex items-center">
+              <div className="avatar">
+                <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                  <img src={review.profilePhotoUrl} alt="User Avatar" />
+                </div>
+              </div>
+              <div>
+                <p className="ml-4 text-m">{review.authorName}</p>
+                <div className="ml-4">
+                  <HeartRating value={review.rating} userRatingsTotal={null} />
+                </div>
+                <p className= "ml-4 text-gray-500 text-xs"> {convertTime(review.time)}</p>
+              </div>
+            </div>
+            <p className="pt-2 text-m">{review.text}</p>
+          </div>
         ))}
       </div>
       <form method="dialog" className="modal-backdrop">
@@ -86,3 +105,26 @@ function truncatedURL(originalURL, maxLength) {
     return truncatedURL + "...";
   }
 }
+
+function convertTime(timestamp) {
+    // Convert timestamp to date
+    const date = new Date(timestamp * 1000); // Multiply by 1000 to convert seconds to milliseconds
+  
+    // Define the month names
+    const monthNames = [
+      "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    ];
+  
+    // Get various date components
+    const year = date.getFullYear();
+    const month = monthNames[date.getMonth()]; // Get the month abbreviation
+    const day = date.getDate();
+    const hours = date.getHours().toString().padStart(2, "0");
+    const minutes = date.getMinutes().toString().padStart(2, "0");
+  
+    // Format the date as a string
+    const formattedDate = `${month} ${day}, ${year}, ${hours}:${minutes}`;
+  
+    return formattedDate;
+  }

@@ -8,8 +8,8 @@ mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN; // Replace with you
 const Map = ({
   childCares,
   setCardData,
-  clickedUuid,
-  setClickedUuid,
+  uuidsClicked,
+  setUuidsClicked,
   uuidHovered,
 }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -25,8 +25,7 @@ const Map = ({
     const map = mapRef.current;
 
     // Filter out childCares with non-null latitudes and longitudes
-    let validChildCares = childCares
-    .filter(
+    let validChildCares = childCares.filter(
       (childCare) => childCare.latitude !== null && childCare.longitude !== null
     );
 
@@ -53,7 +52,10 @@ const Map = ({
               phoneNumber: validChildCare.phoneNumber,
               capacity: validChildCare.capacity,
               website: validChildCare.website,
-              rating: validChildCare.rating !== null ? validChildCare.rating.toFixed(1) : null,
+              rating:
+                validChildCare.rating !== null
+                  ? validChildCare.rating.toFixed(1)
+                  : null,
               userRatingsTotal: validChildCare.userRatingsTotal,
             },
           })),
@@ -191,11 +193,11 @@ const Map = ({
                 "case",
                 ["all", ["has", "rating"], ["!=", ["get", "rating"], null]],
                 ["concat", "❤️", ["get", "rating"], " • "],
-                ""
+                "",
               ],
               ["get", "name"],
             ],
-            ""
+            "",
           ],
           "text-variable-anchor": ["left"],
           "text-radial-offset": 1.5,
@@ -233,18 +235,25 @@ const Map = ({
         // const type = e.features[0].properties.type.toLowerCase();
         const uuid = e.features[0].properties.uuid;
 
-        const clickedChildCareUuid = childCares.find((childCare) => {
-          return uuid === childCare.uuid;
-        }).uuid;
-        getCardData();
-        setClickedUuid(clickedChildCareUuid);
+        const childCareClicked = childCares.find((childCare) => uuid === childCare.uuid);
 
-        if (!map.getLayer(`unclustered-point-${uuid}`)) {
+        const clickedChildCareUuids = childCares
+          .filter((childCare) => {
+            return (
+              childCareClicked.longitude === childCare.longitude &&
+              childCareClicked.latitude === childCare.latitude
+            )
+          })
+          .map((childCare) => childCare.uuid);
+        getCardData();
+        setUuidsClicked(clickedChildCareUuids);
+
+        if (!map.getLayer(`unclustered-point-${clickedChildCareUuids[0]}`)) {
           map.addLayer({
-            id: `unclustered-point-${uuid}`,
+            id: `unclustered-point-${clickedChildCareUuids[0]}`,
             type: "circle",
             source: "childCares",
-            filter: ["==", "uuid", uuid],
+            filter: ["==", "uuid", clickedChildCareUuids[0]],
             paint: {
               // "circle-color": "#F8DB6F",
               // "circle-radius": 12,
@@ -266,7 +275,7 @@ const Map = ({
           layers.forEach((layer) => {
             if (
               layer.id.startsWith("unclustered-point-") &&
-              layer.id !== `unclustered-point-${uuid}`
+              layer.id !== `unclustered-point-${clickedChildCareUuids[0]}`
             ) {
               map.removeLayer(layer.id);
             }
@@ -342,7 +351,7 @@ const Map = ({
         return distanceA - distanceB;
       });
 
-      setClickedUuid(null);
+      setUuidsClicked([]);
       // Get the current map style
       const style = map.getStyle();
       // Retrieve the layers from the style
@@ -392,7 +401,7 @@ const Map = ({
         if (
           layer.id.startsWith("unclustered-point-") &&
           layer.id !== `unclustered-point-${uuidHovered}` &&
-          layer.id !== `unclustered-point-${clickedUuid}`
+          layer.id !== `unclustered-point-${uuidsClicked}`
         ) {
           map.removeLayer(layer.id);
         }

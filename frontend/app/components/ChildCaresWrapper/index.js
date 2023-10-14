@@ -5,13 +5,11 @@ import CardList from "@/app/components/CardList";
 import { getChildCare } from "@/app/utilities/childcares-service";
 import Modal from "@/app/components/Modal";
 
-
-const ChildCaresWrapper = ({ childCares}) => {
+const ChildCaresWrapper = ({ childCares }) => {
   const [cardData, setCardData] = useState([]);
-  const [clickedUuid, setClickedUuid] = useState(null);
+  const [uuidsClicked, setUuidsClicked] = useState([]);
   const [uuidHovered, setUuidHovered] = useState(null);
   const [childCareDetails, setChildCareDetails] = useState(null);
- 
 
   const handleCardMouseEnter = (uuid) => {
     setUuidHovered(uuid);
@@ -42,27 +40,27 @@ const ChildCaresWrapper = ({ childCares}) => {
         <Map
           childCares={childCares}
           setCardData={setCardData}
-          clickedUuid={clickedUuid}
-          setClickedUuid={setClickedUuid}
+          uuidsClicked={uuidsClicked}
+          setUuidsClicked={setUuidsClicked}
           uuidHovered={uuidHovered}
         />
       </div>
       <div className="w-full sm:w-1/2 md:w-1/3 xl:w-1/4">
         <CardList
           childCares={cardData}
-          clickedUuid={clickedUuid}
+          uuidsClicked={uuidsClicked}
           uuidHovered={uuidHovered}
           handleCardMouseEnter={handleCardMouseEnter}
           handleCardMouseLeave={handleCardMouseLeave}
           handleShowModel={handleShowModel}
         />
       </div>
-      <Modal childCareDetails={childCareDetails} handleCloseModel={handleCloseModel} />
+      <Modal
+        childCareDetails={childCareDetails}
+        handleCloseModel={handleCloseModel}
+      />
     </div>
   );
 };
 
 export default ChildCaresWrapper;
-
-
-

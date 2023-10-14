@@ -6,45 +6,27 @@ import AutoSizer from "react-virtualized-auto-sizer";
 
 const CardList = ({
   childCares,
-  clickedUuid,
+  uuidsClicked,
   uuidHovered,
   handleCardMouseEnter,
   handleCardMouseLeave,
   handleShowModel,
 }) => {
-  const clickedChildCareIndex = childCares.findIndex((childCare) => {
-    return clickedUuid === childCare.uuid;
+  const clickedChildCareFirstIndex = childCares.findIndex((childCare) => {
+    return uuidsClicked[0] === childCare.uuid;
   });
 
   // Create a ref for the FixedSizeList component
   const listRef = useRef(null);
 
-  let allClickedChildCareIndexes = [];
-  if (clickedChildCareIndex !== -1) {
-    allClickedChildCareIndexes = childCares
-      .map((childCare, index) => {
-        return childCare.longitude ===
-          childCares[clickedChildCareIndex].longitude &&
-          childCare.latitude === childCares[clickedChildCareIndex].latitude
-          ? index
-          : -1;
-      })
-      .filter((index) => index !== -1);
-
-    allClickedChildCareIndexes.forEach((clickedChildCareIndex) => {
-      const movedElement = childCares.splice(clickedChildCareIndex, 1)[0];
-      childCares.unshift(movedElement);
-    });
-  }
-
   useEffect(() => {
     scrollToTop();
-  }, [clickedUuid]);
+  }, [uuidsClicked]);
 
   // Function to scroll to the top of the list
   const scrollToTop = () => {
     if (listRef.current) {
-      listRef.current.scrollTo(0);
+      listRef.current.scrollTo(clickedChildCareFirstIndex*208);
     }
   };
 
@@ -72,27 +54,15 @@ const CardList = ({
               >
                 {({ index, style }) => (
                   <div style={style}>
-                    {index < allClickedChildCareIndexes.length ? (
                       <Card
                         key={index}
                         childCare={childCares[index]}
-                        highlight={true}
                         uuidHovered={uuidHovered}
+                        uuidsClicked={uuidsClicked}
                         handleCardMouseEnter={handleCardMouseEnter}
                         handleCardMouseLeave={handleCardMouseLeave}
                         handleShowModel={handleShowModel}
                       />
-                    ) : (
-                      <Card
-                        key={index}
-                        childCare={childCares[index]}
-                        highlight={false}
-                        uuidHovered={uuidHovered}
-                        handleCardMouseEnter={handleCardMouseEnter}
-                        handleCardMouseLeave={handleCardMouseLeave}
-                        handleShowModel={handleShowModel}
-                      />
-                    )}
                   </div>
                 )}
               </List>

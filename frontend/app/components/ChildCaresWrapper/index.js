@@ -12,16 +12,7 @@ const ChildCaresWrapper = ({ childCares }) => {
   const [uuidsClicked, setUuidsClicked] = useState([]);
   const [uuidHovered, setUuidHovered] = useState(null);
   const [childCareDetails, setChildCareDetails] = useState(null);
-  const [ratingValue, setRatingValue] = useState([0, 5]);
-  const [capacityValue, setCapacityValue] = useState([0, 200]);
-  const [selectedChips, setSelectedChips] = useState([
-    false,
-    false,
-    false,
-    false,
-    false,
-  ]);
-  const [includeWoReviews, setIncludeWoReviews] = useState(true);
+
 
   const handleCardMouseEnter = (uuid) => {
     setUuidHovered(uuid);
@@ -78,14 +69,14 @@ const ChildCaresWrapper = ({ childCares }) => {
         <Filter />
       </div>
       <FilterSettings
-        ratingValue={ratingValue}
-        setRatingValue={setRatingValue}
-        capacityValue={capacityValue}
-        setCapacityValue={setCapacityValue}
-        selectedChips={selectedChips}
-        setSelectedChips={setSelectedChips}
-        includeWoReviews={includeWoReviews}
-        setIncludeWoReviews={setIncludeWoReviews}
+        // ratingValue={ratingValue}
+        // setRatingValue={setRatingValue}
+        // capacityValue={capacityValue}
+        // setCapacityValue={setCapacityValue}
+        // selectedChips={selectedChips}
+        // setSelectedChips={setSelectedChips}
+        // includeWoReviews={includeWoReviews}
+        // setIncludeWoReviews={setIncludeWoReviews}
       />
     </div>
   );

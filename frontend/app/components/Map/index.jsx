@@ -235,9 +235,6 @@ const Map = ({
       });
 
       map.on("click", "unclustered-point", (e) => {
-        // const coordinates = e.features[0].geometry.coordinates.slice();
-        // const name = capitalizeEachWord(e.features[0].properties.name);
-        // const type = e.features[0].properties.type.toLowerCase();
         const uuid = e.features[0].properties.uuid;
 
         const childCareClicked = childCares.find(
@@ -262,10 +259,6 @@ const Map = ({
             source: "childCares",
             filter: ["==", "uuid", clickedChildCareUuids[0]],
             paint: {
-              // "circle-color": "#F8DB6F",
-              // "circle-radius": 12,
-              // "circle-stroke-width": 2,
-              // "circle-stroke-color": "#009CE1",
               "circle-color": "#F8DB6F",
               "circle-radius": 7,
               "circle-stroke-width": 7,
@@ -416,15 +409,15 @@ const Map = ({
     }
   }, [isLoading, uuidHovered]);
 
-  // const capitalizeEachWord = (str) => {
-  //   return str
-  //     .split(" ") // Split the string into an array of words
-  //     .map((word) => {
-  //       // Capitalize the first letter and convert the rest to lowercase for each word
-  //       return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-  //     })
-  //     .join(" "); // Join the words back into a single string with spaces
-  // };
+  useEffect(() => {
+
+    console.log("Filter changed")
+  }, [
+    ratingValue,
+    capacityValue,
+    selectedChips,
+    includeWoReviews,
+  ]);
 
   // Function to calculate the Haversine distance between two points
   function calculateDistance(lat1, lon1, lat2, lon2) {

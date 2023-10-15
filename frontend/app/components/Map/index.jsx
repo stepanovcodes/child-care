@@ -12,6 +12,10 @@ const Map = ({
   uuidsClicked,
   setUuidsClicked,
   uuidHovered,
+  ratingValue,
+  capacityValue,
+  selectedChips,
+  includeWoReviews,
 }) => {
   const [isLoading, setIsLoading] = useState(true);
   const mapRef = useRef(null);

@@ -14,26 +14,18 @@ const programTypes = [
   "Out of School Care",
 ];
 
-const FilterSettings = () =>
-  //   ratingValue,
-  //   setRatingValue,
-  //   capacityValue,
-  //   setCapacityValue,
-  //   selectedChips,
-  //   setSelectedChips,
-  //   includeWoReviews,
-  //   setIncludeWoReviews
+const FilterSettings = ({
+    ratingValue,
+    setRatingValue,
+    capacityValue,
+    setCapacityValue,
+    selectedChips,
+    setSelectedChips,
+    includeWoReviews,
+    setIncludeWoReviews
+}) =>
   {
-    const [ratingValue, setRatingValue] = useState([0, 5]);
-    const [capacityValue, setCapacityValue] = useState([0, 200]);
-    const [selectedChips, setSelectedChips] = useState([
-      false,
-      false,
-      false,
-      false,
-      false,
-    ]);
-    const [includeWoReviews, setIncludeWoReviews] = useState(true);
+    
     const minRatingDistance = 1;
     const minCapacityDistance = 5;
 

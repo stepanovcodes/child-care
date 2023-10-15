@@ -101,7 +101,6 @@ const Modal = ({ childCareDetails, handleCloseModel }) => {
       </div>
       <form method="dialog" className="modal-backdrop">
         <button onClick={handleCloseModel}>close</button>
-        <button onClick={handleCloseModel} className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
       </form>
     </dialog>
   );

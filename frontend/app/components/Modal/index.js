@@ -51,6 +51,7 @@ const Modal = ({ childCareDetails, handleCloseModel }) => {
         ) : (
           ""
         )}
+        <a href={`tel:${childCareDetails?.phoneNumber.replace(/[^0-9]/g, '')}`} className="bg-blue-500 text-white px-4 py-2 rounded-md text-sm mt-4 inline-block transition duration-300 hover:bg-blue-600 hover:text-gray-100">CALL NOW</a>
         {childCareDetails?.Reviews.length > 0 ? (
           <h4 className="font-bold text-m pt-8">Google reviews:</h4>
         ) : (

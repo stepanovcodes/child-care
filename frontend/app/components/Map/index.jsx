@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css"; // Import Mapbox styles
 import "./Map.css"; // Create a CSS file for styling if needed
+import Filter from "@/app/components/Filter";
 
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN; // Replace with your Mapbox access token
 
@@ -235,14 +236,16 @@ const Map = ({
         // const type = e.features[0].properties.type.toLowerCase();
         const uuid = e.features[0].properties.uuid;
 
-        const childCareClicked = childCares.find((childCare) => uuid === childCare.uuid);
+        const childCareClicked = childCares.find(
+          (childCare) => uuid === childCare.uuid
+        );
 
         const clickedChildCareUuids = childCares
           .filter((childCare) => {
             return (
               childCareClicked.longitude === childCare.longitude &&
               childCareClicked.latitude === childCare.latitude
-            )
+            );
           })
           .map((childCare) => childCare.uuid);
         getCardData();
@@ -437,9 +440,7 @@ const Map = ({
     return R * c; // Distance in kilometers
   }
 
-  const loaded = () => {
-    return <div id="map" className="map-container"></div>;
-  };
+  const loaded = () => <div id="map" className="map-container"></div>;
 
   const loading = () => <div id="map" className="map-container"></div>;
   return isLoading ? loading() : loaded();

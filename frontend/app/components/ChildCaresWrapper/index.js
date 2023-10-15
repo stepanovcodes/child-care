@@ -4,12 +4,24 @@ import Map from "@/app/components/Map";
 import CardList from "@/app/components/CardList";
 import { getChildCare } from "@/app/utilities/childcares-service";
 import Modal from "@/app/components/Modal";
+import Filter from "@/app/components/Filter";
+import FilterSettings from "@/app/components/FilterSettings";
 
 const ChildCaresWrapper = ({ childCares }) => {
   const [cardData, setCardData] = useState([]);
   const [uuidsClicked, setUuidsClicked] = useState([]);
   const [uuidHovered, setUuidHovered] = useState(null);
   const [childCareDetails, setChildCareDetails] = useState(null);
+  const [ratingValue, setRatingValue] = useState([0, 5]);
+  const [capacityValue, setCapacityValue] = useState([0, 200]);
+  const [selectedChips, setSelectedChips] = useState([
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
+  const [includeWoReviews, setIncludeWoReviews] = useState(true);
 
   const handleCardMouseEnter = (uuid) => {
     setUuidHovered(uuid);
@@ -58,6 +70,22 @@ const ChildCaresWrapper = ({ childCares }) => {
       <Modal
         childCareDetails={childCareDetails}
         handleCloseModel={handleCloseModel}
+      />
+      <div
+        onClick={() => document.getElementById("filter_settings").showModal()}
+        className="absolute left-4 top-20"
+      >
+        <Filter />
+      </div>
+      <FilterSettings
+        ratingValue={ratingValue}
+        setRatingValue={setRatingValue}
+        capacityValue={capacityValue}
+        setCapacityValue={setCapacityValue}
+        selectedChips={selectedChips}
+        setSelectedChips={setSelectedChips}
+        includeWoReviews={includeWoReviews}
+        setIncludeWoReviews={setIncludeWoReviews}
       />
     </div>
   );

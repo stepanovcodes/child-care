@@ -22,6 +22,7 @@ const ChildCaresWrapper = ({ childCares }) => {
     false,
   ]);
   const [includeWoReviews, setIncludeWoReviews] = useState(true);
+  const [searchInput, setSearchInput] = useState("");
 
   const handleCardMouseEnter = (uuid) => {
     setUuidHovered(uuid);
@@ -59,6 +60,7 @@ const ChildCaresWrapper = ({ childCares }) => {
           capacityValue={capacityValue}
           selectedChips={selectedChips}
           includeWoReviews={includeWoReviews}
+          searchInput={searchInput}
         />
       </div>
       <div className="w-full sm:w-1/2 md:w-1/3 xl:w-1/4">
@@ -73,6 +75,8 @@ const ChildCaresWrapper = ({ childCares }) => {
           capacityValue={capacityValue}
           selectedChips={selectedChips}
           includeWoReviews={includeWoReviews}
+          searchInput={searchInput}
+          setSearchInput={setSearchInput}
         />
       </div>
       <Modal

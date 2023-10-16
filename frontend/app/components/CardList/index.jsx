@@ -1,8 +1,9 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Card from "@/app/components/Card";
 import "./CardList.css";
 import { FixedSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
+import TextField from "@mui/material/TextField";
 
 const CardList = ({
   childCares,
@@ -14,7 +15,9 @@ const CardList = ({
   ratingValue,
   capacityValue,
   selectedChips,
-  includeWoReviews
+  includeWoReviews,
+  searchInput,
+  setSearchInput
 }) => {
 
   const filterOn = !(
@@ -47,7 +50,14 @@ const CardList = ({
             !selectedChips[1] &&
             !selectedChips[2] &&
             !selectedChips[3] &&
-            !selectedChips[4]))
+            !selectedChips[4])) &&
+        (item.name?.toLowerCase().includes(searchInput.toLowerCase()) ||
+          item.type?.toLowerCase().includes(searchInput.toLowerCase()) ||
+          item.address?.toLowerCase().includes(searchInput.toLowerCase()) ||
+          item.city?.toLowerCase().includes(searchInput.toLowerCase()) ||
+          item.postalCode?.toLowerCase().includes(searchInput.toLowerCase()) ||
+          item.phoneNumber?.toLowerCase().includes(searchInput.toLowerCase()) ||
+          item.website?.toLowerCase().includes(searchInput.toLowerCase()))
       );
     });
     return filteredChildCares;
@@ -55,9 +65,11 @@ const CardList = ({
 
   const filteredChildCares = getFilteredChildCares(childCares);
 
-  const clickedChildCareFirstIndex = filteredChildCares.findIndex((childCare) => {
-    return uuidsClicked.some((uuid) => uuid === childCare.uuid);
-  });
+  const clickedChildCareFirstIndex = filteredChildCares.findIndex(
+    (childCare) => {
+      return uuidsClicked.some((uuid) => uuid === childCare.uuid);
+    }
+  );
 
   // Create a ref for the FixedSizeList component
   const listRef = useRef(null);
@@ -69,23 +81,26 @@ const CardList = ({
   // Function to scroll to the top of the list
   const scrollToTop = () => {
     if (listRef.current) {
-      listRef.current.scrollTo(clickedChildCareFirstIndex*208);
+      listRef.current.scrollTo(clickedChildCareFirstIndex * 208);
     }
   };
 
-  
-
   return (
     <>
-      <div className="px-5 py-1 flex justify-between">
-        <div>Results ({filteredChildCares.length})</div>
-        <div className="flex">
-        {filterOn? <div className="pr-4 text-rose-600">Filter Applied</div> : ""}
-          {/* <div className="px-1">111</div>
-          <div className="px-1">222</div>
-          <div className="px-1">333</div> */}
+      <div className="pl-5 pr-5 flex py-1 items-end justify-start">
+        <TextField
+          id="standard-basic"
+          label="Search"
+          variant="standard"
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
+          className="w-full"
+        />
+        <div className="flex  justify-between">
+          <div className={filterOn ? "text-rose-600 pb-1" : "pb-1"}>({filteredChildCares.length})</div>
         </div>
       </div>
+
       <div className="card-container">
         {filteredChildCares ? (
           <AutoSizer>
@@ -100,15 +115,15 @@ const CardList = ({
               >
                 {({ index, style }) => (
                   <div style={style}>
-                      <Card
-                        key={index}
-                        childCare={filteredChildCares[index]}
-                        uuidHovered={uuidHovered}
-                        uuidsClicked={uuidsClicked}
-                        handleCardMouseEnter={handleCardMouseEnter}
-                        handleCardMouseLeave={handleCardMouseLeave}
-                        handleShowModel={handleShowModel}
-                      />
+                    <Card
+                      key={index}
+                      childCare={filteredChildCares[index]}
+                      uuidHovered={uuidHovered}
+                      uuidsClicked={uuidsClicked}
+                      handleCardMouseEnter={handleCardMouseEnter}
+                      handleCardMouseLeave={handleCardMouseLeave}
+                      handleShowModel={handleShowModel}
+                    />
                   </div>
                 )}
               </List>

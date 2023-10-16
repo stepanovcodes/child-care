@@ -15,6 +15,7 @@ const Map = ({
   capacityValue,
   selectedChips,
   includeWoReviews,
+  searchInput,
 }) => {
   const [isLoading, setIsLoading] = useState(true);
   const mapRef = useRef(null);
@@ -490,7 +491,7 @@ const Map = ({
       });
       getCardData();
     }
-  }, [ratingValue, capacityValue, selectedChips, includeWoReviews]);
+  }, [ratingValue, capacityValue, selectedChips, includeWoReviews, searchInput]);
 
   // Function to calculate the Haversine distance between two points
   function calculateDistance(lat1, lon1, lat2, lon2) {
@@ -531,7 +532,14 @@ const Map = ({
             !selectedChips[1] &&
             !selectedChips[2] &&
             !selectedChips[3] &&
-            !selectedChips[4]))
+            !selectedChips[4])) &&
+            (item.name?.toLowerCase().includes(searchInput.toLowerCase()) ||
+              item.type?.toLowerCase().includes(searchInput.toLowerCase()) ||
+              item.address?.toLowerCase().includes(searchInput.toLowerCase()) ||
+              item.city?.toLowerCase().includes(searchInput.toLowerCase()) ||
+              item.postalCode?.toLowerCase().includes(searchInput.toLowerCase()) ||
+              item.phoneNumber?.toLowerCase().includes(searchInput.toLowerCase()) ||
+              item.website?.toLowerCase().includes(searchInput.toLowerCase()))
       );
     });
     return filteredChildCares;

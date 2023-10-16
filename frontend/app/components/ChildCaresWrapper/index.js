@@ -13,7 +13,7 @@ const ChildCaresWrapper = ({ childCares }) => {
   const [uuidHovered, setUuidHovered] = useState(null);
   const [childCareDetails, setChildCareDetails] = useState(null);
   const [ratingValue, setRatingValue] = useState([0, 5]);
-  const [capacityValue, setCapacityValue] = useState([0, 200]);
+  const [capacityValue, setCapacityValue] = useState([0, 1100]);
   const [selectedChips, setSelectedChips] = useState([
     false,
     false,

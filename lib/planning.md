@@ -418,7 +418,7 @@ Trello sprint board [link](https://trello.com/b/qnsoGBgC/child-care)
 | ✅CC-3  | View Child Care basic cards | AAU, I want to view cards of child care facilities with their names, types, phone numbers, capacities | 3 | 1 | Medium | 1 | |
 | ✅CC-4  | View results number found | AAU, I want to view the number of results found above the cards | 1 | 1 | Low | 1 | CC-3 |
 | ✅CC-5  | View Child Care advanced cards | AAU, I want to view cards of child care facilities with their website link, Google rating | 2 | 1 | High | 1 | CC-3 |
-| CC-6    | Filter Child Care facilities | AAU, I want to filter cards and pins of child care facilities displayed by type, city, capacity and Google rating | 3 | 2 | Medium |  | CC-5 |
+| CC-6    | Filter Child Care facilities | AAU, I want to filter cards and pins of child care facilities displayed by type,  capacity and Google rating | 3 | 2 | Medium |  | CC-5 |
 | CC-7    | View card basic details | AAU, I want to view card details (name, type, address, city, province, postal code, phone number, capacity) when clicking on individual card | 5 | 1 | Medium | 3 | CC-3 |
 | CC-8    | View card advanced details | AAU, I want to view website and Google rating on card details | 1 | 1 | Medium | 3 | CC-7 |
 | CC-9    | View reviews details | AAU, I want to view child care reviews on card details | 2 | 1 | Medium | 3 | CC-7 |

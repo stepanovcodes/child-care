@@ -54,7 +54,7 @@ const FilterSettings = ({
 
       if (newValue[1] - newValue[0] < minCapacityDistance) {
         if (activeThumb === 0) {
-          const clamped = Math.min(newValue[0], 200 - minCapacityDistance);
+          const clamped = Math.min(newValue[0], 1100 - minCapacityDistance);
           setCapacityValue([clamped, clamped + minCapacityDistance]);
         } else {
           const clamped = Math.max(newValue[1], minCapacityDistance);
@@ -86,7 +86,7 @@ const FilterSettings = ({
 
     const resetFilters = () => {
       setRatingValue([0, 5]);
-      setCapacityValue([0, 200]);
+      setCapacityValue([0, 1100]);
       setSelectedChips([false, false, false, false, false]);
       setIncludeWoReviews(true);
     };
@@ -130,7 +130,7 @@ const FilterSettings = ({
             <Slider
               getAriaLabel={() => "Minimum distance shift"}
               min={0}
-              max={200}
+              max={1100}
               value={capacityValue}
               onChange={handleChangeCapacity}
               valueLabelDisplay="auto"

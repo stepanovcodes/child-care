@@ -10,10 +10,11 @@ import Paper from "@mui/material/Paper";
 
 const Card = ({
   childCare,
-  highlight,
   uuidHovered,
+  uuidsClicked,
   handleCardMouseEnter,
   handleCardMouseLeave,
+  handleShowModel,
 }) => {
   const handleMouseEnter = () => {
     handleCardMouseEnter(childCare.uuid);
@@ -23,21 +24,27 @@ const Card = ({
     handleCardMouseLeave();
   };
 
+  const handleModel = () => {
+    handleShowModel(childCare.uuid);
+  };
+
   return (
     <div
       onMouseOver={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onClick={handleModel}
     >
       <Paper
         className="h-48 mx-5"
         variant="elevation"
         style={{
           border:
-            highlight || uuidHovered === childCare.uuid
+          uuidsClicked.includes(childCare.uuid) || uuidHovered === childCare.uuid
               ? "2px solid #009CE1"
               : "none",
           cursor: uuidHovered === childCare.uuid ? "pointer" : "",
-          backgroundColor: highlight ? "#F8DB6F" : "white",
+          backgroundColor:
+          uuidsClicked.includes(childCare.uuid) ? "#F8DB6F" : "white",
         }}
       >
         <div className="p-2">

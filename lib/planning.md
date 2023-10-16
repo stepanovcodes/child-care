@@ -418,15 +418,15 @@ Trello sprint board [link](https://trello.com/b/qnsoGBgC/child-care)
 | ✅CC-3  | View Child Care basic cards | AAU, I want to view cards of child care facilities with their names, types, phone numbers, capacities | 3 | 1 | Medium | 1 | |
 | ✅CC-4  | View results number found | AAU, I want to view the number of results found above the cards | 1 | 1 | Low | 1 | CC-3 |
 | ✅CC-5  | View Child Care advanced cards | AAU, I want to view cards of child care facilities with their website link, Google rating | 2 | 1 | High | 1 | CC-3 |
-| CC-6    | Filter Child Care facilities | AAU, I want to filter cards and pins of child care facilities displayed by type, city, capacity and Google rating | 3 | 2 | Medium |  | CC-5 |
-| CC-7    | View card basic details | AAU, I want to view card details (name, type, address, city, province, postal code, phone number, capacity) when clicking on individual card | 5 | 1 | Medium | 3 | CC-3 |
-| CC-8    | View card advanced details | AAU, I want to view website and Google rating on card details | 1 | 1 | Medium | 3 | CC-7 |
-| CC-9    | View reviews details | AAU, I want to view child care reviews on card details | 2 | 1 | Medium | 3 | CC-7 |
-| CC-10   | View photos details | AAU, I want to view child care photos on card details | 3 | 1 | High |  | CC-7 |
+| ✅CC-6    | Filter Child Care facilities | AAU, I want to filter cards and pins of child care facilities displayed by type,  capacity and Google rating | 3 | 2 | Medium |  | CC-5 |
+| ✅CC-7    | View card basic details | AAU, I want to view card details (name, type, address, city, province, postal code, phone number, capacity) when clicking on individual card | 5 | 1 | Medium | 3 | CC-3 |
+| ✅CC-8    | View card advanced details | AAU, I want to view website and Google rating on card details | 1 | 1 | Medium | 3 | CC-7 |
+| ✅CC-9    | View reviews details | AAU, I want to view child care reviews on card details | 2 | 1 | Medium | 3 | CC-7 |
+| ✅CC-10   | View photos details | AAU, I want to view child care photos on card details | 3 | 1 | High |  | CC-7 |
 | ✅CC-11 | Highlight card(s) when clicking on pin | AAU, I want to see what card(s) is/are associated with pin  when clicking on pin | 3 | 1 | High | 2 | CC-3 |
 | ✅CC-12 | Highlight pin when hovering on card | AAU, I want to see what pin is associated with a card when hovering on the card | 2 | 1 | High | 2 | CC-3 |
 | ✅CC-13 | View cards only visible on map | AAU, I want to view only those cards of child care facilities that are currently visible on the map | 2 | 1 | Medium | 1 | CC-3 |
-| CC-14   | Search child care | AAU, I want to search child care facilities' names and display only those cards and pins that correspond to this search | 3 | 2 | Medium |  | CC-3 |
+| ✅CC-14   | Search child care | AAU, I want to search child care facilities' names, types, address, city, postal code, phone number and website, and display only those cards and pins that correspond to this search (3 sp) | 3 | 2 | Medium |  | CC-3 |
 | ✅CC-15 | Sort cards by distance | AAU, I want to sort child care facilities by distance from the map centre | 3 | 2 | Medium | 1 | CC-3 |
 | ✅CC-16   | View name and rating at unclustered pin | AAU, I want to view a name and a rating score for each unclustered pin on the map | 3 | 1 | Medium | 3 | CC-1 |
 | CC-17   | Sort cards by name | AAU, I want to sort child care facilities by their names | 2 | 2 | Medium |  | CC-3 |

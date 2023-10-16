@@ -1,8 +1,22 @@
 import React from "react";
 
-const Filter = () => {
+const Filter = ({
+  ratingValue,
+  capacityValue,
+  selectedChips,
+  includeWoReviews,}) => {
+  
+    const filterOn = !(
+      ratingValue[0] === 0 &&
+      ratingValue[1] === 5 &&
+      capacityValue[0] === 0 &&
+      capacityValue[1] === 1100 &&
+      selectedChips.every((chip) => !chip) &&
+      includeWoReviews === true
+    );
+
   return (
-    <div className="w-9 h-9 p-1 rounded-md border-2 border-gray-300 cursor-pointer bg-white group  hover:bg-gray-100 transition duration-300 ease-in-out">
+    <div className={`w-9 h-9 p-1 rounded-md border-2 ${filterOn? "border-rose-300 bg-rose-100 hover:border-rose-400" : "border-gray-300  bg-white hover:bg-gray-100" } group cursor-pointer transition duration-300 ease-in-out`}>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"

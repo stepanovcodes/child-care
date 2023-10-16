@@ -83,17 +83,22 @@ const ChildCaresWrapper = ({ childCares }) => {
         onClick={() => document.getElementById("filter_settings").showModal()}
         className="absolute left-4 top-20"
       >
-        <Filter />
+        <Filter
+          ratingValue={ratingValue}
+          capacityValue={capacityValue}
+          selectedChips={selectedChips}
+          includeWoReviews={includeWoReviews}
+        />
       </div>
       <FilterSettings
-      ratingValue={ratingValue}
-      setRatingValue={setRatingValue}
-      capacityValue={capacityValue}
-      setCapacityValue={setCapacityValue}
-      selectedChips={selectedChips}
-      setSelectedChips={setSelectedChips}
-      includeWoReviews={includeWoReviews}
-      setIncludeWoReviews={setIncludeWoReviews}
+        ratingValue={ratingValue}
+        setRatingValue={setRatingValue}
+        capacityValue={capacityValue}
+        setCapacityValue={setCapacityValue}
+        selectedChips={selectedChips}
+        setSelectedChips={setSelectedChips}
+        includeWoReviews={includeWoReviews}
+        setIncludeWoReviews={setIncludeWoReviews}
       />
     </div>
   );

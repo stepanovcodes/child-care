@@ -17,6 +17,15 @@ const CardList = ({
   includeWoReviews
 }) => {
 
+  const filterOn = !(
+    ratingValue[0] === 0 &&
+    ratingValue[1] === 5 &&
+    capacityValue[0] === 0 &&
+    capacityValue[1] === 1100 &&
+    selectedChips.every((chip) => !chip) &&
+    includeWoReviews === true
+  );
+
   const getFilteredChildCares = (arr) => {
     const filteredChildCares = arr.filter((item) => {
       return (
@@ -71,6 +80,7 @@ const CardList = ({
       <div className="px-5 py-1 flex justify-between">
         <div>Results ({filteredChildCares.length})</div>
         <div className="flex">
+        {filterOn? <div className="pr-4 text-rose-600">Filter Applied</div> : ""}
           {/* <div className="px-1">111</div>
           <div className="px-1">222</div>
           <div className="px-1">333</div> */}

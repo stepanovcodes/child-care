@@ -69,6 +69,10 @@ const ChildCaresWrapper = ({ childCares }) => {
           handleCardMouseEnter={handleCardMouseEnter}
           handleCardMouseLeave={handleCardMouseLeave}
           handleShowModel={handleShowModel}
+          ratingValue={ratingValue}
+          capacityValue={capacityValue}
+          selectedChips={selectedChips}
+          includeWoReviews={includeWoReviews}
         />
       </div>
       <Modal

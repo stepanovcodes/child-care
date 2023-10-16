@@ -240,61 +240,7 @@ const Map = ({
       });
 
       map.on("click", "unclustered-point", (e) => {
-        const uuid = e.features[0].properties.uuid;
-
-        const childCareClicked = childCares.find(
-          (childCare) => uuid === childCare.uuid
-        );
-
-        const clickedChildCareUuids = childCares
-          .filter((childCare) => {
-            return (
-              childCareClicked.longitude === childCare.longitude &&
-              childCareClicked.latitude === childCare.latitude
-            );
-          })
-          .map((childCare) => childCare.uuid);
-
-        setUuidsClicked(clickedChildCareUuids);
-
-        if (!map.getLayer(`unclustered-point-${clickedChildCareUuids[0]}`)) {
-          map.addLayer({
-            id: `unclustered-point-${clickedChildCareUuids[0]}`,
-            type: "circle",
-            source: "childCaresInteraction",
-            filter: ["==", "uuid", clickedChildCareUuids[0]],
-            paint: {
-              "circle-color": "#F8DB6F",
-              "circle-radius": 7,
-              "circle-stroke-width": 7,
-              "circle-stroke-color": "#009CE1",
-            },
-          });
-
-          // Get the current map style
-          const style = map.getStyle();
-          // Retrieve the layers from the style
-          const layers = style.layers;
-          // Now you have an array of layers
-          // console.log(layers);
-          layers.forEach((layer) => {
-            if (
-              layer.id.startsWith("unclustered-point-") &&
-              layer.id !== `unclustered-point-${clickedChildCareUuids[0]}`
-            ) {
-              map.removeLayer(layer.id);
-            }
-          });
-        }
-
-        // while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-        //   coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-        // }
-
-        // new mapboxgl.Popup()
-        //   .setLngLat(coordinates)
-        //   .setHTML(`Name: ${name}<br>Type: ${type}`)
-        //   .addTo(map);
+        getUuidsClicked(e);
       });
 
       map.on("mouseenter", "clusters", () => {
@@ -313,20 +259,10 @@ const Map = ({
         map.getCanvas().style.cursor = "";
       });
 
-      getCardData(filteredChildCares);
-      const zoomListener = () => {
-        getCardData(filteredChildCares);
-      };
-      
-      const moveEndListener = () => {
-        getCardData(filteredChildCares);
-      };
-      map.on("zoom", () => {
-        zoomListener;
-      });
-      map.on("moveend", () => {
-        moveEndListener;
-      });
+      getCardData();
+
+      map.on("zoom", getCardData);
+      map.on("moveend", getCardData);
     });
 
     // Add navigation control (the +/- zoom buttons)
@@ -552,7 +488,7 @@ const Map = ({
           "text-halo-width": 1, // Halo width for better visibility
         },
       });
-      getCardData(filteredChildCares);
+      getCardData();
     }
   }, [ratingValue, capacityValue, selectedChips, includeWoReviews]);
 
@@ -601,7 +537,7 @@ const Map = ({
     return filteredChildCares;
   };
 
-  const getCardData = (arr) => {
+  const getCardData = () => {
     const map = mapRef.current;
     if (!map) return; // Ensure map is initialized
 
@@ -612,7 +548,7 @@ const Map = ({
 
     // Use the zoom level and bounds to determine which data to display
 
-    const cardData = arr.filter((item) => {
+    const cardData = childCares.filter((item) => {
       return (
         item.longitude >= bounds.getWest() &&
         item.longitude <= bounds.getEast() &&
@@ -652,6 +588,65 @@ const Map = ({
     });
     setCardData(cardData);
     return cardData;
+  };
+
+  const getUuidsClicked = (e) => {
+    const map = mapRef.current;
+    if (!map) return; // Ensure map is initialized
+
+    const uuid = e.features[0].properties.uuid;
+
+    const childCareClicked = childCares.find((item) => uuid === item.uuid);
+
+    const clickedChildCareUuids = childCares
+      .filter((item) => {
+        return (
+          childCareClicked.longitude === item.longitude &&
+          childCareClicked.latitude === item.latitude
+        );
+      })
+      .map((item) => item.uuid);
+
+    setUuidsClicked(clickedChildCareUuids);
+
+    if (!map.getLayer(`unclustered-point-${clickedChildCareUuids[0]}`)) {
+      map.addLayer({
+        id: `unclustered-point-${clickedChildCareUuids[0]}`,
+        type: "circle",
+        source: "childCaresInteraction",
+        filter: ["==", "uuid", clickedChildCareUuids[0]],
+        paint: {
+          "circle-color": "#F8DB6F",
+          "circle-radius": 7,
+          "circle-stroke-width": 7,
+          "circle-stroke-color": "#009CE1",
+        },
+      });
+
+      // Get the current map style
+      const style = map.getStyle();
+      // Retrieve the layers from the style
+      const layers = style.layers;
+      // Now you have an array of layers
+      // console.log(layers);
+      layers.forEach((layer) => {
+        if (
+          layer.id.startsWith("unclustered-point-") &&
+          layer.id !== `unclustered-point-${clickedChildCareUuids[0]}`
+        ) {
+          map.removeLayer(layer.id);
+        }
+      });
+    }
+
+    // while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+    //   coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+    // }
+
+    // new mapboxgl.Popup()
+    //   .setLngLat(coordinates)
+    //   .setHTML(`Name: ${name}<br>Type: ${type}`)
+    //   .addTo(map);
   };
 
   const loaded = () => <div id="map" className="map-container"></div>;

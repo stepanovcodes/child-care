@@ -12,6 +12,7 @@ const ChildCaresWrapper = ({ childCares }) => {
   const [cardData, setCardData] = useState([]);
   const [uuidsClicked, setUuidsClicked] = useState([]);
   const [uuidHovered, setUuidHovered] = useState(null);
+  const [uuidShowOnMap, setUuidShowOnMap] = useState(null);
   const [childCareDetails, setChildCareDetails] = useState(null);
   const [ratingValue, setRatingValue] = useState([0, 5]);
   const [capacityValue, setCapacityValue] = useState([0, 1100]);
@@ -63,6 +64,8 @@ const ChildCaresWrapper = ({ childCares }) => {
           selectedChips={selectedChips}
           includeWoReviews={includeWoReviews}
           searchInput={searchInput}
+          uuidShowOnMap = {uuidShowOnMap}
+          setUuidShowOnMap = {setUuidShowOnMap}
         />
         <div
           onClick={() => document.getElementById("filter_settings").showModal()}
@@ -112,6 +115,7 @@ const ChildCaresWrapper = ({ childCares }) => {
         childCareDetails={childCareDetails}
         handleCloseModel={handleCloseModel}
         setOpenSwipeableDrawer={setOpenSwipeableDrawer}
+        setUuidShowOnMap={setUuidShowOnMap}
       />
 
       <FilterSettings

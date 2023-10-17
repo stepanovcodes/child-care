@@ -24,6 +24,8 @@ const Map = ({
   selectedChips,
   includeWoReviews,
   searchInput,
+  uuidShowOnMap,
+  setUuidShowOnMap,
 }) => {
   const [isLoading, setIsLoading] = useState(true);
   const mapRef = useRef(null);
@@ -511,7 +513,28 @@ const Map = ({
       });
       getCardData();
     }
-  }, [ratingValue, capacityValue, selectedChips, includeWoReviews, searchInput]);
+  }, [
+    ratingValue,
+    capacityValue,
+    selectedChips,
+    includeWoReviews,
+    searchInput,
+  ]);
+
+  useEffect(() => {
+    if (!isLoading && uuidShowOnMap !== null) {
+      const map = mapRef.current;
+      const childCareShowOnMap = childCares.find(
+        (item) => uuidShowOnMap === item.uuid
+      );
+
+      map.easeTo({
+        center: [childCareShowOnMap.longitude, childCareShowOnMap.latitude],
+        zoom: 14,
+      });
+
+    }
+  }, [uuidShowOnMap]);
 
   // Function to calculate the Haversine distance between two points
   function calculateDistance(lat1, lon1, lat2, lon2) {
@@ -539,27 +562,23 @@ const Map = ({
         ((item.rating >= ratingValue[0] && item.rating !== null) ||
           (includeWoReviews && item.rating === null)) &&
         item.rating <= ratingValue[1] &&
-        ((selectedChips[0] &&
-          item.type === programTypes[0]) ||
+        ((selectedChips[0] && item.type === programTypes[0]) ||
           (selectedChips[1] && item.type === programTypes[1]) ||
-          (selectedChips[2] &&
-            item.type === programTypes[2]) ||
-          (selectedChips[3] &&
-            item.type === programTypes[3]) ||
-          (selectedChips[4] &&
-            item.type === programTypes[4]) ||
+          (selectedChips[2] && item.type === programTypes[2]) ||
+          (selectedChips[3] && item.type === programTypes[3]) ||
+          (selectedChips[4] && item.type === programTypes[4]) ||
           (!selectedChips[0] &&
             !selectedChips[1] &&
             !selectedChips[2] &&
             !selectedChips[3] &&
             !selectedChips[4])) &&
-            (item.name?.toLowerCase().includes(searchInput.toLowerCase()) ||
-              item.type?.toLowerCase().includes(searchInput.toLowerCase()) ||
-              item.address?.toLowerCase().includes(searchInput.toLowerCase()) ||
-              item.city?.toLowerCase().includes(searchInput.toLowerCase()) ||
-              item.postalCode?.toLowerCase().includes(searchInput.toLowerCase()) ||
-              item.phoneNumber?.toLowerCase().includes(searchInput.toLowerCase()) ||
-              item.website?.toLowerCase().includes(searchInput.toLowerCase()))
+        (item.name?.toLowerCase().includes(searchInput.toLowerCase()) ||
+          item.type?.toLowerCase().includes(searchInput.toLowerCase()) ||
+          item.address?.toLowerCase().includes(searchInput.toLowerCase()) ||
+          item.city?.toLowerCase().includes(searchInput.toLowerCase()) ||
+          item.postalCode?.toLowerCase().includes(searchInput.toLowerCase()) ||
+          item.phoneNumber?.toLowerCase().includes(searchInput.toLowerCase()) ||
+          item.website?.toLowerCase().includes(searchInput.toLowerCase()))
       );
     });
     return filteredChildCares;
@@ -569,6 +588,7 @@ const Map = ({
     const map = mapRef.current;
     if (!map) return; // Ensure map is initialized
 
+    setUuidShowOnMap(null);
     setUuidsClicked([]);
 
     const bounds = map.getBounds();

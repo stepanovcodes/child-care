@@ -8,8 +8,10 @@ import {
 import HeartRating from "@/app/components/HeartRating";
 import "./Modal.css";
 
-const Modal = ({ childCareDetails, handleCloseModel, setOpenSwipeableDrawer }) => {
+const Modal = ({ childCareDetails, handleCloseModel, setOpenSwipeableDrawer, setUuidShowOnMap }) => {
   const handleShowOnMapClick = () => {
+
+    setUuidShowOnMap(childCareDetails.uuid)
     const xButton = document.getElementById("xButtonOnDetails");
     if (xButton) {
       xButton.click();

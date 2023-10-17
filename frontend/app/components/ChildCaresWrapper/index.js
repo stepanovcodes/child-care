@@ -24,6 +24,7 @@ const ChildCaresWrapper = ({ childCares }) => {
   ]);
   const [includeWoReviews, setIncludeWoReviews] = useState(true);
   const [searchInput, setSearchInput] = useState("");
+  const [openSwipeableDrawer, setOpenSwipeableDrawer] = useState(false);
 
   const handleCardMouseEnter = (uuid) => {
     setUuidHovered(uuid);
@@ -103,11 +104,14 @@ const ChildCaresWrapper = ({ childCares }) => {
           includeWoReviews={includeWoReviews}
           searchInput={searchInput}
           setSearchInput={setSearchInput}
+          openSwipeableDrawer={openSwipeableDrawer}
+          setOpenSwipeableDrawer={setOpenSwipeableDrawer}
         />
       </div>
       <Modal
         childCareDetails={childCareDetails}
         handleCloseModel={handleCloseModel}
+        setOpenSwipeableDrawer={setOpenSwipeableDrawer}
       />
 
       <FilterSettings

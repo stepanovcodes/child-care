@@ -15,6 +15,8 @@ function ResponsiveComponent({
   includeWoReviews,
   searchInput,
   setSearchInput,
+  openSwipeableDrawer,
+  setOpenSwipeableDrawer,
 }) {
   const [windowWidth, setWindowWidth] = useState(0);
 
@@ -53,6 +55,8 @@ function ResponsiveComponent({
           includeWoReviews={includeWoReviews}
           searchInput={searchInput}
           setSearchInput={setSearchInput}
+          openSwipeableDrawer={openSwipeableDrawer}
+          setOpenSwipeableDrawer={setOpenSwipeableDrawer}
         />
       ) : (
         <CardList

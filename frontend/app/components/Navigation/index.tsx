@@ -8,9 +8,9 @@ import { usePathname } from 'next/navigation';
 
 
 const navigation = [
-  { name: 'Find Child Hare', href: '/', current: true },
+  { name: 'Map', href: '/', current: true },
   // { name: 'Resources', href: '/resources', current: false },
-  // { name: 'About', href: '/about', current: false },
+  { name: 'About', href: '/about', current: false },
 ]
 
 function classNames(...classes: (string | boolean | undefined)[]) {
@@ -40,12 +40,16 @@ export default function Navigation() {
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
                   <Link href="/">
-                  <img
-                    className="h-8 w-auto"
-                    src="https://i.imgur.com/y31tNGJ.png"
-                    alt="Your Company"
-                  />
+                    <img
+                      className="h-8 w-auto"
+                      src="https://i.imgur.com/y31tNGJ.png"
+                      alt="Your Company"
+                    />
                   </Link>
+                  <div className="ml-4">
+                    <div className="text-md text-sky-900">Child Hare</div>
+                    <div className="text-xs text-gray-200">Your child care finder</div>
+                  </div>
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
@@ -54,7 +58,7 @@ export default function Navigation() {
                         key={item.name}
                         href={item.href}
                         className={classNames(
-                            pathname === item.href ? 'bg-sky-900 text-white' : 'text-sky-900 hover:bg-sky-700 hover:text-white',
+                          pathname === item.href ? 'bg-sky-900 text-white' : 'text-sky-900 hover:bg-sky-700 hover:text-white',
                           'rounded-md px-3 py-2 text-sm font-medium'
                         )}
                         aria-current={pathname === item.href ? 'page' : undefined}

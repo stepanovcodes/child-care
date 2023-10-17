@@ -16,14 +16,14 @@ const Filter = ({
     );
 
   return (
-    <div className={`w-9 h-9 p-1 rounded-md border-2 ${filterOn? "border-rose-300 bg-rose-100 hover:border-rose-400" : "border-gray-300  bg-white hover:bg-gray-100" } group cursor-pointer transition duration-300 ease-in-out`}>
+    <div className={`w-8 h-8 p-1 rounded-md border-2 ${filterOn? "border-rose-300 bg-rose-100 hover:border-rose-400" : "border-gray-300  bg-white hover:bg-gray-100" } group cursor-pointer transition duration-300 ease-in-out`}>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="w-6 h-6"
+      className="w-5 h-5"
     >
       <path
         strokeLinecap="round"

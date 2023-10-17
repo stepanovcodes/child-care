@@ -8,12 +8,13 @@ import {
 import HeartRating from "@/app/components/HeartRating";
 import "./Modal.css";
 
-const Modal = ({ childCareDetails, handleCloseModel }) => {
+const Modal = ({ childCareDetails, handleCloseModel, setOpenSwipeableDrawer }) => {
   const handleShowOnMapClick = () => {
     const xButton = document.getElementById("xButtonOnDetails");
     if (xButton) {
       xButton.click();
     }
+    setOpenSwipeableDrawer(false);
   }
   return (
     <dialog id="my_modal_2" className="modal">

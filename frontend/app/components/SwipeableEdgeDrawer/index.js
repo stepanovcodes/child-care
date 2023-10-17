@@ -62,11 +62,12 @@ function SwipeableEdgeDrawer(props) {
     includeWoReviews,
     searchInput,
     setSearchInput,
+    openSwipeableDrawer,
+    setOpenSwipeableDrawer
   } = props;
-  const [open, setOpen] = React.useState(false);
 
   const toggleDrawer = (newOpen) => () => {
-    setOpen(newOpen);
+    setOpenSwipeableDrawer(newOpen);
   };
 
   // This is used only for the example
@@ -141,7 +142,7 @@ function SwipeableEdgeDrawer(props) {
   // Effect to open the drawer when uuidsClicked is not empty
   React.useEffect(() => {
     if (uuidsClicked.length > 0) {
-      setOpen(true);
+      setOpenSwipeableDrawer(true);
     }
   }, [uuidsClicked]);
 
@@ -162,7 +163,7 @@ function SwipeableEdgeDrawer(props) {
       <SwipeableDrawer
         container={container}
         anchor="bottom"
-        open={open}
+        open={openSwipeableDrawer}
         onClose={toggleDrawer(false)}
         onOpen={toggleDrawer(true)}
         swipeAreaWidth={drawerBleeding}

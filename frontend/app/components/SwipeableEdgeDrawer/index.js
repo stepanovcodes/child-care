@@ -171,7 +171,7 @@ function SwipeableEdgeDrawer(props) {
           <div className="pl-5 pr-5 flex py-1 items-end justify-start">
             <TextField
               id="standard-basic"
-              label="Search"
+              label="Swipe to Start Searching"
               variant="standard"
               value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}

@@ -185,6 +185,15 @@ function SwipeableEdgeDrawer(props) {
         >
           <Puller />
           <div className="pl-5 pr-5 flex py-1 items-end justify-start">
+          {openSwipeableDrawer?
+            <TextField
+              id="standard-basic"
+              label="Search"
+              variant="standard"
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
+              className="w-full"
+            />:
             <TextField
               id="standard-basic"
               label="Swipe to Start Searching"
@@ -192,7 +201,7 @@ function SwipeableEdgeDrawer(props) {
               value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}
               className="w-full"
-            />
+            />}
             <div className="flex  justify-between">
               <div className={filterOn ? "text-rose-600 pb-1" : "pb-1"}>
                 ({filteredChildCares.length})

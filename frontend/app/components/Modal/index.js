@@ -6,12 +6,18 @@ import {
   GlobeAltIcon,
 } from "@heroicons/react/24/outline";
 import HeartRating from "@/app/components/HeartRating";
-import "./Modal.css"; 
+import "./Modal.css";
 
 const Modal = ({ childCareDetails, handleCloseModel }) => {
   return (
     <dialog id="my_modal_2" className="modal">
       <div className="modal-box w-11/12 max-w-5xl">
+        <form method="dialog">
+          {/* if there is a button in form, it will close the modal */}
+          <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+            ✕
+          </button>
+        </form>
         <h3 className="font-bold text-lg">{childCareDetails?.name}</h3>
         <p className="text-gray-500 text-xs">
           {`${childCareDetails?.address}, ${childCareDetails?.city}, ${childCareDetails?.province} ${childCareDetails?.postalCode}`}
@@ -51,7 +57,12 @@ const Modal = ({ childCareDetails, handleCloseModel }) => {
         ) : (
           ""
         )}
-        <a href={`tel:${childCareDetails?.phoneNumber.replace(/[^0-9]/g, '')}`} className="bg-blue-500 text-white px-4 py-2 rounded-md text-sm mt-4 inline-block transition duration-300 hover:bg-blue-600 hover:text-gray-100">CALL NOW</a>
+        <a
+          href={`tel:${childCareDetails?.phoneNumber.replace(/[^0-9]/g, "")}`}
+          className="bg-blue-500 text-white px-4 py-2 rounded-md text-sm mt-4 inline-block transition duration-300 hover:bg-blue-600 hover:text-gray-100"
+        >
+          CALL NOW
+        </a>
         {childCareDetails?.Reviews.length > 0 ? (
           <h4 className="font-bold text-m pt-8">Google reviews:</h4>
         ) : (
@@ -84,7 +95,7 @@ const Modal = ({ childCareDetails, handleCloseModel }) => {
               <p className="pt-2 text-m">{review.text}</p>
             </div>
           ))}
-          {childCareDetails?.Photos.length > 0 ? (
+        {childCareDetails?.Photos.length > 0 ? (
           <h4 className="font-bold text-m pt-8 pb-4">Google photos:</h4>
         ) : (
           ""

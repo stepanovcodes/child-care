@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   UserIcon,
   HomeIcon,
@@ -16,6 +16,27 @@ const Card = ({
   handleCardMouseLeave,
   handleShowModel,
 }) => {
+  const [windowWidth, setWindowWidth] = useState(0);
+
+  useEffect(() => {
+    // Check if the code is running in the browser (client-side)
+    if (typeof window !== "undefined") {
+      setWindowWidth(window.innerWidth);
+    }
+
+    // Add an event listener to listen for window resize events
+    function handleResize() {
+      setWindowWidth(window.innerWidth);
+    }
+
+    window.addEventListener("resize", handleResize);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const handleMouseEnter = () => {
     handleCardMouseEnter(childCare.uuid);
   };
@@ -30,8 +51,12 @@ const Card = ({
 
   return (
     <div
-      onMouseOver={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      {...(windowWidth < 640
+        ? {}
+        : {
+            onMouseOver: handleMouseEnter,
+            onMouseLeave: handleMouseLeave,
+          })}
       onClick={handleModel}
     >
       <Paper
@@ -39,12 +64,14 @@ const Card = ({
         variant="elevation"
         style={{
           border:
-          uuidsClicked.includes(childCare.uuid) || uuidHovered === childCare.uuid
+            uuidsClicked.includes(childCare.uuid) ||
+            uuidHovered === childCare.uuid
               ? "2px solid #009CE1"
               : "none",
           cursor: uuidHovered === childCare.uuid ? "pointer" : "",
-          backgroundColor:
-          uuidsClicked.includes(childCare.uuid) ? "#F8DB6F" : "white",
+          backgroundColor: uuidsClicked.includes(childCare.uuid)
+            ? "#F8DB6F"
+            : "white",
         }}
       >
         <div className="p-2">

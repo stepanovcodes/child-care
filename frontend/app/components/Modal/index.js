@@ -9,12 +9,18 @@ import HeartRating from "@/app/components/HeartRating";
 import "./Modal.css";
 
 const Modal = ({ childCareDetails, handleCloseModel }) => {
+  const handleShowOnMapClick = () => {
+    const xButton = document.getElementById("xButtonOnDetails");
+    if (xButton) {
+      xButton.click();
+    }
+  }
   return (
     <dialog id="my_modal_2" className="modal">
       <div className="modal-box w-11/12 max-w-5xl">
         <form method="dialog">
           {/* if there is a button in form, it will close the modal */}
-          <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+          <button id="xButtonOnDetails" onClick={handleCloseModel} className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
             ✕
           </button>
         </form>
@@ -57,12 +63,26 @@ const Modal = ({ childCareDetails, handleCloseModel }) => {
         ) : (
           ""
         )}
+      
+        <div className="flex">
+        <div>
         <a
           href={`tel:${childCareDetails?.phoneNumber.replace(/[^0-9]/g, "")}`}
           className="bg-blue-500 text-white px-4 py-2 rounded-md text-sm mt-4 inline-block transition duration-300 hover:bg-blue-600 hover:text-gray-100"
         >
           CALL NOW
         </a>
+        </div>
+        <div className="pl-8">
+        <div
+          onClick={handleShowOnMapClick}
+          className="pl-4 bg-blue-500 text-white px-4 py-2 rounded-md text-sm mt-4 inline-block transition duration-300 hover:bg-blue-600 hover:text-gray-100 hover:cursor-pointer"
+        >
+          SHOW ON MAP
+        </div>
+        </div>
+        </div>
+        
         {childCareDetails?.Reviews.length > 0 ? (
           <h4 className="font-bold text-m pt-8">Google reviews:</h4>
         ) : (

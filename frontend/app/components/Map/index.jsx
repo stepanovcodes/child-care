@@ -240,6 +240,10 @@ const Map = ({
           });
       });
 
+      map.on("click", "unclustered-label", (e) => {
+        getUuidsClicked(e);
+      });
+
       map.on("click", "unclustered-point", (e) => {
         getUuidsClicked(e);
       });
@@ -257,6 +261,14 @@ const Map = ({
       });
 
       map.on("mouseleave", "unclustered-point", () => {
+        map.getCanvas().style.cursor = "";
+      });
+
+      map.on("mouseenter", "unclustered-label", () => {
+        map.getCanvas().style.cursor = "pointer";
+      });
+
+      map.on("mouseleave", "unclustered-label", () => {
         map.getCanvas().style.cursor = "";
       });
 

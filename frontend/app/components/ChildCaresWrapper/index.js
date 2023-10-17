@@ -49,7 +49,7 @@ const ChildCaresWrapper = ({ childCares }) => {
 
   return (
     <div className="flex flex-wrap">
-      <div className="w-full sm:w-1/2 md:w-2/3 xl:w-3/4">
+      <div className="w-full sm:w-1/2 md:w-2/3 xl:w-3/4 relative">
         <Map
           childCares={childCares}
           setCardData={setCardData}
@@ -62,6 +62,17 @@ const ChildCaresWrapper = ({ childCares }) => {
           includeWoReviews={includeWoReviews}
           searchInput={searchInput}
         />
+        <div
+          onClick={() => document.getElementById("filter_settings").showModal()}
+          className="absolute right-2 top-28"
+        >
+          <Filter
+            ratingValue={ratingValue}
+            capacityValue={capacityValue}
+            selectedChips={selectedChips}
+            includeWoReviews={includeWoReviews}
+          />
+        </div>
       </div>
       <div className="w-full sm:w-1/2 md:w-1/3 xl:w-1/4">
         <CardList
@@ -83,17 +94,7 @@ const ChildCaresWrapper = ({ childCares }) => {
         childCareDetails={childCareDetails}
         handleCloseModel={handleCloseModel}
       />
-      <div
-        onClick={() => document.getElementById("filter_settings").showModal()}
-        className="absolute left-4 top-20"
-      >
-        <Filter
-          ratingValue={ratingValue}
-          capacityValue={capacityValue}
-          selectedChips={selectedChips}
-          includeWoReviews={includeWoReviews}
-        />
-      </div>
+
       <FilterSettings
         ratingValue={ratingValue}
         setRatingValue={setRatingValue}

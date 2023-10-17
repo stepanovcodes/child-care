@@ -223,11 +223,11 @@ const Map = ({
           "text-variable-anchor": ["left"],
           "text-radial-offset": 1.5,
           "text-justify": "auto",
-          "text-size": 9,
+          "text-size": 10,
           "text-allow-overlap": false,
         },
         paint: {
-          "text-color": "#004161", // Label text color
+          "text-color": "#000000", // Label text color
           "text-halo-color": "#FFF", // Transparent background color
           "text-halo-width": 1, // Halo width for better visibility
         },
@@ -530,7 +530,7 @@ const Map = ({
 
       map.easeTo({
         center: [childCareShowOnMap.longitude, childCareShowOnMap.latitude],
-        zoom: 14,
+        zoom: 16,
       });
 
     }

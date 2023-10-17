@@ -15,6 +15,14 @@ import "./SwipeableEdgeDrawer.css";
 import { FixedSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
 
+const programTypes = [
+  "Day Care",
+  "Family Day Home",
+  "Group Family Child Care",
+  "Preschool",
+  "Out of School Care",
+];
+
 const drawerBleeding = 56;
 
 const Root = styled("div")(({ theme }) => ({
@@ -83,14 +91,14 @@ function SwipeableEdgeDrawer(props) {
           (includeWoReviews && item.rating === null)) &&
         item.rating <= ratingValue[1] &&
         ((selectedChips[0] &&
-          item.type === "DAY CARE (FACILITY-BASED PROGRAM)") ||
-          (selectedChips[1] && item.type === "FAMILY DAY HOME") ||
+          item.type === programTypes[0]) ||
+          (selectedChips[1] && item.type === programTypes[1]) ||
           (selectedChips[2] &&
-            item.type === "GROUP FAMILY CHILD CARE PROGRAM") ||
+            item.type === programTypes[2]) ||
           (selectedChips[3] &&
-            item.type === "PRE-SCHOOL (FACILITY-BASED PROGRAM)") ||
+            item.type === programTypes[3]) ||
           (selectedChips[4] &&
-            item.type === "OUT OF SCHOOL CARE (FACILITY-BASED PROGRAM)") ||
+            item.type === programTypes[4]) ||
           (!selectedChips[0] &&
             !selectedChips[1] &&
             !selectedChips[2] &&

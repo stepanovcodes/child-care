@@ -7,7 +7,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 
 const programTypes = [
-  "Day Cares",
+  "Day Care",
   "Family Day Home",
   "Group Family Child Care",
   "Preschool",

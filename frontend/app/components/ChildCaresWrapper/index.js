@@ -1,11 +1,12 @@
 "use client";
 import React, { useState } from "react";
 import Map from "@/app/components/Map";
-import CardList from "@/app/components/CardList";
+// import CardList from "@/app/components/CardList";
 import { getChildCare } from "@/app/utilities/childcares-service";
 import Modal from "@/app/components/Modal";
 import Filter from "@/app/components/Filter";
 import FilterSettings from "@/app/components/FilterSettings";
+import ResponsiveComponent from "@/app/components/ResponsiveComponent";
 
 const ChildCaresWrapper = ({ childCares }) => {
   const [cardData, setCardData] = useState([]);
@@ -75,7 +76,21 @@ const ChildCaresWrapper = ({ childCares }) => {
         </div>
       </div>
       <div className="w-full sm:w-1/2 md:w-1/3 xl:w-1/4">
-        <CardList
+        {/* <CardList
+          childCares={cardData}
+          uuidsClicked={uuidsClicked}
+          uuidHovered={uuidHovered}
+          handleCardMouseEnter={handleCardMouseEnter}
+          handleCardMouseLeave={handleCardMouseLeave}
+          handleShowModel={handleShowModel}
+          ratingValue={ratingValue}
+          capacityValue={capacityValue}
+          selectedChips={selectedChips}
+          includeWoReviews={includeWoReviews}
+          searchInput={searchInput}
+          setSearchInput={setSearchInput}
+        /> */}
+        <ResponsiveComponent
           childCares={cardData}
           uuidsClicked={uuidsClicked}
           uuidHovered={uuidHovered}

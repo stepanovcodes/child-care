@@ -138,6 +138,13 @@ function SwipeableEdgeDrawer(props) {
     }
   };
 
+  // Effect to open the drawer when uuidsClicked is not empty
+  React.useEffect(() => {
+    if (uuidsClicked.length > 0) {
+      setOpen(true);
+    }
+  }, [uuidsClicked]);
+
   return (
     <Root>
       <CssBaseline />

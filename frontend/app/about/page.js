@@ -10,7 +10,7 @@ import "./About.css";
 const AboutPage = () => {
   return (
     <div className="bg-gray-100">
-      <header className="text-center py-4">
+      <header className="py-4 mx-8">
         <h1 className="text-4xl">About</h1>
       </header>
       <main id="about-page-main" className="container mx-auto px-8">

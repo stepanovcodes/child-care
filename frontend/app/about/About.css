@@ -1,0 +1,4 @@
+#about-page-main {
+    height: calc(100dvh - 64px - 72px);
+    overflow-y: auto;
+    }

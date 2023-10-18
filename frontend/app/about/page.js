@@ -5,37 +5,15 @@ import Avatar from "@mui/material/Avatar";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import LanguageIcon from "@mui/icons-material/Language";
+import "./About.css";
 
 const AboutPage = () => {
-
   return (
-    <div className="bg-gray-100 min-h-screen">
-      <header className="text-center pt-4">
+    <div className="bg-gray-100">
+      <header className="text-center py-4">
         <h1 className="text-4xl">About</h1>
       </header>
-      <main className="container mx-auto p-8">
-        <Paper variant="elevation" className="p-4 mb-4">
-          <h2 className="text-2xl mb-2">About Child Hare</h2>
-          <p>
-            The Child Hare is a nimble companion with long ears, designed to
-            assist you in discovering child care options for your kids in
-            Alberta, Canada. This app is optimized for both small and desktop
-            screens. With it, you can zoom into specific areas of interest,
-            apply filters, search for child care facilities, and access detailed
-            information, including Google reviews and photos.
-          </p>
-        </Paper>
-
-        <Paper variant="elevation" className="p-4 mb-4">
-          <h2 className="text-2xl mb-2">Our Mission</h2>
-          <p>
-            Our mission is to facilitate meaningful connections between parents
-            and child care providers, helping them discover the best options
-            while offering a seamless experience in the bustling realm of
-            parenthood.
-          </p>
-        </Paper>
-
+      <main id="about-page-main" className="container mx-auto px-8">
         <Paper variant="elevation" className="p-4 mb-4">
           <h2 className="text-2xl mb-2">Meet the Team</h2>
 
@@ -49,7 +27,7 @@ const AboutPage = () => {
             <h2 className="text-xl">Alex Stepanov</h2>
             <h2 className="text-sm mb-2 text-gray-500">Full Stack Developer</h2>
           </div>
-          <div>
+          <p className="text-justify">
             Alex is a Full Stack Developer with experience in agile product
             management. As a new parent residing in Calgary, Alberta, Alex
             empathizes with the challenges faced by parents in Alberta who are
@@ -65,7 +43,7 @@ const AboutPage = () => {
               LinkedIn
             </Link>
             .
-          </div>
+          </p>
 
           <div className="w-24 mx-auto flex justify-between">
             <Link
@@ -91,25 +69,29 @@ const AboutPage = () => {
             </Link>
           </div>
         </Paper>
-      </main>
 
-      <footer>
-        <Paper
-          sx={{
-            position: "fixed",
-            bottom: 0,
-            left: 0,
-            right: 0,
-            height: 56,
-            display: "flex",
-            justifyContent: "space-around",
-            alignItems: "center",
-          }}
-          elevation={3}
-        >
-          <div>&copy; 2023 Child Hare</div>
+        <Paper variant="elevation" className="p-4 mb-4">
+          <h2 className="text-2xl mb-2">About Child Hare</h2>
+          <p className="text-justify">
+            The Child Hare is a nimble companion with long ears, designed to
+            assist you in discovering child care options for your kids in
+            Alberta, Canada. This app is optimized for both small and desktop
+            screens. With it, you can zoom into specific areas of interest,
+            apply filters, search for child care facilities, and access detailed
+            information, including Google reviews and photos.
+          </p>
         </Paper>
-      </footer>
+
+        <Paper variant="elevation" className="p-4 mb-4">
+          <h2 className="text-2xl mb-2">Our Mission</h2>
+          <p className="text-justify">
+            Our mission is to facilitate meaningful connections between parents
+            and child care providers, helping them discover the best options
+            while offering a seamless experience in the bustling realm of
+            parenthood.
+          </p>
+        </Paper>
+      </main>
     </div>
   );
 };

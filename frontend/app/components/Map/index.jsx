@@ -299,7 +299,10 @@ const Map = ({
       const map = mapRef.current;
       if (
         !map.getLayer(`unclustered-point-${uuidHovered}`) &&
-        uuidHovered !== null
+        uuidHovered !== null &&
+        !uuidsClicked.some((uuidClicked) => {
+          uuidHovered === uuidClicked;
+        })
       ) {
         // console.log(uuidHovered);
         map.addLayer({
@@ -314,22 +317,22 @@ const Map = ({
             "circle-stroke-color": "#009CE1",
           },
         });
+        // Get the current map style
+        const style = map.getStyle();
+        // Retrieve the layers from the style
+        const layers = style.layers;
+        // Now you have an array of layers
+        // console.log(layers);
+        layers.forEach((layer) => {
+          if (
+            layer.id.startsWith("unclustered-point-") &&
+            layer.id !== `unclustered-point-${uuidHovered}` &&
+            !uuidsClicked.some((uuidClicked)=>{layer.id === `unclustered-point-${uuidClicked}`})
+          ) {
+            map.removeLayer(layer.id);
+          }
+        });
       }
-      // Get the current map style
-      const style = map.getStyle();
-      // Retrieve the layers from the style
-      const layers = style.layers;
-      // Now you have an array of layers
-      // console.log(layers);
-      layers.forEach((layer) => {
-        if (
-          layer.id.startsWith("unclustered-point-") &&
-          layer.id !== `unclustered-point-${uuidHovered}` &&
-          layer.id !== `unclustered-point-${uuidsClicked}`
-        ) {
-          map.removeLayer(layer.id);
-        }
-      });
     }
   }, [isLoading, uuidHovered]);
 
@@ -532,7 +535,6 @@ const Map = ({
         center: [childCareShowOnMap.longitude, childCareShowOnMap.latitude],
         zoom: 16,
       });
-
     }
   }, [uuidShowOnMap]);
 

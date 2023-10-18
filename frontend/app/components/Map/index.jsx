@@ -300,11 +300,8 @@ const Map = ({
       if (
         !map.getLayer(`unclustered-point-${uuidHovered}`) &&
         uuidHovered !== null &&
-        !uuidsClicked.some((uuidClicked) => {
-          uuidHovered === uuidClicked;
-        })
+        !uuidsClicked.some((uuidClicked) =>  uuidHovered===uuidClicked)
       ) {
-        // console.log(uuidHovered);
         map.addLayer({
           id: `unclustered-point-${uuidHovered}`,
           type: "circle",
@@ -317,22 +314,22 @@ const Map = ({
             "circle-stroke-color": "#009CE1",
           },
         });
-        // Get the current map style
-        const style = map.getStyle();
-        // Retrieve the layers from the style
-        const layers = style.layers;
-        // Now you have an array of layers
-        // console.log(layers);
-        layers.forEach((layer) => {
-          if (
-            layer.id.startsWith("unclustered-point-") &&
-            layer.id !== `unclustered-point-${uuidHovered}` &&
-            !uuidsClicked.some((uuidClicked)=>{layer.id === `unclustered-point-${uuidClicked}`})
-          ) {
-            map.removeLayer(layer.id);
-          }
-        });
       }
+      // Get the current map style
+      const style = map.getStyle();
+      // Retrieve the layers from the style
+      const layers = style.layers;
+      // Now you have an array of layers
+      // console.log(layers);
+      layers.forEach((layer) => {
+        if (
+          layer.id.startsWith("unclustered-point-") &&
+          layer.id !== `unclustered-point-${uuidHovered}` &&
+          !uuidsClicked.some((uuidClicked)=>layer.id === `unclustered-point-${uuidClicked}`)
+        ) {
+          map.removeLayer(layer.id);
+        }
+      });
     }
   }, [isLoading, uuidHovered]);
 
@@ -659,12 +656,12 @@ const Map = ({
 
     setUuidsClicked(clickedChildCareUuids);
 
-    if (!map.getLayer(`unclustered-point-${clickedChildCareUuids[0]}`)) {
+    if (!map.getLayer(`unclustered-point-${uuid}`)) {
       map.addLayer({
-        id: `unclustered-point-${clickedChildCareUuids[0]}`,
+        id: `unclustered-point-${uuid}`,
         type: "circle",
         source: "childCaresInteraction",
-        filter: ["==", "uuid", clickedChildCareUuids[0]],
+        filter: ["==", "uuid", uuid],
         paint: {
           "circle-color": "#F8DB6F",
           "circle-radius": 7,
@@ -682,7 +679,7 @@ const Map = ({
       layers.forEach((layer) => {
         if (
           layer.id.startsWith("unclustered-point-") &&
-          layer.id !== `unclustered-point-${clickedChildCareUuids[0]}`
+          layer.id !== `unclustered-point-${uuid}`
         ) {
           map.removeLayer(layer.id);
         }

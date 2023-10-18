@@ -13,20 +13,39 @@ const AboutPage = () => {
       return (
         <div>
             The Child Hare is a nimble companion with long ears, designed to assist you in discovering child care options for your kids in Alberta, Canada. This app is optimized for both small and desktop screens. With it, you can zoom into specific areas of interest, apply filters, search for child care facilities, and access detailed information, including Google reviews and photos.
-          {/* <h1>About {data.name}</h1>
-          <img src={data.headshot} alt={data.name} />
-    
-          <h2>Contact</h2>
-          <p>Email: <a href={`mailto:${data.email}`}>{data.email}</a></p>
-    
-          <h2>About Me</h2>
-          <p>{data.bio}</p>
-    
-          <h2>Location</h2>
-          <p>{data.location}</p>
-    
-          <h2>Logo</h2>
-          <img src={data.logo} alt="Logo" /> */}
+            <div>
+      <header>
+        <h1>About Us</h1>
+      </header>
+      <main>
+        <section>
+          <h2>Our Story</h2>
+          <p>
+            Welcome to our about page! Here, we'll share our journey, mission, and values with you.
+          </p>
+        </section>
+
+        <section>
+          <h2>Our Mission</h2>
+          <p>
+            Our mission is to provide the best products/services to our customers and make the world a better place.
+          </p>
+        </section>
+
+        <section>
+          <h2>Meet the Team</h2>
+          <ul>
+            <li>John Doe - CEO</li>
+            <li>Jane Smith - CTO</li>
+            <li>Alice Johnson - COO</li>
+          </ul>
+        </section>
+      </main>
+
+      <footer>
+        <p>&copy; 2023 Company Name</p>
+      </footer>
+    </div>
         </div>
       );
 }

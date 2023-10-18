@@ -45,7 +45,8 @@ export default function Navigation() {
                       src="https://i.imgur.com/y31tNGJ.png"
                       alt="Your Company"
                     />
-
+                  </Link>
+                  <Link href="/">
                     <div className="ml-4">
                       <div className="text-md text-sky-900">Child Hare</div>
                       <div className="text-xs text-gray-200">Your child care finder</div>

@@ -38,21 +38,19 @@ export default function Navigation() {
                 </Disclosure.Button>
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                <div className="flex flex-shrink-0 items-center">
-                  <Link href="/">
+                <Link href="/">
+                  <div className="flex flex-shrink-0 items-center">
                     <img
                       className="h-8 w-auto"
                       src="https://i.imgur.com/y31tNGJ.png"
                       alt="Your Company"
                     />
-                  </Link>
-                  <Link href="/">
                     <div className="ml-4">
                       <div className="text-md text-sky-900">Child Hare</div>
                       <div className="text-xs text-gray-200">Your child care finder</div>
                     </div>
-                  </Link>
-                </div>
+                  </div>
+                </Link>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (

@@ -5,26 +5,8 @@ import Avatar from "@mui/material/Avatar";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import LanguageIcon from "@mui/icons-material/Language";
-import CssBaseline from "@mui/material/CssBaseline";
-import BottomNavigation from "@mui/material/BottomNavigation";
-import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import RestoreIcon from "@mui/icons-material/Restore";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import ArchiveIcon from "@mui/icons-material/Archive";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
-import ListItemText from "@mui/material/ListItemText";
 
 const AboutPage = () => {
-  const data = {
-    name: "Aleksandr (Alex) Stepanov",
-    email: "stepanov.hw@gmail.com",
-    headshot: "https://i.imgur.com/7BssNrB.jpg",
-    logo: "https://i.imgur.com/UrCB4To.png",
-    location: "Calgary, AB",
-    bio: "I am a results-oriented, agile-driven Product Owner, focused on UX design and customer needs in a fast-paced and demanding environment. 5 years of Canadian and international software product management and technical sales experience, supplemented with a petroleum engineering background, informs everything that I do: from my ability to adjust plans quickly to finding efficient, concise solutions for challenging problems, ensuring optimal outcomes for both product users and business growth.",
-  };
 
   return (
     <div className="bg-gray-100 min-h-screen">
@@ -59,7 +41,7 @@ const AboutPage = () => {
 
           <Avatar
             alt="Alex Stepanov"
-            src={data.headshot}
+            src="https://i.imgur.com/7BssNrB.jpg"
             sx={{ width: 136, height: 136 }}
             className="mr-2"
           />

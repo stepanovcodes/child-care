@@ -9625,10 +9625,9 @@ const dataArray = data.map((item) => {
 })
 
 require("dotenv").config();
-const BASE_URL = `${process.env.NODE_BASE_URL}/childcares`;
+const BASE_URL = `${process.env.NODE_PRODUCTION_BASE_URL}/childcares`;
 
 create(dataArray)
-// console.log(uniqueElements(dataArray));
 
 
 async function create(dataArray) {
@@ -9661,14 +9660,3 @@ async function create(dataArray) {
        throw new Error('Invalid Request');
     }
  }
-
- function uniqueElements(arr) {
-    const arr1=arr.map((item) => item.type)
-    // Create a Set from the array to automatically remove duplicates
-    const uniqueSet = new Set(arr1);
-  
-    // Convert the Set back to an array to maintain the order of elements
-    const uniqueArray = [...uniqueSet];
-  
-    return uniqueArray;
-  }

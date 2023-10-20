@@ -7,6 +7,7 @@ import Modal from "@/app/components/Modal";
 import Filter from "@/app/components/Filter";
 import FilterSettings from "@/app/components/FilterSettings";
 import ResponsiveComponent from "@/app/components/ResponsiveComponent";
+import DetailsDialog from "@/app/components/DetailsDialog";
 
 const ChildCaresWrapper = ({ childCares }) => {
   const [cardData, setCardData] = useState([]);
@@ -26,6 +27,7 @@ const ChildCaresWrapper = ({ childCares }) => {
   const [includeWoReviews, setIncludeWoReviews] = useState(true);
   const [searchInput, setSearchInput] = useState("");
   const [openSwipeableDrawer, setOpenSwipeableDrawer] = useState(false);
+  const [openDetailsDialog, setOpenDetailsDialog] = useState(false);
 
   const handleCardMouseEnter = (uuid) => {
     setUuidHovered(uuid);
@@ -42,7 +44,8 @@ const ChildCaresWrapper = ({ childCares }) => {
     setChildCareDetails(details);
     // console.log(details)
     setTimeout(() => {
-      document.getElementById("my_modal_2").showModal();
+      setOpenDetailsDialog(true)
+      // document.getElementById("my_modal_2").showModal();
     }, 1); // Delay for 1 second (1000 milliseconds)
   };
 
@@ -64,8 +67,8 @@ const ChildCaresWrapper = ({ childCares }) => {
           selectedChips={selectedChips}
           includeWoReviews={includeWoReviews}
           searchInput={searchInput}
-          uuidShowOnMap = {uuidShowOnMap}
-          setUuidShowOnMap = {setUuidShowOnMap}
+          uuidShowOnMap={uuidShowOnMap}
+          setUuidShowOnMap={setUuidShowOnMap}
         />
         <div
           onClick={() => document.getElementById("filter_settings").showModal()}
@@ -80,20 +83,6 @@ const ChildCaresWrapper = ({ childCares }) => {
         </div>
       </div>
       <div className="w-full sm:w-1/2 md:w-1/3 xl:w-1/4">
-        {/* <CardList
-          childCares={cardData}
-          uuidsClicked={uuidsClicked}
-          uuidHovered={uuidHovered}
-          handleCardMouseEnter={handleCardMouseEnter}
-          handleCardMouseLeave={handleCardMouseLeave}
-          handleShowModel={handleShowModel}
-          ratingValue={ratingValue}
-          capacityValue={capacityValue}
-          selectedChips={selectedChips}
-          includeWoReviews={includeWoReviews}
-          searchInput={searchInput}
-          setSearchInput={setSearchInput}
-        /> */}
         <ResponsiveComponent
           childCares={cardData}
           uuidsClicked={uuidsClicked}
@@ -111,11 +100,20 @@ const ChildCaresWrapper = ({ childCares }) => {
           setOpenSwipeableDrawer={setOpenSwipeableDrawer}
         />
       </div>
-      <Modal
+      {/* <Modal
         childCareDetails={childCareDetails}
         handleCloseModel={handleCloseModel}
         setOpenSwipeableDrawer={setOpenSwipeableDrawer}
         setUuidShowOnMap={setUuidShowOnMap}
+      /> */}
+
+      <DetailsDialog
+        childCareDetails={childCareDetails}
+        handleCloseModel={handleCloseModel}
+        setOpenSwipeableDrawer={setOpenSwipeableDrawer}
+        setUuidShowOnMap={setUuidShowOnMap}
+        openDetailsDialog={openDetailsDialog}
+        setOpenDetailsDialog={setOpenDetailsDialog}
       />
 
       <FilterSettings

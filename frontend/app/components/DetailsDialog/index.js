@@ -61,7 +61,10 @@ export default function DetailsDialog({
         onClose={handleClose}
         TransitionComponent={Transition}
       >
-        <AppBar style={{backgroundColor: "#009CE1"}} sx={{ position: "relative" }}>
+        <AppBar
+          style={{ backgroundColor: "#009CE1" }}
+          sx={{ position: "relative" }}
+        >
           <Toolbar>
             <IconButton
               edge="start"
@@ -143,45 +146,10 @@ export default function DetailsDialog({
               </div>
             </div>
 
-            {childCareDetails?.Reviews.length > 0 ? (
-              <>
-                <Divider className="pt-4" />
-                <h4 className="font-bold text-m pt-4">Google reviews:</h4>
-              </>
-            ) : (
-              ""
-            )}
-            {childCareDetails?.Reviews.slice()
-              .sort((a, b) => b.time - a.time)
-              .map((review) => (
-                <div key={review.uuid} className="pt-4">
-                  <div className="flex items-center">
-                    <div className="avatar">
-                      <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                        <img src={review.profilePhotoUrl} alt="User Avatar" />
-                      </div>
-                    </div>
-                    <div>
-                      <p className="ml-4 text-m">{review.authorName}</p>
-                      <div className="ml-4">
-                        <HeartRating
-                          value={review.rating}
-                          userRatingsTotal={null}
-                        />
-                      </div>
-                      <p className="ml-4 text-gray-500 text-xs">
-                        {" "}
-                        {convertTime(review.time)}
-                      </p>
-                    </div>
-                  </div>
-                  <p className="pt-2 text-m">{review.text}</p>
-                </div>
-              ))}
             {childCareDetails?.Photos.length > 0 ? (
               <>
                 <Divider className="pt-4" />
-                <h4 className="font-bold text-m pt-4 pb-4">Google photos:</h4>
+                <h4 className="font-bold text-m pt-2 pb-2">Google photos:</h4>
               </>
             ) : (
               ""
@@ -196,6 +164,41 @@ export default function DetailsDialog({
                 </div>
               ))}
             </div>
+              {childCareDetails?.Reviews.length > 0 ? (
+                <>
+                  <Divider className="pt-4" />
+                  <h4 className="font-bold text-m pt-2 pb-2">Google reviews:</h4>
+                </>
+              ) : (
+                ""
+              )}
+              {childCareDetails?.Reviews.slice()
+                .sort((a, b) => b.time - a.time)
+                .map((review) => (
+                  <div key={review.uuid} className="pt-4">
+                    <div className="flex items-center">
+                      <div className="avatar">
+                        <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                          <img src={review.profilePhotoUrl} alt="User Avatar" />
+                        </div>
+                      </div>
+                      <div>
+                        <p className="ml-4 text-m">{review.authorName}</p>
+                        <div className="ml-4">
+                          <HeartRating
+                            value={review.rating}
+                            userRatingsTotal={null}
+                          />
+                        </div>
+                        <p className="ml-4 text-gray-500 text-xs">
+                          {" "}
+                          {convertTime(review.time)}
+                        </p>
+                      </div>
+                    </div>
+                    <p className="pt-2 text-m">{review.text}</p>
+                  </div>
+                ))}
           </div>
         </div>
       </Dialog>

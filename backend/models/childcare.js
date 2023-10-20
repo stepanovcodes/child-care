@@ -12,9 +12,9 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(Photo, {foreignKey: 'placeId', sourceKey: 'placeId'})
       this.hasMany(Review, {foreignKey: 'placeId', sourceKey: 'placeId'})
     }
-    // toJSON() {
-    //   return { ...this.get(), id: undefined };
-    // }
+    toJSON() {
+      return { ...this.get(), id: undefined/*, uuid:undefined, createdAt: undefined, updatedAt: undefined  */};
+    }
   }
   ChildCare.init(
     {

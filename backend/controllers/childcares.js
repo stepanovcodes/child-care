@@ -21,7 +21,7 @@ async function index(req, res, next) {
             [Op.ne]: null,
           },
         },
-        order: [["name", "ASC"]],
+        order: [["id", "ASC"]],
       })
     );
   } catch (error) {

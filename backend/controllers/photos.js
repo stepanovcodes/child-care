@@ -13,7 +13,9 @@ const { Photo } = require("../models");
 async function index(req, res, next) {
   try {
     // get all photos
-    res.json(await Photo.findAll());
+    res.json(await Photo.findAll({
+      order: [["id", "ASC"]],
+    }));
   } catch (error) {
     //send error
     res.status(400).json(error);

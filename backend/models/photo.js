@@ -14,9 +14,9 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(ChildCare, {foreignKey: 'placeId', targetKey: 'placeId'})
     }
 
-    // toJSON() {
-    //   return { ...this.get(), id: undefined };
-    // }
+    toJSON() {
+      return { ...this.get(), id: undefined/*, uuid:undefined, createdAt: undefined, updatedAt: undefined */ };
+    }
 
   }
   Photo.init({

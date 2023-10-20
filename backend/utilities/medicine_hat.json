@@ -1,7 +1,22 @@
 [
     {
-        "id": 2253,
-        "uuid": "e9714b09-bf18-4f72-be2e-75c2549425f6",
+        "name": "APPLE BLOSSOM DAY HOMES",
+        "type": "FAMILY DAY HOME",
+        "address": "BOX 20042, KENSINGTON P.O.",
+        "city": "MEDICINE HAT",
+        "province": "AB",
+        "postalCode": "T1A 8M4",
+        "phoneNumber": "403-526-8194",
+        "googleMapsLink": "https://www.google.com/maps/search/APPLE%20BLOSSOM%20DAY%20HOMES%20BOX%2020042,%20KENSINGTON%20P.O.%20%20MEDICINE%20HAT%20AB%20T1A%208M4",
+        "capacity": 360,
+        "placeId": "ChIJY4STLPssE1MRwZW_lFysqXw",
+        "latitude": 50.0495622,
+        "longitude": -110.6753945,
+        "website": null,
+        "rating": null,
+        "userRatingsTotal": null
+    },
+    {
         "name": "BUILDING BLOCKS CHILDCARE CENTRES #1",
         "type": "DAY CARE (FACILITY-BASED PROGRAM)",
         "address": "2366 SOUTHVIEW DRIVE SE",
@@ -16,13 +31,9 @@
         "longitude": -110.6429978,
         "website": "http://www.bbps.ca/",
         "rating": 3.9,
-        "userRatingsTotal": 27,
-        "createdAt": "2023-09-30T21:00:06.974Z",
-        "updatedAt": "2023-09-30T21:00:15.496Z"
+        "userRatingsTotal": 27
     },
     {
-        "id": 312,
-        "uuid": "9654a2a9-3ba6-42a9-a270-55dd3cfc767d",
         "name": "BUILDING BLOCKS CHILDCARE CENTRES #2",
         "type": "DAY CARE (FACILITY-BASED PROGRAM)",
         "address": "6 SOMERSET WAY SE",
@@ -37,13 +48,9 @@
         "longitude": -110.654398,
         "website": "http://www.bbps.ca/",
         "rating": 4.4,
-        "userRatingsTotal": 5,
-        "createdAt": "2023-09-30T21:00:05.474Z",
-        "updatedAt": "2023-09-30T21:00:15.482Z"
+        "userRatingsTotal": 5
     },
     {
-        "id": 313,
-        "uuid": "595bcb71-e9e8-4868-a2d2-51a98a99f799",
         "name": "BUILDING BLOCKS CHILDCARE CENTRES #3",
         "type": "DAY CARE (FACILITY-BASED PROGRAM)",
         "address": "36 ROSS GLEN ROAD, SE",
@@ -58,13 +65,9 @@
         "longitude": -110.6341395,
         "website": "http://www.bbps.ca/",
         "rating": 5,
-        "userRatingsTotal": 1,
-        "createdAt": "2023-09-30T21:00:05.474Z",
-        "updatedAt": "2023-09-30T21:00:15.478Z"
+        "userRatingsTotal": 1
     },
     {
-        "id": 2246,
-        "uuid": "e7955e94-4f0f-4b46-832c-47bc6f27734d",
         "name": "COLLEGE CHILD CARE SOCIETY OF MEDICINE HAT",
         "type": "FAMILY DAY HOME",
         "address": "299 COLLEGE DR SE",
@@ -79,13 +82,9 @@
         "longitude": -110.6869456,
         "website": null,
         "rating": null,
-        "userRatingsTotal": null,
-        "createdAt": "2023-09-30T21:00:06.971Z",
-        "updatedAt": "2023-09-30T21:00:15.487Z"
+        "userRatingsTotal": null
     },
     {
-        "id": 2255,
-        "uuid": "7bb84fbd-05b1-4bc5-875e-d06a16097f2d",
         "name": "COLLEGE CHILD DEVELOPMENT CENTRE",
         "type": "DAY CARE (FACILITY-BASED PROGRAM)",
         "address": "299 COLLEGE DRIVE SE",
@@ -100,13 +99,9 @@
         "longitude": -110.6854718,
         "website": "http://mhc.ab.ca/",
         "rating": null,
-        "userRatingsTotal": null,
-        "createdAt": "2023-09-30T21:00:06.974Z",
-        "updatedAt": "2023-09-30T21:00:15.480Z"
+        "userRatingsTotal": null
     },
     {
-        "id": 473,
-        "uuid": "c55f69ac-d1d0-4dca-b097-672efa5ffc2b",
         "name": "CRAYON ACADEMY INC.",
         "type": "DAY CARE (FACILITY-BASED PROGRAM)",
         "address": "155 11 ST SW (IN PORTABLES)",
@@ -121,13 +116,9 @@
         "longitude": -110.6906905,
         "website": null,
         "rating": 5,
-        "userRatingsTotal": 2,
-        "createdAt": "2023-09-30T21:00:05.578Z",
-        "updatedAt": "2023-09-30T21:00:15.488Z"
+        "userRatingsTotal": 2
     },
     {
-        "id": 2250,
-        "uuid": "09286a2a-1620-4d67-94b1-fd269d75f73e",
         "name": "CRAYON ACADEMY INC. - SE",
         "type": "DAY CARE (FACILITY-BASED PROGRAM)",
         "address": "379 ABERDEEN STREET, SE",
@@ -142,13 +133,9 @@
         "longitude": -110.6778008,
         "website": null,
         "rating": 5,
-        "userRatingsTotal": 1,
-        "createdAt": "2023-09-30T21:00:06.971Z",
-        "updatedAt": "2023-09-30T21:00:15.495Z"
+        "userRatingsTotal": 1
     },
     {
-        "id": 2244,
-        "uuid": "014f294c-8369-49dd-9a8a-01cd9c60202e",
         "name": "CRAYON CHILDCARE CAMPUS LTD",
         "type": "DAY CARE (FACILITY-BASED PROGRAM)",
         "address": "278 CARRY DRVIE SE",
@@ -163,13 +150,9 @@
         "longitude": -110.6345823,
         "website": null,
         "rating": null,
-        "userRatingsTotal": null,
-        "createdAt": "2023-09-30T21:00:06.971Z",
-        "updatedAt": "2023-09-30T21:00:15.497Z"
+        "userRatingsTotal": null
     },
     {
-        "id": 2256,
-        "uuid": "4c179969-c0a2-4a22-83aa-998aa9fa5ff6",
         "name": "DRAGONS & BUTTERFLIES CREATIVE PRESCHOOL",
         "type": "DAY CARE (FACILITY-BASED PROGRAM)",
         "address": "2480 - 16 AVENUE SE",
@@ -184,13 +167,9 @@
         "longitude": -110.6604684,
         "website": null,
         "rating": null,
-        "userRatingsTotal": null,
-        "createdAt": "2023-09-30T21:00:06.974Z",
-        "updatedAt": "2023-09-30T21:00:15.485Z"
+        "userRatingsTotal": null
     },
     {
-        "id": 567,
-        "uuid": "230af396-8884-4935-9382-dba32f7cae36",
         "name": "DRAGONS AND BUTTERFLIES CREATIVE PRESCHOOL #2",
         "type": "DAY CARE (FACILITY-BASED PROGRAM)",
         "address": "163 SPRAGUE WAY SE",
@@ -205,13 +184,9 @@
         "longitude": -110.6788691,
         "website": "https://www.dragonsandbutterfliespreschool.ca/",
         "rating": 4,
-        "userRatingsTotal": 5,
-        "createdAt": "2023-09-30T21:00:05.623Z",
-        "updatedAt": "2023-09-30T21:00:15.489Z"
+        "userRatingsTotal": 5
     },
     {
-        "id": 2241,
-        "uuid": "7de6bafc-5a9b-4e67-835d-c67a1b9db29e",
         "name": "FAMILY Y.M.C.A. JOHN MILLAR CHILD DEVELOPMENT CENTRE",
         "type": "DAY CARE (FACILITY-BASED PROGRAM)",
         "address": "1721 21 STREET SE",
@@ -226,13 +201,9 @@
         "longitude": -110.6583383,
         "website": "https://medicinehatymca.ca/early-years",
         "rating": 5,
-        "userRatingsTotal": 2,
-        "createdAt": "2023-09-30T21:00:06.971Z",
-        "updatedAt": "2023-09-30T21:00:15.492Z"
+        "userRatingsTotal": 2
     },
     {
-        "id": 2247,
-        "uuid": "32bd584f-386a-446e-897d-1ed14ed35fbf",
         "name": "KIDS CONNECTION 2",
         "type": "DAY CARE (FACILITY-BASED PROGRAM)",
         "address": "103-450 VISTA DRIVE SE",
@@ -247,13 +218,9 @@
         "longitude": -110.6811676,
         "website": "http://kidsconnectiondaycare.ca/",
         "rating": 4.5,
-        "userRatingsTotal": 6,
-        "createdAt": "2023-09-30T21:00:06.971Z",
-        "updatedAt": "2023-09-30T21:00:15.718Z"
+        "userRatingsTotal": 6
     },
     {
-        "id": 2238,
-        "uuid": "7f9353ba-941b-4ff2-86e5-ed2fc0ffbeac",
         "name": "KIDS CONNECTION DAYCARE",
         "type": "OUT OF SCHOOL CARE (FACILITY-BASED PROGRAM)",
         "address": "UNIT 104 - 450 VISTA DRIVE SE",
@@ -268,13 +235,9 @@
         "longitude": -110.6811676,
         "website": "http://kidsconnectiondaycare.ca/",
         "rating": 4.5,
-        "userRatingsTotal": 6,
-        "createdAt": "2023-09-30T21:00:06.965Z",
-        "updatedAt": "2023-09-30T21:00:15.602Z"
+        "userRatingsTotal": 6
     },
     {
-        "id": 988,
-        "uuid": "19a1324f-5e8c-4b3f-8108-fe2b36a6267b",
         "name": "KIDS CONNECTION DAYCARE",
         "type": "DAY CARE (FACILITY-BASED PROGRAM)",
         "address": "UNIT 104 - 450 VISTA DRIVE SE",
@@ -289,13 +252,9 @@
         "longitude": -110.6811676,
         "website": "http://kidsconnectiondaycare.ca/",
         "rating": 4.5,
-        "userRatingsTotal": 6,
-        "createdAt": "2023-09-30T21:00:05.921Z",
-        "updatedAt": "2023-09-30T21:00:15.530Z"
+        "userRatingsTotal": 6
     },
     {
-        "id": 2251,
-        "uuid": "d8e4e631-5aa3-4a87-be41-e68d4f080f9d",
         "name": "KIDSPLAY PRESCHOOL LTD.",
         "type": "DAY CARE (FACILITY-BASED PROGRAM)",
         "address": "164 STRATTON WAY, SE",
@@ -310,13 +269,9 @@
         "longitude": -110.6811337,
         "website": "http://kidsplaypreschool.ca/",
         "rating": 4.3,
-        "userRatingsTotal": 3,
-        "createdAt": "2023-09-30T21:00:06.974Z",
-        "updatedAt": "2023-09-30T21:00:15.490Z"
+        "userRatingsTotal": 3
     },
     {
-        "id": 2254,
-        "uuid": "2a73635d-d7ec-4a2a-82fb-d4f8218f4ad0",
         "name": "KIDSPLAY PRESCHOOL LTD. 2",
         "type": "DAY CARE (FACILITY-BASED PROGRAM)",
         "address": "68 RICE DRIVE, SE",
@@ -331,13 +286,9 @@
         "longitude": -110.6294821,
         "website": null,
         "rating": null,
-        "userRatingsTotal": null,
-        "createdAt": "2023-09-30T21:00:06.974Z",
-        "updatedAt": "2023-09-30T21:00:15.484Z"
+        "userRatingsTotal": null
     },
     {
-        "id": 2242,
-        "uuid": "eb371f5d-4817-4302-8cac-239ff097064c",
         "name": "LAWSON FAMILY DAY HOMES",
         "type": "FAMILY DAY HOME",
         "address": "302 SOMERSET ROAD SE",
@@ -352,13 +303,9 @@
         "longitude": -110.6564599,
         "website": null,
         "rating": null,
-        "userRatingsTotal": null,
-        "createdAt": "2023-09-30T21:00:06.971Z",
-        "updatedAt": "2023-09-30T21:00:15.568Z"
+        "userRatingsTotal": null
     },
     {
-        "id": 2257,
-        "uuid": "3cea39cd-db1d-4630-99e1-575598facf21",
         "name": "LES JOYEUX COLIBRIS",
         "type": "DAY CARE (FACILITY-BASED PROGRAM)",
         "address": "20 SAAMIS ROTARY WAY SW",
@@ -373,34 +320,9 @@
         "longitude": -110.6883612,
         "website": null,
         "rating": null,
-        "userRatingsTotal": null,
-        "createdAt": "2023-09-30T21:00:06.974Z",
-        "updatedAt": "2023-09-30T21:00:15.451Z"
+        "userRatingsTotal": null
     },
     {
-        "id": 2258,
-        "uuid": "ed6140b2-be8b-48fd-b274-dea9e91621d0",
-        "name": "LITTLE OWL LEARNING CENTRE INC.",
-        "type": "OUT OF SCHOOL CARE (FACILITY-BASED PROGRAM)",
-        "address": "101 6TH STREET SE",
-        "city": "MEDICINE HAT",
-        "province": "AB",
-        "postalCode": "T1A 1G7",
-        "phoneNumber": "403-527-9934",
-        "googleMapsLink": "https://www.google.com/maps/search/LITTLE%20OWL%20LEARNING%20CENTRE%20INC.%20101%206TH%20STREET%20SE%20%20MEDICINE%20HAT%20AB%20T1A%201G7",
-        "capacity": 101,
-        "placeId": "ChIJJ4gVE1csE1MRIf2t8hc5TDY",
-        "latitude": 50.0329025,
-        "longitude": -110.6841368,
-        "website": "http://www.littleowllearningcentre.ca/",
-        "rating": 5,
-        "userRatingsTotal": 17,
-        "createdAt": "2023-09-30T21:00:06.974Z",
-        "updatedAt": "2023-09-30T21:00:15.561Z"
-    },
-    {
-        "id": 2245,
-        "uuid": "3c3d4e72-5ea4-4e1b-bb83-e377c699c4b9",
         "name": "LITTLE OWL LEARNING CENTRE INC.",
         "type": "DAY CARE (FACILITY-BASED PROGRAM)",
         "address": "101 6TH STREET SE",
@@ -415,13 +337,26 @@
         "longitude": -110.6841368,
         "website": "http://www.littleowllearningcentre.ca/",
         "rating": 5,
-        "userRatingsTotal": 17,
-        "createdAt": "2023-09-30T21:00:06.971Z",
-        "updatedAt": "2023-09-30T21:00:15.580Z"
+        "userRatingsTotal": 17
     },
     {
-        "id": 2259,
-        "uuid": "9ec8d483-1f3b-4ace-9020-d01dc621817b",
+        "name": "LITTLE OWL LEARNING CENTRE INC.",
+        "type": "OUT OF SCHOOL CARE (FACILITY-BASED PROGRAM)",
+        "address": "101 6TH STREET SE",
+        "city": "MEDICINE HAT",
+        "province": "AB",
+        "postalCode": "T1A 1G7",
+        "phoneNumber": "403-527-9934",
+        "googleMapsLink": "https://www.google.com/maps/search/LITTLE%20OWL%20LEARNING%20CENTRE%20INC.%20101%206TH%20STREET%20SE%20%20MEDICINE%20HAT%20AB%20T1A%201G7",
+        "capacity": 101,
+        "placeId": "ChIJJ4gVE1csE1MRIf2t8hc5TDY",
+        "latitude": 50.0329025,
+        "longitude": -110.6841368,
+        "website": "http://www.littleowllearningcentre.ca/",
+        "rating": 5,
+        "userRatingsTotal": 17
+    },
+    {
         "name": "MEDICINE HAT MONTESSORI PRESCHOOL",
         "type": "DAY CARE (FACILITY-BASED PROGRAM)",
         "address": "525D WASHINGTON AVENUE, SE",
@@ -436,13 +371,9 @@
         "longitude": -110.6592263,
         "website": null,
         "rating": 4.5,
-        "userRatingsTotal": 2,
-        "createdAt": "2023-09-30T21:00:06.974Z",
-        "updatedAt": "2023-09-30T21:00:15.553Z"
+        "userRatingsTotal": 2
     },
     {
-        "id": 2261,
-        "uuid": "79c31225-f833-4203-9ab6-3f0f9d3c5db9",
         "name": "MONKEY BUSINESS DAY HOMES INC.",
         "type": "FAMILY DAY HOME",
         "address": "70B 8 STREET NW",
@@ -457,13 +388,9 @@
         "longitude": -110.6890315,
         "website": null,
         "rating": null,
-        "userRatingsTotal": null,
-        "createdAt": "2023-09-30T21:00:06.982Z",
-        "updatedAt": "2023-09-30T21:00:15.475Z"
+        "userRatingsTotal": null
     },
     {
-        "id": 2237,
-        "uuid": "0e953563-d393-488b-8215-386555d8065f",
         "name": "MONTESSORI CHILDREN'S HOUSE",
         "type": "DAY CARE (FACILITY-BASED PROGRAM)",
         "address": "343 CAMBRIDGE ST. SE",
@@ -478,13 +405,9 @@
         "longitude": -110.6767765,
         "website": null,
         "rating": 3.4,
-        "userRatingsTotal": 8,
-        "createdAt": "2023-09-30T21:00:06.965Z",
-        "updatedAt": "2023-09-30T21:00:15.549Z"
+        "userRatingsTotal": 8
     },
     {
-        "id": 2239,
-        "uuid": "479eb176-a681-4fe1-ab64-4fe4a920da2a",
         "name": "MOTHER NATURE'S PRESCHOOL LTD",
         "type": "DAY CARE (FACILITY-BASED PROGRAM)",
         "address": "2803 - 13 AVENUE, SE",
@@ -499,13 +422,26 @@
         "longitude": -110.6638834,
         "website": "http://www.mothernaturespreschool.ca/",
         "rating": 5,
-        "userRatingsTotal": 1,
-        "createdAt": "2023-09-30T21:00:06.965Z",
-        "updatedAt": "2023-09-30T21:00:15.520Z"
+        "userRatingsTotal": 1
     },
     {
-        "id": 2240,
-        "uuid": "f881a668-c11b-46df-95de-313472c77e83",
+        "name": "MUSASA TREE HOUSE INNOVATIVE FUNDED PROGRAM",
+        "type": "DAY CARE (FACILITY-BASED PROGRAM)",
+        "address": "SEE FILE",
+        "city": "MEDICINE HAT",
+        "province": "AB",
+        "postalCode": "T1A 8G8",
+        "phoneNumber": "403-527-8223",
+        "googleMapsLink": "https://www.google.com/maps/search/MUSASA%20TREE%20HOUSE%20INNOVATIVE%20FUNDED%20PROGRAM%20SEE%20FILE%20%20MEDICINE%20HAT%20AB%20T1A%208G8",
+        "capacity": 30,
+        "placeId": "ChIJz-diuAAtE1MREvuFGYuiJwo",
+        "latitude": 50.0245106,
+        "longitude": -110.6747667,
+        "website": null,
+        "rating": null,
+        "userRatingsTotal": null
+    },
+    {
         "name": "NATURES WAY LEARNING CENTRE INC.",
         "type": "DAY CARE (FACILITY-BASED PROGRAM)",
         "address": "147 6TH STREET SE",
@@ -520,13 +456,9 @@
         "longitude": -110.6835283,
         "website": null,
         "rating": 4,
-        "userRatingsTotal": 4,
-        "createdAt": "2023-09-30T21:00:06.965Z",
-        "updatedAt": "2023-09-30T21:00:15.550Z"
+        "userRatingsTotal": 4
     },
     {
-        "id": 2260,
-        "uuid": "0338825f-6eda-48b9-99f8-336bb29e6069",
         "name": "PITTER PATTER EARLY LEARNING CENTER",
         "type": "DAY CARE (FACILITY-BASED PROGRAM)",
         "address": "423 - 4TH STREET SE",
@@ -541,13 +473,26 @@
         "longitude": -110.6780724,
         "website": "https://pitterpatterelc.wixsite.com/pitterpatter",
         "rating": 5,
-        "userRatingsTotal": 1,
-        "createdAt": "2023-09-30T21:00:06.974Z",
-        "updatedAt": "2023-09-30T21:00:15.517Z"
+        "userRatingsTotal": 1
     },
     {
-        "id": 2243,
-        "uuid": "64bbff64-6f02-46af-b624-90b9e8c50cd0",
+        "name": "RISING STARS LEARNING CENTRE INC",
+        "type": "DAY CARE (FACILITY-BASED PROGRAM)",
+        "address": "720-6TH STREET SE",
+        "city": "MEDICINE HAT",
+        "province": "AB",
+        "postalCode": "T1A 4J5",
+        "phoneNumber": "403-527-4500",
+        "googleMapsLink": "https://www.google.com/maps/search/RISING%20STARS%20LEARNING%20CENTRE%20INC%20720-6TH%20STREET%20SE%20%20MEDICINE%20HAT%20AB%20T1A%204J5",
+        "capacity": 38,
+        "placeId": "ChIJf85TtcgtE1MRNRO411KsS5Q",
+        "latitude": 50.0335605,
+        "longitude": -110.7042433,
+        "website": null,
+        "rating": 5,
+        "userRatingsTotal": 2
+    },
+    {
         "name": "RISING STARS LEARNING CENTRE INC",
         "type": "OUT OF SCHOOL CARE (FACILITY-BASED PROGRAM)",
         "address": "720-6TH STREET SE",
@@ -562,34 +507,9 @@
         "longitude": -110.7042433,
         "website": null,
         "rating": 5,
-        "userRatingsTotal": 2,
-        "createdAt": "2023-09-30T21:00:06.971Z",
-        "updatedAt": "2023-09-30T21:00:15.531Z"
+        "userRatingsTotal": 2
     },
     {
-        "id": 2249,
-        "uuid": "6ed97c50-65ff-49ba-a808-e5b822ac26f5",
-        "name": "RISING STARS LEARNING CENTRE INC",
-        "type": "DAY CARE (FACILITY-BASED PROGRAM)",
-        "address": "720-6TH STREET SE",
-        "city": "MEDICINE HAT",
-        "province": "AB",
-        "postalCode": "T1A 4J5",
-        "phoneNumber": "403-527-4500",
-        "googleMapsLink": "https://www.google.com/maps/search/RISING%20STARS%20LEARNING%20CENTRE%20INC%20720-6TH%20STREET%20SE%20%20MEDICINE%20HAT%20AB%20T1A%204J5",
-        "capacity": 38,
-        "placeId": "ChIJf85TtcgtE1MRNRO411KsS5Q",
-        "latitude": 50.0335605,
-        "longitude": -110.7042433,
-        "website": null,
-        "rating": 5,
-        "userRatingsTotal": 2,
-        "createdAt": "2023-09-30T21:00:06.971Z",
-        "updatedAt": "2023-09-30T21:00:15.534Z"
-    },
-    {
-        "id": 2248,
-        "uuid": "d497f003-30ce-4233-8d8f-f3ac897c85a0",
         "name": "YMCA CRESCENT HEIGHTS CHILD DEVELOPMENT CENTRE",
         "type": "DAY CARE (FACILITY-BASED PROGRAM)",
         "address": "1707 7 AVENUE NE",
@@ -604,8 +524,6 @@
         "longitude": -110.6704459,
         "website": null,
         "rating": 4.2,
-        "userRatingsTotal": 5,
-        "createdAt": "2023-09-30T21:00:06.971Z",
-        "updatedAt": "2023-09-30T21:00:15.527Z"
+        "userRatingsTotal": 5
     }
 ]

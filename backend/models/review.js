@@ -12,9 +12,9 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(ChildCare, {foreignKey: 'placeId', targetKey: 'placeId'})
     }
 
-    // toJSON() {
-    //   return { ...this.get(), id: undefined };
-    // }
+    toJSON() {
+      return { ...this.get(), id: undefined, uuid:undefined, createdAt: undefined, updatedAt: undefined  };
+    }
   }
   Review.init(
     {
@@ -39,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
       },
       text: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
       },
       time: {
         type: DataTypes.INTEGER,

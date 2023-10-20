@@ -30,7 +30,7 @@ module.exports = {
         type: DataTypes.STRING,
       },
       text: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
       },
       time: {
         type: DataTypes.INTEGER,

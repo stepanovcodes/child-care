@@ -13,7 +13,9 @@ const { Review } = require("../models");
 async function index(req, res, next) {
   try {
     // get all photos
-    res.json(await Review.findAll());
+    res.json(await Review.findAll({
+      order: [["id", "ASC"]],
+    }));
   } catch (error) {
     //send error
     res.status(400).json(error);

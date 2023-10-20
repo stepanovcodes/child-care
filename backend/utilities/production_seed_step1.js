@@ -9619,6 +9619,11 @@ const dataArray = data.map((item) => {
             googleMapsLink: item.googleMapsLink,
             capacity: item.capacity,
             placeId: item.placeId,
+            latitude: item.latitude,
+            longitude: item.longitude,
+            website: item.website,
+            rating: item.rating,
+            userRatingsTotal: item.userRatingsTotal
         }
         
     )

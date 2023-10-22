@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import Card from "@/app/components/Card";
+import MunicipalCard from "@/app/components/MunicipalCard";
 import "./CardList.css";
 import { FixedSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
@@ -123,15 +124,28 @@ const CardList = ({
               >
                 {({ index, style }) => (
                   <div style={style}>
+                    {filteredChildCares[index].type === "Municipal home-based child care" ?
+                    <MunicipalCard
+                    key={index}
+                    childCare={filteredChildCares[index]}
+                    uuidHovered={uuidHovered}
+                    uuidsClicked={uuidsClicked}
+                    handleCardMouseEnter={handleCardMouseEnter}
+                    handleCardMouseLeave={handleCardMouseLeave}
+                    handleShowModel={handleShowModel}
+                  />
+                    :
                     <Card
-                      key={index}
-                      childCare={filteredChildCares[index]}
-                      uuidHovered={uuidHovered}
-                      uuidsClicked={uuidsClicked}
-                      handleCardMouseEnter={handleCardMouseEnter}
-                      handleCardMouseLeave={handleCardMouseLeave}
-                      handleShowModel={handleShowModel}
-                    />
+                    key={index}
+                    childCare={filteredChildCares[index]}
+                    uuidHovered={uuidHovered}
+                    uuidsClicked={uuidsClicked}
+                    handleCardMouseEnter={handleCardMouseEnter}
+                    handleCardMouseLeave={handleCardMouseLeave}
+                    handleShowModel={handleShowModel}
+                  />
+                    }
+                    
                   </div>
                 )}
               </List>

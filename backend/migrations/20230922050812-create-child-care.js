@@ -35,15 +35,12 @@ module.exports = {
       },
       postalCode: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
       phoneNumber: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
       googleMapsLink: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
       capacity: {
         type: DataTypes.INTEGER,
@@ -66,6 +63,12 @@ module.exports = {
       },
       userRatingsTotal: {
         type: DataTypes.INTEGER,
+      },
+      expDt: {
+        type: DataTypes.BIGINT,
+      },
+      firstIssDt: {
+        type: DataTypes.BIGINT,
       },
       createdAt: {
         allowNull: false,

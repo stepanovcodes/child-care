@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(Review, {foreignKey: 'placeId', sourceKey: 'placeId'})
     }
     toJSON() {
-      return { ...this.get(), id: undefined/*, uuid:undefined, createdAt: undefined, updatedAt: undefined  */};
+      return { ...this.get(), id: undefined, /* uuid:undefined, createdAt: undefined, updatedAt: undefined */};
     }
   }
   ChildCare.init(
@@ -44,15 +44,12 @@ module.exports = (sequelize, DataTypes) => {
       },
       postalCode: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
       phoneNumber: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
       googleMapsLink: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
       capacity: {
         type: DataTypes.INTEGER,
@@ -75,7 +72,13 @@ module.exports = (sequelize, DataTypes) => {
       },
       userRatingsTotal: {
         type: DataTypes.INTEGER,
-      }
+      },
+      expDt: {
+        type: DataTypes.BIGINT,
+      },
+      firstIssDt: {
+        type: DataTypes.BIGINT,
+      },
     },
     {
       sequelize,

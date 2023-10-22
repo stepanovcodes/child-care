@@ -300,7 +300,7 @@ const Map = ({
       if (
         !map.getLayer(`unclustered-point-${uuidHovered}`) &&
         uuidHovered !== null &&
-        !uuidsClicked.some((uuidClicked) =>  uuidHovered===uuidClicked)
+        !uuidsClicked.some((uuidClicked) => uuidHovered === uuidClicked)
       ) {
         map.addLayer({
           id: `unclustered-point-${uuidHovered}`,
@@ -325,7 +325,9 @@ const Map = ({
         if (
           layer.id.startsWith("unclustered-point-") &&
           layer.id !== `unclustered-point-${uuidHovered}` &&
-          !uuidsClicked.some((uuidClicked)=>layer.id === `unclustered-point-${uuidClicked}`)
+          !uuidsClicked.some(
+            (uuidClicked) => layer.id === `unclustered-point-${uuidClicked}`
+          )
         ) {
           map.removeLayer(layer.id);
         }
@@ -486,20 +488,25 @@ const Map = ({
         layout: {
           "text-field": [
             "case",
-            ["has", "name"],
+            ["==", ["get", "type"], "Municipal home-based child care"],
+            ["get", "address"],
             [
-              "concat",
+              "case",
+              ["has", "name"],
               [
-                "case",
-                ["all", ["has", "rating"], ["!=", ["get", "rating"], null]],
-                ["concat", "❤️", ["get", "rating"], " • "],
-                "",
+                "concat",
+                [
+                  "case",
+                  ["all", ["has", "rating"], ["!=", ["get", "rating"], null]],
+                  ["concat", "❤️", ["get", "rating"], " • "],
+                  "",
+                ],
+                ["get", "name"],
               ],
-              ["get", "name"],
+              "",
             ],
-            "",
           ],
-          "text-variable-anchor": ["left"],
+          "text-variable-anchor": ["left", "top"],
           "text-radial-offset": 1.5,
           "text-justify": "auto",
           "text-size": 9,

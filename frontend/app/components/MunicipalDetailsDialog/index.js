@@ -1,7 +1,6 @@
 import * as React from "react";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
-import Divider from "@mui/material/Divider";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
@@ -11,11 +10,8 @@ import Slide from "@mui/material/Slide";
 import {
   UserIcon,
   HomeIcon,
-  PhoneIcon,
-  GlobeAltIcon,
 } from "@heroicons/react/24/outline";
-import HeartRating from "@/app/components/HeartRating";
-import "./DetailsDialog.css";
+import "./MunicipalDetailsDialog.css";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -26,17 +22,17 @@ export default function DetailsDialog({
   handleCloseModel,
   setOpenSwipeableDrawer,
   setUuidShowOnMap,
-  openDetailsDialog,
-  setOpenDetailsDialog,
+  openMunicipalDetailsDialog,
+  setOpenMunicipalDetailsDialog,
 }) {
-  //   const [openDetailsDialog, setOpenDetailsDialog] = React.useState(false);
+  //   const [openMunicipalDetailsDialog, setOpenMunicipalDetailsDialog] = React.useState(false);
 
   //   const handleClickOpen = () => {
-  //     setOpenDetailsDialog(true);
+  //     setOpenMunicipalDetailsDialog(true);
   //   };
 
   const handleClose = () => {
-    setOpenDetailsDialog(false);
+    setOpenMunicipalDetailsDialog(false);
     handleCloseModel();
   };
 
@@ -46,7 +42,7 @@ export default function DetailsDialog({
     // if (xButton) {
     //   xButton.click();
     // }
-    setOpenDetailsDialog(false);
+    setOpenMunicipalDetailsDialog(false);
     setOpenSwipeableDrawer(false);
   };
 
@@ -57,7 +53,7 @@ export default function DetailsDialog({
       </Button> */}
       <Dialog
         fullScreen
-        open={openDetailsDialog}
+        open={openMunicipalDetailsDialog}
         onClose={handleClose}
         TransitionComponent={Transition}
       >
@@ -86,16 +82,8 @@ export default function DetailsDialog({
           <div className="mx-8 my-4">
             <h3 className="font-bold text-lg">{childCareDetails?.name}</h3>
             <p className="text-gray-500 text-xs">
-              {`${childCareDetails?.address}, ${childCareDetails?.city}, ${childCareDetails?.province} ${childCareDetails?.postalCode}`}
+              {`${childCareDetails?.address}, ${childCareDetails?.city}, ${childCareDetails?.province}`}
             </p>
-            {childCareDetails?.rating !== null ? (
-              <HeartRating
-                value={childCareDetails ? childCareDetails.rating : 0}
-                userRatingsTotal={childCareDetails?.userRatingsTotal}
-              />
-            ) : (
-              ""
-            )}
             <p className="flex text-xs">
               <HomeIcon className="w-4 h-3.5" />
               {childCareDetails?.type}
@@ -104,39 +92,14 @@ export default function DetailsDialog({
               <UserIcon className=" w-4 h-4" />
               {childCareDetails?.capacity}
             </p>
-
             <p className="flex text-sm">
-              <PhoneIcon className="w-4 h-3.5" />
-              {childCareDetails?.phoneNumber}
+              NOTE: For the safety of the provider, City of Calgary shows
+              municipally licenced home-based child care providers only by
+              community without specific addresses
             </p>
-            {childCareDetails?.website ? (
-              <p className="flex text-sm">
-                <GlobeAltIcon className="w-4 h-4" />
-                <a
-                  className="text-blue-600 visited:text-purple-600 text-sm"
-                  href={childCareDetails?.website}
-                  target="_blank"
-                >
-                  {shortenURL(childCareDetails?.website, 20)}
-                </a>
-              </p>
-            ) : (
-              ""
-            )}
 
             <div className="flex">
-              <div>
-                <a
-                  href={`tel:${childCareDetails?.phoneNumber?.replace(
-                    /[^0-9]/g,
-                    ""
-                  )}`}
-                  className="bg-blue-500 text-white px-4 py-2 rounded-md text-sm mt-4 inline-block transition duration-300 hover:bg-blue-600 hover:text-gray-100"
-                >
-                  CALL NOW
-                </a>
-              </div>
-              <div className="pl-8">
+              <div className="">
                 <div
                   onClick={handleShowOnMapClick}
                   className="pl-4 bg-blue-500 text-white px-4 py-2 rounded-md text-sm mt-4 inline-block transition duration-300 hover:bg-blue-600 hover:text-gray-100 hover:cursor-pointer"
@@ -145,61 +108,7 @@ export default function DetailsDialog({
                 </div>
               </div>
             </div>
-
-            {childCareDetails?.Photos.length > 0 ? (
-              <>
-                <Divider className="pt-4" />
-                <h4 className="font-bold text-m pt-2 pb-2">Google photos:</h4>
-              </>
-            ) : (
-              ""
-            )}
-            <div className="photo-grid">
-              {childCareDetails?.Photos.map((photo) => (
-                <div key={photo.uuid} className="photo-item">
-                  <img
-                    src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&maxheight=400&photo_reference=${photo.photoReference}&key=${process.env.NEXT_PUBLIC_GOOGLE_TOKEN}`}
-                    alt="Photo"
-                  />
-                </div>
-              ))}
             </div>
-              {childCareDetails?.Reviews.length > 0 ? (
-                <>
-                  <Divider className="pt-4" />
-                  <h4 className="font-bold text-m pt-2 pb-2">Google reviews:</h4>
-                </>
-              ) : (
-                ""
-              )}
-              {childCareDetails?.Reviews.slice()
-                .sort((a, b) => b.time - a.time)
-                .map((review) => (
-                  <div key={review.uuid} className="pt-4">
-                    <div className="flex items-center">
-                      <div className="avatar">
-                        <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                          <img src={review.profilePhotoUrl} alt="User Avatar" />
-                        </div>
-                      </div>
-                      <div>
-                        <p className="ml-4 text-m">{review.authorName}</p>
-                        <div className="ml-4">
-                          <HeartRating
-                            value={review.rating}
-                            userRatingsTotal={null}
-                          />
-                        </div>
-                        <p className="ml-4 text-gray-500 text-xs">
-                          {" "}
-                          {convertTime(review.time)}
-                        </p>
-                      </div>
-                    </div>
-                    <p className="pt-2 text-m">{review.text}</p>
-                  </div>
-                ))}
-          </div>
         </div>
       </Dialog>
     </div>

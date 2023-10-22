@@ -26,6 +26,7 @@ interface ChildCare {
 const typeReplacements: Record<string, string> = {
   "DAY CARE (FACILITY-BASED PROGRAM)": "Day Care",
   "FAMILY DAY HOME": "Family Day Home",
+  "Municipally licenced private day home": "Municipally Licenced Day Home",
   "GROUP FAMILY CHILD CARE PROGRAM": "Group Family Child Care",
   "PRE-SCHOOL (FACILITY-BASED PROGRAM)": "Preschool",
   "OUT OF SCHOOL CARE (FACILITY-BASED PROGRAM)": "Out of School Care",

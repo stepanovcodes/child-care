@@ -8,6 +8,7 @@ mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN; // Replace with you
 const programTypes = [
   "Day Care",
   "Family Day Home",
+  "Municipally Licenced Day Home",
   "Group Family Child Care",
   "Preschool",
   "Out of School Care",
@@ -207,18 +208,28 @@ const Map = ({
         layout: {
           "text-field": [
             "case",
-            ["has", "name"],
+            ["==", ["get", "type"], "Municipally Licenced Day Home"],
             [
               "concat",
-              [
-                "case",
-                ["all", ["has", "rating"], ["!=", ["get", "rating"], null]],
-                ["concat", "❤️", ["get", "rating"], " • "],
-                "",
-              ],
-              ["get", "name"],
+              "ALL ",
+              ["get", "address"],
+              " MUNICIPALLY LICENCED DAY HOMES",
             ],
-            "",
+            [
+              "case",
+              ["has", "name"],
+              [
+                "concat",
+                [
+                  "case",
+                  ["all", ["has", "rating"], ["!=", ["get", "rating"], null]],
+                  ["concat", "❤️", ["get", "rating"], " • "],
+                  "",
+                ],
+                ["get", "name"],
+              ],
+              "",
+            ],
           ],
           "text-variable-anchor": ["left"],
           "text-radial-offset": 1.5,
@@ -488,8 +499,13 @@ const Map = ({
         layout: {
           "text-field": [
             "case",
-            ["==", ["get", "type"], "Municipal home-based child care"],
-            ["get", "address"],
+            ["==", ["get", "type"], "Municipally Licenced Day Home"],
+            [
+              "concat",
+              "ALL ",
+              ["get", "address"],
+              " MUNICIPALLY LICENCED DAY HOMES",
+            ],
             [
               "case",
               ["has", "name"],
@@ -513,7 +529,7 @@ const Map = ({
           "text-allow-overlap": false,
         },
         paint: {
-          "text-color": "#004161", // Label text color
+          "text-color": "#000000", // Label text color
           "text-halo-color": "#FFF", // Transparent background color
           "text-halo-width": 1, // Halo width for better visibility
         },

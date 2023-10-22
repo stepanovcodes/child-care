@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect } from "react";
 import Card from "@/app/components/Card";
 import MunicipalCard from "@/app/components/MunicipalCard";
 import "./CardList.css";
@@ -9,6 +9,7 @@ import TextField from "@mui/material/TextField";
 const programTypes = [
   "Day Care",
   "Family Day Home",
+  "Municipally Licenced Day Home",
   "Group Family Child Care",
   "Preschool",
   "Out of School Care",
@@ -26,9 +27,8 @@ const CardList = ({
   selectedChips,
   includeWoReviews,
   searchInput,
-  setSearchInput
+  setSearchInput,
 }) => {
-
   const filterOn = !(
     ratingValue[0] === 0 &&
     ratingValue[1] === 5 &&
@@ -46,15 +46,11 @@ const CardList = ({
         ((item.rating >= ratingValue[0] && item.rating !== null) ||
           (includeWoReviews && item.rating === null)) &&
         item.rating <= ratingValue[1] &&
-        ((selectedChips[0] &&
-          item.type === programTypes[0]) ||
+        ((selectedChips[0] && item.type === programTypes[0]) ||
           (selectedChips[1] && item.type === programTypes[1]) ||
-          (selectedChips[2] &&
-            item.type === programTypes[2]) ||
-          (selectedChips[3] &&
-            item.type === programTypes[3]) ||
-          (selectedChips[4] &&
-            item.type === programTypes[4]) ||
+          (selectedChips[2] && item.type === programTypes[2]) ||
+          (selectedChips[3] && item.type === programTypes[3]) ||
+          (selectedChips[4] && item.type === programTypes[4]) ||
           (!selectedChips[0] &&
             !selectedChips[1] &&
             !selectedChips[2] &&
@@ -106,7 +102,9 @@ const CardList = ({
           className="w-full"
         />
         <div className="flex  justify-between">
-          <div className={filterOn ? "text-rose-600 pb-1" : "pb-1"}>({filteredChildCares.length})</div>
+          <div className={filterOn ? "text-rose-600 pb-1" : "pb-1"}>
+            ({filteredChildCares.length})
+          </div>
         </div>
       </div>
 
@@ -124,28 +122,28 @@ const CardList = ({
               >
                 {({ index, style }) => (
                   <div style={style}>
-                    {filteredChildCares[index].type === "Municipal home-based child care" ?
-                    <MunicipalCard
-                    key={index}
-                    childCare={filteredChildCares[index]}
-                    uuidHovered={uuidHovered}
-                    uuidsClicked={uuidsClicked}
-                    handleCardMouseEnter={handleCardMouseEnter}
-                    handleCardMouseLeave={handleCardMouseLeave}
-                    handleShowModel={handleShowModel}
-                  />
-                    :
-                    <Card
-                    key={index}
-                    childCare={filteredChildCares[index]}
-                    uuidHovered={uuidHovered}
-                    uuidsClicked={uuidsClicked}
-                    handleCardMouseEnter={handleCardMouseEnter}
-                    handleCardMouseLeave={handleCardMouseLeave}
-                    handleShowModel={handleShowModel}
-                  />
-                    }
-                    
+                    {filteredChildCares[index].type ===
+                    "Municipally Licenced Day Home" ? (
+                      <MunicipalCard
+                        key={index}
+                        childCare={filteredChildCares[index]}
+                        uuidHovered={uuidHovered}
+                        uuidsClicked={uuidsClicked}
+                        handleCardMouseEnter={handleCardMouseEnter}
+                        handleCardMouseLeave={handleCardMouseLeave}
+                        handleShowModel={handleShowModel}
+                      />
+                    ) : (
+                      <Card
+                        key={index}
+                        childCare={filteredChildCares[index]}
+                        uuidHovered={uuidHovered}
+                        uuidsClicked={uuidsClicked}
+                        handleCardMouseEnter={handleCardMouseEnter}
+                        handleCardMouseLeave={handleCardMouseLeave}
+                        handleShowModel={handleShowModel}
+                      />
+                    )}
                   </div>
                 )}
               </List>

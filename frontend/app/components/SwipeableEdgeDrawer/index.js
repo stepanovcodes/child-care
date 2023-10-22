@@ -18,6 +18,7 @@ import AutoSizer from "react-virtualized-auto-sizer";
 const programTypes = [
   "Day Care",
   "Family Day Home",
+  "Municipally Licenced Day Home",
   "Group Family Child Care",
   "Preschool",
   "Out of School Care",
@@ -63,7 +64,7 @@ function SwipeableEdgeDrawer(props) {
     searchInput,
     setSearchInput,
     openSwipeableDrawer,
-    setOpenSwipeableDrawer
+    setOpenSwipeableDrawer,
   } = props;
 
   const toggleDrawer = (newOpen) => () => {
@@ -91,15 +92,11 @@ function SwipeableEdgeDrawer(props) {
         ((item.rating >= ratingValue[0] && item.rating !== null) ||
           (includeWoReviews && item.rating === null)) &&
         item.rating <= ratingValue[1] &&
-        ((selectedChips[0] &&
-          item.type === programTypes[0]) ||
+        ((selectedChips[0] && item.type === programTypes[0]) ||
           (selectedChips[1] && item.type === programTypes[1]) ||
-          (selectedChips[2] &&
-            item.type === programTypes[2]) ||
-          (selectedChips[3] &&
-            item.type === programTypes[3]) ||
-          (selectedChips[4] &&
-            item.type === programTypes[4]) ||
+          (selectedChips[2] && item.type === programTypes[2]) ||
+          (selectedChips[3] && item.type === programTypes[3]) ||
+          (selectedChips[4] && item.type === programTypes[4]) ||
           (!selectedChips[0] &&
             !selectedChips[1] &&
             !selectedChips[2] &&
@@ -185,23 +182,25 @@ function SwipeableEdgeDrawer(props) {
         >
           <Puller />
           <div className="pl-5 pr-5 flex py-1 items-end justify-start">
-          {openSwipeableDrawer?
-            <TextField
-              id="standard-basic"
-              label="Search"
-              variant="standard"
-              value={searchInput}
-              onChange={(e) => setSearchInput(e.target.value)}
-              className="w-full"
-            />:
-            <TextField
-              id="standard-basic"
-              label="Swipe to Start Searching"
-              variant="standard"
-              value={searchInput}
-              onChange={(e) => setSearchInput(e.target.value)}
-              className="w-full"
-            />}
+            {openSwipeableDrawer ? (
+              <TextField
+                id="standard-basic"
+                label="Search"
+                variant="standard"
+                value={searchInput}
+                onChange={(e) => setSearchInput(e.target.value)}
+                className="w-full"
+              />
+            ) : (
+              <TextField
+                id="standard-basic"
+                label="Swipe to Start Searching"
+                variant="standard"
+                value={searchInput}
+                onChange={(e) => setSearchInput(e.target.value)}
+                className="w-full"
+              />
+            )}
             <div className="flex  justify-between">
               <div className={filterOn ? "text-rose-600 pb-1" : "pb-1"}>
                 ({filteredChildCares.length})
@@ -220,39 +219,39 @@ function SwipeableEdgeDrawer(props) {
         >
           {/* <Skeleton variant="rectangular" height="100%" /> */}
           <div className="flex py-1 items-end justify-start">
-          <div className="card-container-mobile">
-        {filteredChildCares ? (
-          <AutoSizer>
-            {({ height, width }) => (
-              <List
-                ref={listRef}
-                height={height}
-                itemCount={filteredChildCares.length}
-                itemSize={208}
-                width={width}
-                itemData={filteredChildCares}
-              >
-                {({ index, style }) => (
-                  <div style={style}>
-                    <Card
-                      key={index}
-                      childCare={filteredChildCares[index]}
-                      uuidHovered={uuidHovered}
-                      uuidsClicked={uuidsClicked}
-                      handleCardMouseEnter={handleCardMouseEnter}
-                      handleCardMouseLeave={handleCardMouseLeave}
-                      handleShowModel={handleShowModel}
-                    />
-                  </div>
-                )}
-              </List>
-            )}
-          </AutoSizer>
-        ) : (
-          ""
-        )}
-      </div>
-      </div>
+            <div className="card-container-mobile">
+              {filteredChildCares ? (
+                <AutoSizer>
+                  {({ height, width }) => (
+                    <List
+                      ref={listRef}
+                      height={height}
+                      itemCount={filteredChildCares.length}
+                      itemSize={208}
+                      width={width}
+                      itemData={filteredChildCares}
+                    >
+                      {({ index, style }) => (
+                        <div style={style}>
+                          <Card
+                            key={index}
+                            childCare={filteredChildCares[index]}
+                            uuidHovered={uuidHovered}
+                            uuidsClicked={uuidsClicked}
+                            handleCardMouseEnter={handleCardMouseEnter}
+                            handleCardMouseLeave={handleCardMouseLeave}
+                            handleShowModel={handleShowModel}
+                          />
+                        </div>
+                      )}
+                    </List>
+                  )}
+                </AutoSizer>
+              ) : (
+                ""
+              )}
+            </div>
+          </div>
         </StyledBox>
       </SwipeableDrawer>
     </Root>

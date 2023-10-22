@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
 import Chip from "@mui/material/Chip";
@@ -9,6 +9,7 @@ import Checkbox from "@mui/material/Checkbox";
 const programTypes = [
   "Day Care",
   "Family Day Home",
+  "Municipally Licenced Day Home",
   "Group Family Child Care",
   "Preschool",
   "Out of School Care",
@@ -109,7 +110,7 @@ const FilterSettings = ({
         </div>
         <h4 className="text-m pt-8 pb-2">Type of program :</h4>
 
-        <Box sx={{ width: 200 }}>
+        <Box sx={{ width: 250 }}>
           <Stack direction="column" spacing={1} className="flex flex-wrap">
             {programTypes.map((programType, programTypeIndex) => (
               <Chip

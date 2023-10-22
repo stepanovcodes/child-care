@@ -3,11 +3,11 @@ import React, { useState } from "react";
 import Map from "@/app/components/Map";
 // import CardList from "@/app/components/CardList";
 import { getChildCare } from "@/app/utilities/childcares-service";
-import Modal from "@/app/components/Modal";
 import Filter from "@/app/components/Filter";
 import FilterSettings from "@/app/components/FilterSettings";
 import ResponsiveComponent from "@/app/components/ResponsiveComponent";
 import DetailsDialog from "@/app/components/DetailsDialog";
+import MunicipalDetailsDialog from "@/app/components/MunicipalDetailsDialog";
 
 const ChildCaresWrapper = ({ childCares }) => {
   const [cardData, setCardData] = useState([]);
@@ -28,6 +28,7 @@ const ChildCaresWrapper = ({ childCares }) => {
   const [searchInput, setSearchInput] = useState("");
   const [openSwipeableDrawer, setOpenSwipeableDrawer] = useState(false);
   const [openDetailsDialog, setOpenDetailsDialog] = useState(false);
+  const [openMunicipalDetailsDialog, setOpenMunicipalDetailsDialog] = useState(false);
 
   const handleCardMouseEnter = (uuid) => {
     setUuidHovered(uuid);
@@ -44,7 +45,10 @@ const ChildCaresWrapper = ({ childCares }) => {
     setChildCareDetails(details);
     // console.log(details)
     setTimeout(() => {
-      setOpenDetailsDialog(true)
+      details.type === "Municipally Licenced Day Home"?
+      setOpenMunicipalDetailsDialog(true)
+      :
+      setOpenDetailsDialog(true);
       // document.getElementById("my_modal_2").showModal();
     }, 1); // Delay for 1 second (1000 milliseconds)
   };
@@ -100,12 +104,24 @@ const ChildCaresWrapper = ({ childCares }) => {
           setOpenSwipeableDrawer={setOpenSwipeableDrawer}
         />
       </div>
-      {/* <Modal
+
+      <MunicipalDetailsDialog
         childCareDetails={childCareDetails}
         handleCloseModel={handleCloseModel}
         setOpenSwipeableDrawer={setOpenSwipeableDrawer}
         setUuidShowOnMap={setUuidShowOnMap}
-      /> */}
+        openMunicipalDetailsDialog={openMunicipalDetailsDialog}
+        setOpenMunicipalDetailsDialog={setOpenMunicipalDetailsDialog}
+      />
+
+      <DetailsDialog
+        childCareDetails={childCareDetails}
+        handleCloseModel={handleCloseModel}
+        setOpenSwipeableDrawer={setOpenSwipeableDrawer}
+        setUuidShowOnMap={setUuidShowOnMap}
+        openDetailsDialog={openDetailsDialog}
+        setOpenDetailsDialog={setOpenDetailsDialog}
+      />
 
       <DetailsDialog
         childCareDetails={childCareDetails}

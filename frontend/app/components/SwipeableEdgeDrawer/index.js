@@ -11,6 +11,7 @@ import Box from "@mui/material/Box";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import TextField from "@mui/material/TextField";
 import Card from "@/app/components/Card";
+import MunicipalCard from "@/app/components/MunicipalCard";
 import "./SwipeableEdgeDrawer.css";
 import { FixedSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
@@ -233,15 +234,28 @@ function SwipeableEdgeDrawer(props) {
                     >
                       {({ index, style }) => (
                         <div style={style}>
-                          <Card
-                            key={index}
-                            childCare={filteredChildCares[index]}
-                            uuidHovered={uuidHovered}
-                            uuidsClicked={uuidsClicked}
-                            handleCardMouseEnter={handleCardMouseEnter}
-                            handleCardMouseLeave={handleCardMouseLeave}
-                            handleShowModel={handleShowModel}
-                          />
+                          {filteredChildCares[index].type ===
+                          "Municipally Licenced Day Home" ? (
+                            <MunicipalCard
+                              key={index}
+                              childCare={filteredChildCares[index]}
+                              uuidHovered={uuidHovered}
+                              uuidsClicked={uuidsClicked}
+                              handleCardMouseEnter={handleCardMouseEnter}
+                              handleCardMouseLeave={handleCardMouseLeave}
+                              handleShowModel={handleShowModel}
+                            />
+                          ) : (
+                            <Card
+                              key={index}
+                              childCare={filteredChildCares[index]}
+                              uuidHovered={uuidHovered}
+                              uuidsClicked={uuidsClicked}
+                              handleCardMouseEnter={handleCardMouseEnter}
+                              handleCardMouseLeave={handleCardMouseLeave}
+                              handleShowModel={handleShowModel}
+                            />
+                          )}
                         </div>
                       )}
                     </List>

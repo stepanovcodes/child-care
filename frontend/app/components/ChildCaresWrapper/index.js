@@ -45,7 +45,7 @@ const ChildCaresWrapper = ({ childCares }) => {
     setChildCareDetails(details);
     // console.log(details)
     setTimeout(() => {
-      details.type === "Municipally Licenced Day Home"?
+      details.type === "Municipally licenced private day home"?
       setOpenMunicipalDetailsDialog(true)
       :
       setOpenDetailsDialog(true);

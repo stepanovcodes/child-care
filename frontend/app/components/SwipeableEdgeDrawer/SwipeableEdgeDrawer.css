@@ -1,6 +1,6 @@
 .card-container-mobile {
   width: 100dvw;
-  height: calc(50dvh - 80px);
+  height: calc(100dvh - 80px - 64px);
   overflow-y: auto;
 }
 

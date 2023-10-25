@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     }
 
     toJSON() {
-      return { ...this.get(), id: undefined/*, uuid:undefined, createdAt: undefined, updatedAt: undefined */ };
+      return { ...this.get(), id: undefined/*, uuid:undefined, createdAt: undefined, updatedAt: undefined */  };
     }
   }
   Review.init(

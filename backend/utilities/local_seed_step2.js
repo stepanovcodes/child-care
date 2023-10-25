@@ -3,22 +3,27 @@ const CHILDCARES_BASE_URL = `${process.env.NODE_BASE_URL}/childcares`;
 const PHOTOS_BASE_URL = `${process.env.NODE_BASE_URL}/photos`;
 const REVIEWS_BASE_URL = `${process.env.NODE_BASE_URL}/reviews`;
 
+startProcessing()
 
-// for (let elId = 1; elId <= 596; elId++) {
-//   const delay = elId * 10000; // 5 seconds delay for each iteration
-//   executeWithDelay(elId, delay);
-// }
-
-// function executeWithDelay(elId, delay) {
-//   setTimeout(() => {
-//     postPlaceIds(elId);
-//   }, delay);
-// }
-
-postPlaceIds(498);
-
-async function postPlaceIds(elId) {
+async function startProcessing() {
   const childCares = await getChildCares();
+  for (let elId = 1; elId <= 817; elId++) {
+    const delay = (elId) * 5000; // 5 seconds delay for each iteration
+    executeWithDelay(elId, delay, childCares);
+    // console.log("Run", elId)
+  }
+}
+
+function executeWithDelay(elId, delay, childCares) {
+  setTimeout(() => {
+    postPlaceIds(elId, childCares);
+  }, delay);
+}
+
+// postPlaceIds(498);
+
+async function postPlaceIds(elId, childCares) {
+  //   const childCares = await getChildCares();
   let requestedPlaceIds = new Set(); // Create a Set to store requested placeIds
   const elementNumber = elId;
 
@@ -31,8 +36,7 @@ async function postPlaceIds(elId) {
   childCares.forEach(async (element) => {
     if (
       element.id === elementNumber &&
-      (element.city === "CALGARY" ||
-        element.city === "MEDICINE HAT") /* && element.latitude === null*/
+      (element.city === "EDMONTON") /* && element.latitude === null*/
     ) {
       console.log(`Start processing id ${element.id}`);
       const result = await getPlaceIdDetails(element);
@@ -226,7 +230,7 @@ async function updateCh(uuid, updatedData) {
 
 async function createPhotos(dataArray) {
   try {
-    const batchSize = 1;
+    const batchSize = 10;
     const responses = [];
 
     for (let i = 0; i < dataArray.length; i += batchSize) {
@@ -257,11 +261,13 @@ async function createPhotos(dataArray) {
 
 async function createReviews(dataArray) {
   try {
-    const batchSize = 1;
+    const batchSize = 5;
     const responses = [];
 
     for (let i = 0; i < dataArray.length; i += batchSize) {
       const batchData = dataArray.slice(i, i + batchSize);
+
+      // console.log(batchData)
 
       const res = await fetch(REVIEWS_BASE_URL, {
         method: "POST",
@@ -285,5 +291,3 @@ async function createReviews(dataArray) {
     throw new Error("Invalid Request");
   }
 }
-
-

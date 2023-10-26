@@ -7,7 +7,7 @@ startProcessing()
 
 async function startProcessing() {
   const childCares = await getChildCares();
-  for (let elId = 1; elId <= 817; elId++) {
+  for (let elId = 1; elId <= 879; elId++) {
     const delay = (elId) * 5000; // 5 seconds delay for each iteration
     executeWithDelay(elId, delay, childCares);
     // console.log("Run", elId)
@@ -35,8 +35,8 @@ async function postPlaceIds(elId, childCares) {
 
   childCares.forEach(async (element) => {
     if (
-      element.id === elementNumber &&
-      (element.city === "EDMONTON") /* && element.latitude === null*/
+      element.id === elementNumber
+      // (element.city === "EDMONTON") /* && element.latitude === null*/
     ) {
       console.log(`Start processing id ${element.id}`);
       const result = await getPlaceIdDetails(element);

@@ -4,7 +4,7 @@ const BASE_URL = `${process.env.NODE_BASE_URL}/childcares`;
 async function getPlaceIds() {
   const childCares = await getChildCares();
   childCares.forEach(async (element) => {
-    if (element.city === "CALGARY" && element.placeId === null){
+    if ( element.placeId === null){
       const result = await getPlaceId(element);
       if (result.status === 'OK') {
         // console.log(result.predictions[0].place_id)
